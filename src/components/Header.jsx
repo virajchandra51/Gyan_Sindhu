@@ -1,0 +1,163 @@
+import React, { useState, useEffect } from "react";
+import Wrapper from "./Wrapper";
+
+import { Link } from "react-router-dom";
+import Menu from "./Menu";
+import BranchSubMenu from "./BranchSubMenu";
+import MenuMobile from "./MenuMobile";
+
+import { BsCart, BsSearch, BsPerson, BsHouse } from "react-icons/bs";
+import { BiMenuAltRight } from "react-icons/bi";
+import { VscChromeClose } from "react-icons/vsc";
+import { useSelector } from "react-redux";
+import logo from "../../public/logo.png";
+
+const SellTypeData = [
+  { id: 1, name: "School", url: "/school" },
+  { id: 2, name: "Publisher", url: "/publisher" },
+  { id: 3, name: "Subject", url: "/subject" },
+  { id: 4, name: "Writer", url: "/writer" },
+];
+
+const Header = () => {
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [showCatMenu, setShowCatMenu] = useState(false);
+  const [showBranchMenu, setShowBranchMenu] = useState(false);
+  const [show, setShow] = useState("translate-y-0");
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const controlNavbar = () => {
+    if (window.scrollY > 200) {
+      if (window.scrollY > lastScrollY && !mobileMenu) {
+        setShow("-translate-y-[150px]");
+      } else {
+        setShow("shadow-sm");
+      }
+    } else {
+      setShow("translate-y-0");
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+  const global = useSelector((state) => state.global);
+  // console.log(global);
+
+  const [group, setGroup] = useState({
+    group_code: -1,
+    group_name: "",
+  });
+  // console.log(group);
+  // console.log(showBranchMenu);
+
+  return (
+    <header
+      className={`w-full bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 flex-col ${show}`}
+    >
+      <Wrapper className="h-[90px] flex justify-between items-center">
+        <Link to="/">
+          <img src={logo} className="w-[200px] md:w-[250px]" />
+        </Link>
+        <Menu
+          showCatMenu={showCatMenu}
+          setShowCatMenu={setShowCatMenu}
+          group={group}
+          setGroup={setGroup}
+        />
+        {mobileMenu && (
+          <MenuMobile
+            showCatMenu={showCatMenu}
+            setShowCatMenu={setShowCatMenu}
+            group={group}
+            setGroup={setGroup}
+            setMobileMenu={setMobileMenu}
+          />
+        )}
+        <div className="bg-gray-200 w-[300px] rounded py-2 flex justify-start items-center ">
+          <BsSearch className="mx-3 fill-gray-500" />
+          <input
+            className="text-sm text-gray-500 w-full bg-transparent outline-none"
+            placeholder="Search our store here.."
+            type="text"
+          />
+        </div>
+        <div className="flex items-center text-black">
+          {/* Icon start */}
+          <Link to={"/login"}>
+            <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+              <BsPerson className="text-[19px] md:text-[24px]" />
+            </div>
+          </Link>
+          {/* Icon end */}
+
+          {/* Icon start */}
+          <Link to="/cart">
+            <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+              <BsCart className="text-[15px] md:text-[20px]" />
+              {6 > 0 && (
+                <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
+                  {6}
+                </div>
+              )}
+            </div>
+          </Link>
+          {/* Icon end */}
+
+          {/* Icon start */}
+          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+            <BranchSubMenu
+              showBranchMenu={showBranchMenu}
+              setShowBranchMenu={setShowBranchMenu}
+            />
+
+            <BsHouse
+              onClick={() =>
+                setShowBranchMenu((showBranchMenu) => !showBranchMenu)
+              }
+              className="text-[15px] md:text-[20px] ml-[4px]"
+            />
+          </div>
+          {/* Icon end */}
+
+          {/* Mobile icon start */}
+          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative ">
+            {mobileMenu ? (
+              <VscChromeClose
+                className="text-[16px]"
+                onClick={() => setMobileMenu(false)}
+              />
+            ) : (
+              <BiMenuAltRight
+                className="text-[20px]"
+                onClick={() => setMobileMenu(true)}
+              />
+            )}
+          </div>
+          {/* Mobile icon end */}
+        </div>
+      </Wrapper>
+      <div className="bg-[var(--primary-c)] h-[50px] w-full flex">
+        <ul className="flex items-center justify-center text-white px-0 md:px-4">
+          {SellTypeData?.map((item, index) => {
+            return (
+              <Link
+                key={index}
+                state={{ sellType: item.name.toLowerCase() }}
+                to={`${item.url}`}
+                className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)]"
+              >
+                <li>{item.name}</li>
+              </Link>
+            );
+          })}
+        </ul>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

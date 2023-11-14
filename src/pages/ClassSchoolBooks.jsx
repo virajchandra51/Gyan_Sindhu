@@ -1,0 +1,63 @@
+import React from "react";
+import Wrapper from "../components/Wrapper";
+import ProductCard from "../components/ProductCard";
+import { fetchDataFromApi } from "../utils/api";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import Layout from "../Layout";
+
+const ClassSchoolBooks = () => {
+  const global = useSelector((state) => state.global);
+  const location = useLocation();
+  console.log(location.state);
+
+  const [productList, setProductList] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetchDataFromApi(
+      "/api/booklist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+        `${global.branch_id}` +
+        "&schoolcode=" +
+        `${location.state.school_code}` +
+        "&classcode=" +
+        `${location.state.class_code}` +
+        "&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
+    );
+    console.log(data);
+    setProductList(data);
+  };
+
+  console.log(productList);
+
+  return (
+    <Layout>
+      <Wrapper>
+        {/* heading and paragaph start */}
+        <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
+          <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
+            Books in {location.state.class_name} by {location.state.school_name}
+          </div>
+          <div className="text-md md:text-xl">
+            One Stop Solution for all Kinds of School Books & Supplies by Gyan
+            Sindhu.
+          </div>
+        </div>
+        {/* heading and paragaph end */}
+
+        {/* products grid start */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+          {productList?.map((product) => (
+            <ProductCard key={product?.id} product={product} />
+          ))}
+        </div>
+        {/* products grid end */}
+      </Wrapper>
+    </Layout>
+  );
+};
+
+export default ClassSchoolBooks;
