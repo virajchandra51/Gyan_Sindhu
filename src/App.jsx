@@ -10,6 +10,8 @@ import Class from "./pages/Class";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import ClassSchoolBooks from "./pages/ClassSchoolBooks";
+import Failed from "./pages/Failed";
+import Success from "./pages/Success";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/class" element={<Class />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/failed" element={<Failed />} />
+          <Route path="/success" element={<Success />} />
           <Route path="/:selltype" element={<SellType />} />
         </Routes>
       </BrowserRouter>
