@@ -63,7 +63,6 @@ const School = () => {
   const handleChangeSchool = (event) => {
     setSchoolName(event.target.value);
   };
-  console.log(schoolName);
   return (
     <Layout>
       <Wrapper>
@@ -109,6 +108,7 @@ const School = () => {
             data.data[0].school_name !== undefined ? (
               data.data?.map((item, index) => (
                 <Link
+                  key={index}
                   to={"/class"}
                   state={{
                     school_code: item.school_code,

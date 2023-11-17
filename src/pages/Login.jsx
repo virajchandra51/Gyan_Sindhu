@@ -2,6 +2,8 @@ import React, { useState, Alert } from "react";
 import "./Login.css";
 import logo from "../../public/logo.png";
 import { fetchDataFromApi } from "../utils/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -21,19 +23,33 @@ const Login = () => {
         "&ipaddress=0.0.0.0"
     );
     data = data[0];
-    if(data.member_id === null || data.member_id === undefined)
-    {
-      window.alert("Wrong Email or Password. Sign In Unsuccessful!");
+    if (data.member_id === null || data.member_id === undefined) {
+      toast.error("Sign In Unsuccessful. Check your Email or Password.", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      localStorage.setItem("UserData", JSON.stringify(data));
+      toast.success("Sign In Successful", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000);
     }
-    else
-    {
-      localStorage.setItem('UserData', JSON.stringify(data));
-      window.alert("Sign In Successful!");
-      window.location.href="/";
-
-    }
-    // localStorage.setItem('UserData':)
-
     console.log(data[0].member_id);
   };
 
@@ -70,6 +86,7 @@ const Login = () => {
           : "bg-[var(--primary-c)] h-screen flex justify-center items-center"
       }
     >
+      <ToastContainer />
       <div className="relative w-full max-w-[1020px] h-[90%] bg-white rounded-[3rem] flex justify-center items-center shadow-md">
         <div className="absolute w-[calc(100%-4.1rem)] h-[calc(100%-4.1rem)]">
           <div
@@ -128,13 +145,15 @@ const Login = () => {
                     value={showPassword}
                     onChange={() => setShowPassword((prev) => !prev)}
                   />
-                  <label for="check" className="ml-2">Show Password</label>
+                  <label for="check" className="ml-2">
+                    Show Password
+                  </label>
 
                   <input
                     type="submit"
                     value="Sign In"
                     onClick={(e) => handleSubmit(e)}
-                    className="mt-8 bg-[var(--primary-c)] text-white w-full h-[44px] rounded-lg cursor-pointer hover:bg-[var(--secondary-c)]"
+                    className="mt-8 bg-[var(--primary-c)] text-white w-full h-[44px] rounded-full cursor-pointer hover:bg-[var(--secondary-c)]"
                   />
 
                   {/* <p className="text">

@@ -10,7 +10,6 @@ export const globalSlice = createSlice({
         updateBranch: (state, action) => {
             state.branch_id = action.payload.branch_id;
             state.branch_name = action.payload.branch_name;
-            console.log(action.payload)
         },
     },
 });

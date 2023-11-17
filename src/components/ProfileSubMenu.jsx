@@ -27,7 +27,6 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
         window.location.href="/"
     }
   }
-  console.log(userData);
   return (
     <>
       {showProfileMenu && (
@@ -41,7 +40,7 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
           )}
           <div
             onClick={handleClick}
-            className="mt-4 bg-[var(--primary-c)] text-white w-full h-[44px] rounded-lg cursor-pointer hover:bg-[var(--secondary-c)] flex justify-center items-center"
+            className="mt-4 bg-[var(--primary-c)] text-white w-[80%] h-[44px] rounded-full cursor-pointer hover:bg-[var(--secondary-c)] flex justify-center items-center"
           >
             {userData.member_id == "-1" ? "Sign In" : "Sign Out"}
           </div>

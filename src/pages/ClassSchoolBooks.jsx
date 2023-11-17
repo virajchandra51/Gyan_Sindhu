@@ -1,40 +1,99 @@
 import React from "react";
 import Wrapper from "../components/Wrapper";
-import ProductCard from "../components/ProductCard";
 import { fetchDataFromApi } from "../utils/api";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
+import { BiPlus, BiMinus } from "react-icons/bi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ClassSchoolBooks = () => {
   const global = useSelector((state) => state.global);
   const location = useLocation();
   console.log(location.state);
 
+  const [qty, setQty] = useState(1);
+  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const [productList, setProductList] = useState([]);
+  const [c, setC] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setTotalPrice((qty * price).toFixed(2));
+  }, [qty]);
+
+  function handleInc() {
+    if (qty < 10) {
+      setQty((prevQty) => (prevQty = prevQty + 1));
+    } else {
+      toast.info("Maximum Quantity Reached!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  }
+  function handleDec() {
+    if (qty > 1) {
+      setQty((prevQty) => (prevQty = prevQty - 1));
+    } else {
+      toast.info("Minimum Quantity Reached!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  }
+
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
+    var data = await fetchDataFromApi(
       "/api/booklist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +
         "&classcode=" +
         `${location.state.class_code}` +
-        "&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
+        "&ipaddress=0.0.0.0&pageno=1&pagelimit=100"
     );
     console.log(data);
+    var price = 0.0;
+    data.forEach((item) => {
+      price += parseFloat(item.net_sale_rate);
+    });
+    data = Object.values(
+      data.reduce((a, { item_type, ...props }) => {
+        if (!a[item_type])
+          a[item_type] = Object.assign({}, { item_type, data: [props] });
+        else a[item_type].data.push(props);
+        return a;
+      }, {})
+    );
     setProductList(data);
+    setPrice(price.toFixed(2));
+    setTotalPrice(qty * price.toFixed(2));
   };
-
   console.log(productList);
+  console.log(price);
 
   return (
     <Layout>
+      <ToastContainer />
       <Wrapper>
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
@@ -49,10 +108,91 @@ const ClassSchoolBooks = () => {
         {/* heading and paragaph end */}
 
         {/* products grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-          {productList?.map((product) => (
-            <ProductCard key={product?.id} product={product} />
-          ))}
+        <div className="my-14 px-5 md:px-16">
+          {productList.map((productListItem, index) => {
+            return (
+              <>
+                <div className="text-4xl font-bold my-8 text-green">{productListItem.item_type}</div>
+                {productListItem.data.map((product, index) => {
+                  return (
+                    <div key={index}>
+                      <h2 className="text-lg font-medium">
+                        {index+1}. {product.item_name}
+                      </h2>
+                      <div className="flex items-center text-black/[0.5]">
+                        <p className="mr-2 text-lg font-semibold">
+                          Publisher/Brand - {product.publisher_name}
+                        </p>
+                        <div className="ml-auto flex items-end">
+                          <p className="mr-20">Qty - {product.quantity}</p>
+                          <p className="text-xl font-medium text-green-500">
+                            &#8377;{product.net_sale_rate}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="h-[1px] bg-gray-200 my-4"></div>
+                    </div>
+                  );
+                })}
+              </>
+            );
+          })}
+          <div className="text-right my-10 flex flex-col items-end">
+            <h2 className="text-xl font-bold">Price x Quantity = Total</h2>
+            <h3 className="text-4xl">
+              &#8377; {price} x {qty} = &#8377; {totalPrice}
+            </h3>
+            <div className="flex justify-center items-center max-w-fit">
+              <h1 className="font-bold">Qty: </h1>
+              <div className="ml-4 flex items-center justify-center border-2">
+                <button
+                  className="text-center p-3 bg-gray-200 text-xl"
+                  type="button"
+                  onClick={handleDec}
+                >
+                  <BiMinus />
+                </button>
+                <input
+                  type="text"
+                  name="qty"
+                  value={qty}
+                  className="text-center px-[6px] py-[10px] max-w-[80px] border-x-2"
+                />
+                <button
+                  className="text-center p-3 bg-gray-200 text-xl"
+                  type="button"
+                  onClick={handleInc}
+                >
+                  <BiPlus />
+                </button>
+              </div>
+              <div className="w-[200px] ml-4 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg text-center cursor-pointer font-medium transition-transform active:scale-95 my-3 hover:bg-[var(--secondary-c)]">
+                Add to Cart
+                {/* <button
+                  className=""
+                  // onClick={() => {
+                  //   if (!selectedSize) {
+                  //     setShowError(true);
+                  //     document.getElementById("sizesGrid").scrollIntoView({
+                  //       block: "center",
+                  //       behavior: "smooth",
+                  //     });
+                  //   } else {
+                  //     dispatch(
+                  //       addToCart({
+                  //         ...product?.data?.[0],
+                  //         selectedSize,
+                  //         oneQuantityPrice: p.price,
+                  //       })
+                  //     );
+                  //     notify();
+                  //   }
+                  // }}
+                >
+                </button> */}
+              </div>
+            </div>
+          </div>
         </div>
         {/* products grid end */}
       </Wrapper>

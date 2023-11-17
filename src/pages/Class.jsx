@@ -33,7 +33,6 @@ const Class = () => {
     setData({ data: data, loading: false });
   };
 
-  console.log(data);
   return (
     <Layout>
       <Wrapper>
@@ -55,6 +54,7 @@ const Class = () => {
             data.data[0].class_name !== undefined ? (
               data.data?.map((item, index) => (
                 <Link
+                  key={index}
                   to={"/classschoolbooks"}
                   state={{
                     school_code: location.state.school_code,

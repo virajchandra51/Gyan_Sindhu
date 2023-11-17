@@ -21,7 +21,7 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
     dispatch(
       updateBranch({
         branch_id: data[0].branch_id,
-        branch_name: data[0].branch_name,
+        branch_name: data[0].branch_description,
       })
     );
   };

@@ -8,6 +8,7 @@ import SellType from "./pages/SellType";
 import School from "./pages/School";
 import Class from "./pages/Class";
 import Login from "./pages/Login";
+import Cart from "./pages/Cart";
 import ClassSchoolBooks from "./pages/ClassSchoolBooks";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/school" element={<School />} />
           <Route path="/class" element={<Class />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/:selltype" element={<SellType />} />
         </Routes>
       </BrowserRouter>
