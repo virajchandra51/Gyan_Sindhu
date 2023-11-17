@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateBranch } from "../store/globalSlice";
 import { fetchDataFromApi } from "../utils/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
   const global = useSelector((state) => state.global);
@@ -28,6 +30,16 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
   const handleBranchClick = (id, name) => {
     setShowBranchMenu(false);
     dispatch(updateBranch({ branch_id: id, branch_name: name }));
+    toast.success("Branch updated successfully!", {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (
@@ -58,6 +70,7 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
           })}
         </ul>
       )}
+      <ToastContainer />
     </>
   );
 };

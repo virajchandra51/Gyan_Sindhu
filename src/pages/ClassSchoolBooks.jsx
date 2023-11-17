@@ -115,7 +115,7 @@ const ClassSchoolBooks = () => {
                 <div className="text-4xl font-bold my-8 text-green">{productListItem.item_type}</div>
                 {productListItem.data.map((product, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index} className="w-[97%] ml-auto">
                       <h2 className="text-lg font-medium">
                         {index+1}. {product.item_name}
                       </h2>
