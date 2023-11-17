@@ -8,18 +8,20 @@ import Layout from "../Layout";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { addToCart } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ClassSchoolBooks = () => {
   const global = useSelector((state) => state.global);
   const location = useLocation();
-  console.log(location.state);
+
+  const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const [productList, setProductList] = useState([]);
-  const [c, setC] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
@@ -71,7 +73,6 @@ const ClassSchoolBooks = () => {
         `${location.state.class_code}` +
         "&ipaddress=0.0.0.0&pageno=1&pagelimit=100"
     );
-    console.log(data);
     var price = 0.0;
     data.forEach((item) => {
       price += parseFloat(item.net_sale_rate);
@@ -88,8 +89,6 @@ const ClassSchoolBooks = () => {
     setPrice(price.toFixed(2));
     setTotalPrice(qty * price.toFixed(2));
   };
-  console.log(productList);
-  console.log(price);
 
   return (
     <Layout>
@@ -112,7 +111,7 @@ const ClassSchoolBooks = () => {
           {productList.map((productListItem, index) => {
             return (
               <>
-                <div className="text-4xl font-bold my-8 text-green">{productListItem.item_type}</div>
+                <div className="text-4xl font-bold my-8 text-green" key={index}>{productListItem.item_type}</div>
                 {productListItem.data.map((product, index) => {
                   return (
                     <div key={index} className="w-[97%] ml-auto">
@@ -166,30 +165,21 @@ const ClassSchoolBooks = () => {
                   <BiPlus />
                 </button>
               </div>
-              <div className="w-[200px] ml-4 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg text-center cursor-pointer font-medium transition-transform active:scale-95 my-3 hover:bg-[var(--secondary-c)]">
+              <div className="w-[200px] ml-4 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg text-center cursor-pointer font-medium transition-transform active:scale-95 my-3 hover:bg-[var(--secondary-c)]"
+                  onClick={() => {
+                      dispatch(
+                        addToCart({
+                          data: productList,
+                          selectedQuantity: qty,
+                          oneQuantityPrice: price,
+                          totalPrice: totalPrice,
+                          school_code: location.state.school_code,
+                          class_code: location.state.class_code,
+                        })
+                      );
+                      // notify();
+                  }}>
                 Add to Cart
-                {/* <button
-                  className=""
-                  // onClick={() => {
-                  //   if (!selectedSize) {
-                  //     setShowError(true);
-                  //     document.getElementById("sizesGrid").scrollIntoView({
-                  //       block: "center",
-                  //       behavior: "smooth",
-                  //     });
-                  //   } else {
-                  //     dispatch(
-                  //       addToCart({
-                  //         ...product?.data?.[0],
-                  //         selectedSize,
-                  //         oneQuantityPrice: p.price,
-                  //       })
-                  //     );
-                  //     notify();
-                  //   }
-                  // }}
-                >
-                </button> */}
               </div>
             </div>
           </div>

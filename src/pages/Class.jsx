@@ -11,9 +11,7 @@ import Layout from "../Layout";
 
 const Class = () => {
   const global = useSelector((state) => state.global);
-
   const location = useLocation();
-  console.log(location.state);
   const [data, setData] = useState({
     data: [],
     loading: true,
