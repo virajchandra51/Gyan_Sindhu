@@ -7,6 +7,7 @@ import Select from "react-select";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
+import dummy from "../../public/sampleProduct.jpeg";
 
 const School = () => {
   const global = useSelector((state) => state.global);
@@ -103,7 +104,7 @@ const School = () => {
         {/* heading and paragaph end */}
 
         {/* grid start */}
-        <div className="flex flex-wrap justify-center gap-5 my-14 px-5 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-14 px-5 md:px-0">
           {!data.loading ? (
             data.data[0].school_name !== undefined ? (
               data.data?.map((item, index) => (
@@ -114,12 +115,31 @@ const School = () => {
                     school_code: item.school_code,
                     school_name: item.school_name,
                   }}
+                  className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
                 >
-                  <div
-                    className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
-                    key={index}
-                  >
-                    {item.school_name}
+                  <div className="max-w-sm m-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
+                      {item.photo_file_url === null ? (
+                        <img className="rounded-t-lg" src={dummy} alt="" />
+                      ) : (
+                        <img
+                          className="rounded-t-lg"
+                          src={item.photo_file_url}
+                          alt=""
+                        />
+                      )}
+                    </div>
+                    <div className="flex justify-center items-start mb-4 px-4 flex-col">
+                      <h5 className="mb-2 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
+                        {item.school_name}, {item.city_name}
+                      </h5>
+                      <h5 className="mb-2 text-md tracking-tight text-gray-900 dark:text-white">
+                        Board - {item.board_name}
+                      </h5>
+                      <h5 className="mb-2 text-md tracking-tight text-gray-900 dark:text-white">
+                        Medium - {item.medium_name}
+                      </h5>
+                    </div>
                   </div>
                 </Link>
               ))
