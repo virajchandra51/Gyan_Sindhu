@@ -30,16 +30,6 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
   const handleBranchClick = (id, name) => {
     setShowBranchMenu(false);
     dispatch(updateBranch({ branch_id: id, branch_name: name }));
-    toast.success("Branch updated successfully!", {
-      position: "bottom-right",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
   };
 
   return (
@@ -70,7 +60,6 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
           })}
         </ul>
       )}
-      <ToastContainer />
     </>
   );
 };

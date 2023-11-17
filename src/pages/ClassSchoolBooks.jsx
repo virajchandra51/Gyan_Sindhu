@@ -26,6 +26,20 @@ const ClassSchoolBooks = () => {
     fetchData();
   }, []);
 
+  const notify = () => {
+    toast.success("Success. Check your cart!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    });
+};
+
+
   useEffect(() => {
     setTotalPrice((qty * price).toFixed(2));
   }, [qty]);
@@ -97,7 +111,7 @@ const ClassSchoolBooks = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Books in {location.state.class_name} by {location.state.school_name}
+            Products in {location.state.class_name} by {location.state.school_name}
           </div>
           <div className="text-md md:text-xl">
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
@@ -167,17 +181,19 @@ const ClassSchoolBooks = () => {
               </div>
               <div className="w-[200px] ml-4 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg text-center cursor-pointer font-medium transition-transform active:scale-95 my-3 hover:bg-[var(--secondary-c)]"
                   onClick={() => {
+                      notify();
                       dispatch(
                         addToCart({
                           data: productList,
                           selectedQuantity: qty,
                           oneQuantityPrice: price,
                           totalPrice: totalPrice,
-                          school_code: location.state.school_code,
-                          class_code: location.state.class_code,
+                          school_code:location.state.school_code,
+                          school_name:location.state.school_name,
+                          class_code:location.state.class_code,
+                          class_name:location.state.class_name,
                         })
                       );
-                      // notify();
                   }}>
                 Add to Cart
               </div>

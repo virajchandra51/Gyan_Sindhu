@@ -7,18 +7,17 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      const item = current(state).cartItems.find((p) => { console.log(p.data)});
+      const item = state.cartItems.find((i) => i.school_code === action.payload.school_code && i.class_code === action.payload.class_code);
       console.log(current(state).cartItems);
-      console.log(item)
       if (item) {
-        console.log("found")
-        item.quantity+=item.selectedQuantity;
-        item.totalPrice += item.oneQuantityPrice * item.selectedQuantity;
+        console.log("found");
+        item.quantity += action.payload.selectedQuantity;
+        item.totalPrice = (parseFloat(item.quantity)*parseFloat(item.oneQuantityPrice)).toFixed(2);
       } else {
-        state.cartItems.push({ ...action.payload, quantity: 1 });
+        state.cartItems.push({ ...action.payload, quantity: action.payload.selectedQuantity });
       }
       console.log(current(state));
-      console.log(action.payload.data);
+      console.log(action.payload);
     },
     updateCart: (state, action) => {
       state.cartItems = state.cartItems.map((p) => {
