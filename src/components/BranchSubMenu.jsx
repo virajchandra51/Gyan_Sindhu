@@ -24,7 +24,6 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
         branch_name: data[0].branch_name,
       })
     );
-    console.log(data);
   };
   const handleBranchClick = (id, name) => {
     setShowBranchMenu(false);
@@ -34,8 +33,13 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
   return (
     <>
       {showBranchMenu && (
-        <ul className="bg-white absolute top-12 right-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
-          <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+        <ul className="bg-white absolute top-12 right-0 min-w-[270px] px-1 py-1 text-black shadow-lg">
+          <li
+            className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md"
+            onClick={() =>
+              handleBranchClick(branch.branch_id, branch.branch_description)
+            }
+          >
             Current Branch :
             {global.branch_id === -1 ? " None" : ` ${global.branch_name}`}
           </li>

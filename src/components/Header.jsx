@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import BranchSubMenu from "./BranchSubMenu";
+import ProfileSubMenu from "./ProfileSubMenu";
 import MenuMobile from "./MenuMobile";
 
 import { BsCart, BsSearch, BsPerson, BsHouse } from "react-icons/bs";
@@ -23,6 +24,7 @@ const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
   const [showBranchMenu, setShowBranchMenu] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const controlNavbar = () => {
@@ -87,11 +89,17 @@ const Header = () => {
         </div>
         <div className="flex items-center text-black">
           {/* Icon start */}
-          <Link to={"/login"}>
             <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
-              <BsPerson className="text-[19px] md:text-[24px]" />
+              <ProfileSubMenu 
+                showProfileMenu={showProfileMenu}
+                setShowProfileMenu={setShowProfileMenu}
+              />
+              <BsPerson className="text-[19px] md:text-[24px]" 
+                onClick={() =>
+                setShowProfileMenu((showProfileMenu) => !showProfileMenu)
+              }
+              />
             </div>
-          </Link>
           {/* Icon end */}
 
           {/* Icon start */}
