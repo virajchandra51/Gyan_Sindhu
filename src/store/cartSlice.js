@@ -20,19 +20,20 @@ export const cartSlice = createSlice({
       console.log(action.payload);
     },
     updateCart: (state, action) => {
+      console.log(action.payload);
       state.cartItems = state.cartItems.map((p) => {
-        if (p.id === action.payload.id) {
-          if (action.payload.key === "quantity") {
-            p.attributes.price = p.oneQuantityPrice * action.payload.val;
-          }
-          return { ...p, [action.payload.key]: action.payload.val };
+        if (p.school_code !== action.payload.school_code && p.class_code !== action.payload.class_code) {
+            p.totalPrice = p.oneQuantityPrice * action.payload.quantity;
+            p.quantity = action.payload.quantity;
+          return { ...p, [action.payload.key]: action.payload.quantity };
         }
         return p;
       });
     },
     removeFromCart: (state, action) => {
+      console.log(action.payload)
       state.cartItems = state.cartItems.filter(
-        (p) => p.id !== action.payload.id
+        (p) => p.school_code !== action.payload.school_code && p.class_code !== action.payload.class_code
       );
     },
   },

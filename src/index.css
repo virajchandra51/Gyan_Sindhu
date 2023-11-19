@@ -112,3 +112,8 @@ body{
 .markdown ul li {
     margin: 10px 0;
 }
+
+.rsd-bg-primary-color
+{
+    background-color: var(--primary-c) !important;
+}

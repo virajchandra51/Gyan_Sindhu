@@ -3,12 +3,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { updateCart, removeFromCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import dummy from '../../public/sampleProduct.jpeg'
+import dummy from "../../public/sampleProduct.jpeg";
+import { SimpleDialogContainer, simpleConfirm } from "react-simple-dialogs";
 
 const CartItem = ({ data }) => {
-
   // const p = data.attributes;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const updateCartItem = (e, key) => {
   //   let payload = {
   //     key,
@@ -17,23 +17,42 @@ const CartItem = ({ data }) => {
   //   };
   //   dispatch(updateCart(payload));
   // };
-  console.log(data)
+  const showConfirmationDelete = async () => {
+    if (
+      await simpleConfirm(
+        "Are you sure you wish to remove this product from your cart?"
+      )
+    ) {
+      dispatch(
+        removeFromCart({
+          school_code: data.school_code,
+          class_code: data.class_code,
+        })
+      );
+      console.log("Confirmed! 😄");
+    } else {
+      console.log("Not confirmed. 🥲");
+    }
+  };
+  console.log(data);
 
-  function handleInc() {
+  function handleInc(data) {
+    let payload = {
+      key: "quantity",
+      quantity: data.quantity+1,
+      school_code: data.school_code,
+      class_code: data.class_code,
+    };
+    dispatch(updateCart(payload));
   }
-  function handleDec() {
-  }
+
+  function handleDec() {}
 
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b">
       {/* IMAGE START */}
       <div className="shrink-0 aspect-square w-[50px] md:w-[120px]">
-        <img
-          src={dummy}
-          alt=""
-          width={120}
-          height={120}
-        />
+        <img src={dummy} alt="" width={120} height={120} />
       </div>
       {/* IMAGE END */}
 
@@ -63,11 +82,11 @@ const CartItem = ({ data }) => {
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center gap-2 md:gap-10 text-black text-sm md:text-md">
             <div className="flex items-center gap-1">
-            <div className="ml-4 flex items-center justify-center border-2">
+              <div className="flex items-center justify-center border-2">
                 <button
-                  className="text-center p-3 bg-gray-200 text-xl"
+                  className="text-center p-[10px] bg-gray-200 text-xl"
                   type="button"
-                  onClick={handleDec(data.quantity)}
+                  onClick={() => handleDec(data)}
                 >
                   <BiMinus />
                 </button>
@@ -78,9 +97,9 @@ const CartItem = ({ data }) => {
                   className="text-center px-[6px] py-[10px] max-w-[80px] border-x-2"
                 />
                 <button
-                  className="text-center p-3 bg-gray-200 text-xl"
+                  className="text-center p-[10px] bg-gray-200 text-xl"
                   type="button"
-                  onClick={handleInc(data.quantity)}
+                  onClick={() => handleInc(data)}
                 >
                   <BiPlus />
                 </button>
@@ -101,11 +120,12 @@ const CartItem = ({ data }) => {
             </div>
           </div>
           <RiDeleteBin6Line
-            // onClick={() => dispatch(removeFromCart({ id: data.id }))}
-            className="cursor-pointer text-black/[0.5] hover:text-black text-[16px] md:text-[20px]"
+            onClick={() => showConfirmationDelete()}
+            className="cursor-pointer text-red-500 hover:text-black text-[16px] md:text-[20px]"
           />
         </div>
       </div>
+      <SimpleDialogContainer />
     </div>
   );
 };

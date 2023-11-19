@@ -1,17 +1,12 @@
 import React, { useState, Alert } from "react";
-import "./Login.css";
 import logo from "../../public/logo.png";
 import { fetchDataFromApi } from "../utils/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleToggleClick = () => {
-    setIsSignUpMode(!isSignUpMode);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,163 +59,108 @@ const Login = () => {
     setForm(n);
   }
 
-  console.log(form);
-
-  const inputs = document.querySelectorAll(".input-field");
-
-  inputs.forEach((inp) => {
-    inp.addEventListener("focus", () => {
-      inp.classList.add("active");
-    });
-    inp.addEventListener("blur", () => {
-      if (inp.value !== "") return;
-      inp.classList.remove("active");
-    });
-  });
-
   return (
-    <main
-      className={
-        isSignUpMode
-          ? "sign-up-mode bg-[var(--primary-c)] h-screen flex justify-center items-center"
-          : "bg-[var(--primary-c)] h-screen flex justify-center items-center"
-      }
-    >
+    <div className="h-screen w-screen">
       <ToastContainer />
-      <div className="relative w-full max-w-[1020px] h-[90%] bg-white rounded-[3rem] flex justify-center items-center shadow-md">
-        <div className="absolute w-[calc(100%-4.1rem)] h-[calc(100%-4.1rem)]">
-          <div
-            className={`${
-              isSignUpMode ? `left-[65%]` : `left-[10%]`
-            } absolute h-full w-[45%] top-0  grid grid-cols-1 grid-rows-1 duration-[0.8s] ease-in-out`}
+      <div className="h-screen w-full bg-gray-100 flex-col md:flex-row shadow-lg flex">
+        <div className="px-8 md:px-12 flex justify-center flex-col w-full md:w-[50%]">
+          <h2 className="font-bold text-4xl my-4 text-[var(--primary-c)]">
+            Login
+          </h2>
+          <p className="text-xl mt-4 text-[var(--primary-c)]">
+            Welcome back, you have been missed!
+          </p>
+
+          <form
+            action=""
+            className="flex flex-col gap-4"
+            onSubmit={(e) => handleSubmit(e)}
           >
-            <form
-              className={`${
-                isSignUpMode ? "sign-in-form" : ""
-              } col-start-1 col-end-2 row-start-1 row-end-2 max-w-[260px] w-full mx-0 my-auto h-full flex flex-col justify-evenly  transition-opacity transition-delay-[0.02s] duration-[0.4s]`}
-            >
-              <div className="logo">
-                <img src={logo} alt="logo" />
-              </div>
-              <div className="flex flex-col">
-                <div className="heading mb-16">
-                  <h2 className="text-black font-bold text-3xl">
-                    Welcome Back!
-                  </h2>
-                  <h6 className="text-gray-600 text-md">
-                    You have been missed!
-                  </h6>
-                  {/*<span className="toggle" onClick={() => handleToggleClick()}>
-                  Sign up
-                </span> */}
-                </div>
+            <input
+              className="px-3 py-1.5 mt-8 rounded-md border"
+              type="text"
+              name="userid"
+              required
+              placeholder="Email or Mobile No"
+              onChange={(e) => handle(e)}
+            />
+            <div className="relative">
+              <input
+                className="px-3 py-1.5 rounded-md border w-full"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                required
+                onChange={(e) => handle(e)}
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="gray"
+                className="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2"
+                viewBox="0 0 16 16"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+              </svg>
+            </div>
+            <button className="bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300">
+              Login
+            </button>
+          </form>
 
-                <div className="actual-form">
-                  <div className="input-wrap">
-                    <input
-                      type="text"
-                      className="input-field"
-                      required
-                      name="userid"
-                      onChange={(e) => handle(e)}
-                      placeholder="Email or Mobile No"
-                    />
-                    {/* <label>Email or Username</label> */}
-                  </div>
-
-                  <div className="input-wrap">
-                    <input
-                      className="input-field"
-                      required
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      onChange={(e) => handle(e)}
-                      placeholder="Password"
-                    />
-                    {/* <label>Password</label> */}
-                  </div>
-                  <input
-                    id="check"
-                    type="checkbox"
-                    value={showPassword}
-                    onChange={() => setShowPassword((prev) => !prev)}
-                  />
-                  <label for="check" className="ml-2">
-                    Show Password
-                  </label>
-
-                  <input
-                    type="submit"
-                    value="Sign In"
-                    onClick={(e) => handleSubmit(e)}
-                    className="mt-8 bg-[var(--primary-c)] text-white w-full h-[44px] rounded-full cursor-pointer hover:bg-[var(--secondary-c)]"
-                  />
-
-                  {/* <p className="text">
-                  Forgotten your password or you login datails?
-                  <a href="#">Get help</a> signing in
-                </p> */}
-                </div>
-              </div>
-            </form>
-            {/* <form className="sign-up-form col-start-1 col-end-2 row-start-1 row-end-2 max-w-[260px] w-full mx-0 my-auto h-full flex flex-col justify-evenly  transition-opacity transition-delay-[0.02s] duration-[0.4s]">
-              <div className="logo">
-                <img src={logo} alt="logo" />
-              </div>
-
-              <div className="heading">
-                <h2>Get Started</h2>
-                <h6>Already have an account?</h6>
-                <a
-                  href="#"
-                  className="toggle"
-                  onClick={() => handleToggleClick()}
-                >
-                  Sign in
-                </a>
-              </div>
-
-              <div className="actual-form">
-                <div className="input-wrap">
-                  <input type="text" className="input-field" required />
-                  <label>Name</label>
-                </div>
-
-                <div className="input-wrap">
-                  <input type="email" className="input-field" required />
-                  <label>Email</label>
-                </div>
-
-                <div className="input-wrap">
-                  <input type="password" className="input-field" required />
-                  <label>Password</label>
-                </div>
-
-                <input type="submit" value="Sign Up" className="sign-btn" />
-
-                <p className="text">
-                  By signing up, I agree to the
-                  <a href="#">Terms of Services</a> and
-                  <a href="#">Privacy Policy</a>
-                </p>
-              </div>
-            </form> */}
+          <div className="mt-6 grid grid-cols-3 items-center text-gray-400">
+            <hr className="border-gray-400" />
+            <p className="text-center text-sm">OR</p>
+            <hr className="border-gray-400" />
           </div>
 
-          <div className="arousel">
-            <div className="images-wrapper"></div>
+          <button className="bg-white border py-2 w-full rounded-full mt-5 flex justify-center items-center text-sm hover:opacity-[0.7] duration-300 text-[var(--primary-c)]">
+            <svg
+              className="mr-3"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 48 48"
+              width="25px"
+            >
+              <path
+                fill="#FFC107"
+                d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+              />
+              <path
+                fill="#FF3D00"
+                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+              />
+              <path
+                fill="#4CAF50"
+                d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+              />
+              <path
+                fill="#1976D2"
+                d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+              />
+            </svg>
+            Login with Google
+          </button>
 
-            <div className="text-slider">
-              <div className="text-wrap">
-                <div className="text-group">
-                  <h2>One Stop Solution by Gyan Sindhu</h2>
-                </div>
+          <div className="mt-4 text-xs gap-4 flex justify-between items-center text-[var(--primary-c)]">
+            <p>Don't have an account?</p>
+            <Link to="/register">
+              <div className="py-2 px-5 bg-white border rounded-full hover:opacity-[0.7] duration-300">
+                Register
               </div>
-            </div>
+            </Link>
+          </div>
+        </div>
+
+        <div className="hidden md:flex items-center justify-center bg-[var(--primary-c)] w-[70%] text-center">
+          <div className="text-white px-8 text-xl font-bold">
+            One Stop Solution Gyan Sindhu
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -12,6 +12,7 @@ import Cart from "./pages/Cart";
 import ClassSchoolBooks from "./pages/ClassSchoolBooks";
 import Failed from "./pages/Failed";
 import Success from "./pages/Success";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/school" element={<School />} />
           <Route path="/class" element={<Class />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/failed" element={<Failed />} />
           <Route path="/success" element={<Success />} />

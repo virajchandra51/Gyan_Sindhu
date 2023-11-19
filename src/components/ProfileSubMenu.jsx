@@ -35,7 +35,7 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
             <h2>You are not logged in!</h2>
           ) : (
             <h2>
-              Welcome, {userData.salutation} {userData.person_name}
+              Welcome, {userData.salutation} {userData.member_name}
             </h2>
           )}
           <div
