@@ -1,3 +1,3 @@
-export const API_URL = "https://publisher.faonline.in/FAWebEComm/api/";
-export const api_key = "/?apikey=FaPubWebsitegVDIo5uyTK&";
-export const org_id = "orgid=4&";
+export const base_url = "https://publisher.faonline.in/FAWebEComm/api/";
+export const api_key = "FaPubWebsitegVDIo5uyTK";
+export const org_id = "4";
