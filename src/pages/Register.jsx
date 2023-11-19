@@ -7,7 +7,7 @@ import Select from "react-select";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const salutation = [
+const salutationList = [
   {
     label: "Mr.",
     value: "1",
@@ -22,7 +22,11 @@ const salutation = [
   },
 ];
 
-const gender = [
+const genderList = [
+  {
+    label: "Undefined",
+    value: "0",
+  },
   {
     label: "Male",
     value: "1",
@@ -44,6 +48,10 @@ const Register = () => {
     loading: true,
   });
   const [stateList, setStateList] = useState({
+    data: [],
+    loading: true,
+  });
+  const [countryList, setCountryList] = useState({
     data: [],
     loading: true,
   });
@@ -81,23 +89,76 @@ const Register = () => {
       copyData.push(obj);
     });
     setStateList({ data: copyData, loading: false });
+    copyData = [];
+    data = await fetchDataFromApi(
+      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+        `${global.branch_id}` +
+        "&seltype=country&ipaddress=0.0.0.0"
+    );
+    data.forEach((item) => {
+      var obj = {
+        label: `${item.country_code} - ${item.country_name}`,
+        value: item.country_code,
+      };
+      copyData.push(obj);
+    });
+    setCountryList({ data: copyData, loading: false });
   };
-
-  console.log(designationList);
-  console.log(stateList);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     var data = await fetchDataFromApi(
-      "/api/memberlogin/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&userid=" +
-        `${form.userid}` +
-        "&password=" +
+      "/api/memberregister/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&membername=" +
+        `${form.membername}` +
+        "&nickname=" +
+        `${form.nickname}` +
+        "&salutation=" +
+        `${form.salutation}` +
+        "&sexcode=" +
+        `${form.sexcode}` +
+        "&age=" +
+        `${form.age}` +
+        "&desigcode=" +
+        `${form.desigcode}` +
+        "&spousename=" +
+        `${form.spousename}` +
+        "&children=" +
+        `${form.children}` +
+        "&mobileno1=" +
+        `${form.mobileno1}` +
+        "&mobileno2=" +
+        `${form.mobileno2}` +
+        "&emailid=" +
+        `${form.emailid}` +
+        "&address=" +
+        `${form.address}` +
+        "&city=" +
+        `${form.city}` +
+        "&statecode=" +
+        `${form.statecode}` +
+        "&pincode=" +
+        `${form.pincode}` +
+        "&countrycode=" +
+        `${form.countrycode}` +
+        "&birthdate=" +
+        `${form.birthdate}` +
+        "&annidate=" +
+        `${form.annidate}` +
+        "&reggstin=" +
+        `${form.reggstin}` +
+        "&regaadhar=" +
+        `${form.regaadhar}` +
+        "&languagesknown=" +
+        `${form.languagesknown}` +
+        "&newpassword=" +
         `${form.password}` +
         "&ipaddress=0.0.0.0"
     );
+    console.log(data);
     data = data[0];
-    if (data.member_id === null || data.member_id === undefined) {
-      toast.error("Sign In Unsuccessful. Check your Email or Password.", {
+    if (data.success_status === '1') {
+      // localStorage.setItem("UserData", JSON.stringify(data));
+      toast.success(data.success_message, {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -107,9 +168,11 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
       });
-    } else {
-      localStorage.setItem("UserData", JSON.stringify(data));
-      toast.success("Sign In Successful", {
+      // setTimeout(() => {
+      //   window.location.href = "/";
+      // }, 3000);
+    } else if (data.success_status === '0') {
+      toast.error(data.success_message, {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -119,11 +182,21 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
       });
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 3000);
     }
-    console.log(data[0].member_id);
+    else
+    {
+        toast.info(data.success_message, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+    }
+    // console.log(data[0].member_id);
   };
   // https://publisher.faonline.in/FAWebEComm/api/memberregister/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&&membername=Rupesh%20Chandra&nickname=Rupesh%20Kumar&salutation=Mr.&sexcode=1&age=55&desigcode=1&spousename=Archana&children=Viraj&mobileno1=9129916977&mobileno2=9889355229&emailid=fasystems@gmail.com&address=C-1186,%20Indira%20Nagar&city=Lucknow&statecode=1&pincode=226016&countrycode=IND&birthdate=1968-06-04&annidate=1999-12-01&reggstin=09ABCD&regaadhar=1111222233334444&languagesknown=Hindi,English&newpassword=123&ipaddress=0.0.0.0
 
@@ -149,7 +222,7 @@ const Register = () => {
     reggstin: "",
     regaadhar: "",
     languagesknown: "",
-    newpassword: "",
+    password: "",
   });
 
   function handle(e) {
@@ -158,11 +231,20 @@ const Register = () => {
     setForm(n);
   }
 
+  function handleSelect(selectedOption, object) {
+    const n = { ...form };
+    n[object.name] = selectedOption.value;
+    if (object.name == "salutation") n[object.name] = selectedOption.label;
+    setForm(n);
+  }
+
+  console.log(form);
+
   return (
     <div className="">
       <ToastContainer />
       <div className=" bg-gray-100 flex-col md:flex-row shadow-lg flex">
-        <div className="px-12 md:py-12 flex justify-center flex-col w-full md:w-[80%]">
+        <div className="px-12 md:py-12 flex justify-center flex-col w-full md:w-[90%]">
           <h2 className="font-bold text-4xl my-4 text-[var(--primary-c)]">
             Register
           </h2>
@@ -178,7 +260,7 @@ const Register = () => {
             <input
               className="px-3 py-1.5 mt-8 rounded-md border"
               type="text"
-              name="userid"
+              name="membername"
               placeholder="Member Name"
               required
               onChange={(e) => handle(e)}
@@ -186,14 +268,14 @@ const Register = () => {
             <input
               className="px-3 py-1.5 rounded-md border"
               type="text"
-              name="userid"
+              name="nickname"
               placeholder="Nick Name"
               onChange={(e) => handle(e)}
             />
             <input
               className="px-3 py-1.5 rounded-md border"
               type="text"
-              name="userid"
+              name="emailid"
               placeholder="Email"
               required
               onChange={(e) => handle(e)}
@@ -203,15 +285,15 @@ const Register = () => {
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
+                name="spousename"
                 placeholder="Spouse Name"
                 onChange={(e) => handle(e)}
               />
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
-                placeholder="Children Name"
+                name="children"
+                placeholder="Children"
                 onChange={(e) => handle(e)}
               />
             </div>
@@ -219,15 +301,15 @@ const Register = () => {
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
-                placeholder="Mobile 1"
+                name="mobileno1"
+                placeholder="Mobile No 1"
                 required
                 onChange={(e) => handle(e)}
               />
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
+                name="mobileno2"
                 placeholder="Mobile 2"
                 onChange={(e) => handle(e)}
               />
@@ -236,7 +318,7 @@ const Register = () => {
               <input
                 className="px-3 py-1.5 rounded-md border"
                 type="text"
-                name="userid"
+                name="age"
                 placeholder="Age"
                 onChange={(e) => handle(e)}
               />
@@ -245,14 +327,14 @@ const Register = () => {
                 type="text"
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => (e.target.type = "text")}
-                name="userid"
+                name="birthdate"
                 placeholder="Birth Date"
                 onChange={(e) => handle(e)}
               />
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
+                name="annidate"
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => (e.target.type = "text")}
                 placeholder="Anniversary Date"
@@ -263,14 +345,14 @@ const Register = () => {
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
+                name="reggstin"
                 placeholder="GST No."
                 onChange={(e) => handle(e)}
               />
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
-                name="userid"
+                name="regaadhar"
                 placeholder="Aadhar No."
                 onChange={(e) => handle(e)}
               />
@@ -278,28 +360,31 @@ const Register = () => {
             <input
               className="px-3 py-1.5 rounded-md border"
               type="text"
-              name="userid"
+              name="address"
               placeholder="Address"
               required
               onChange={(e) => handle(e)}
             />
             <div className="flex gap-4">
               <Select
-                options={gender}
-                // onChange={handleChangeCity}
+                options={genderList}
+                onChange={handleSelect}
                 placeholder="Gender"
+                name="sexcode"
                 className="w-1/2"
               />
               <Select
-                options={salutation}
-                // onChange={handleChangeCity}
+                options={salutationList}
+                onChange={handleSelect}
                 placeholder="Salutation"
+                name="salutation"
                 className="w-1/2"
               />
               <Select
                 options={designationList.data}
-                // onChange={handleChangeCity}
+                onChange={handleSelect}
                 placeholder="Designation"
+                name="desigcode"
                 className="w-1/2"
               />
             </div>
@@ -307,30 +392,31 @@ const Register = () => {
               <input
                 className="px-3 py-1.5 rounded-md border"
                 type="text"
-                name="userid"
+                name="city"
                 placeholder="City"
                 required
                 onChange={(e) => handle(e)}
               />
-              <input
-                className="px-3 py-1.5 rounded-md border"
-                type="text"
-                name="userid"
-                placeholder="Country Code"
-                onChange={(e) => handle(e)}
+              <Select
+                options={countryList.data}
+                onChange={handleSelect}
+                placeholder="Country"
+                name="countrycode"
+                className="w-1/2"
                 required
               />
               <Select
                 options={stateList.data}
-                // onChange={handleChangeCity}
+                onChange={handleSelect}
                 placeholder="State"
+                name="statecode"
                 className="w-1/2"
                 required
               />
               <input
                 className="px-3 py-1.5 rounded-md border"
                 type="text"
-                name="userid"
+                name="pincode"
                 placeholder="Pin Code"
                 onChange={(e) => handle(e)}
                 required
@@ -339,7 +425,7 @@ const Register = () => {
             <input
               className="px-3 py-1.5 rounded-md border"
               type="text"
-              name="userid"
+              name="languagesknown"
               placeholder="Languages Known"
               onChange={(e) => handle(e)}
             />
