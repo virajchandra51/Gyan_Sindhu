@@ -19,8 +19,8 @@ const Menu = ({ showCatMenu, setShowCatMenu, setGroup }) => {
   }, [global.branch_id]);
   
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
-      "/api/itemgrouplist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    const data = await fetchDataFromApi("itemgrouplist",
+      "compid=9&branchid=" +
       `${global.branch_id}` +
       "&groupcode=1&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
     );

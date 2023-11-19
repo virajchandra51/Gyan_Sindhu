@@ -36,7 +36,8 @@ const Home = () => {
 
   const fetchData = async () => {
     var res = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+      "selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${sellTypes[0]}` +
@@ -45,7 +46,8 @@ const Home = () => {
     res = res.slice(0, 10);
     setData1({ data: res, loading: false });
     res = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+      "selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${sellTypes[1]}` +
@@ -54,7 +56,8 @@ const Home = () => {
     res = res.slice(0, 10);
     setData2({ data: res, loading: false });
     res = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+      "selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${sellTypes[2]}` +

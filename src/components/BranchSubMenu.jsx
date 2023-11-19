@@ -16,8 +16,8 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
 
   const dispatch = useDispatch();
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
-      "/api/branchlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=0&branchid=0&ipaddress=0.0.0.0"
+    const data = await fetchDataFromApi("branchlist",
+      "compid=0&branchid=0&ipaddress=0.0.0.0"
     );
     setBranchList(data);
     dispatch(

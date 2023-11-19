@@ -27,8 +27,8 @@ const School = () => {
     fetchData();
   }, [cityCode, schoolName]);
   const fetchData = async () => {
-    var data = await fetchDataFromApi(
-      "/api/schoollist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    var data = await fetchDataFromApi("schoollist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&citycode=" +
         `${cityCode}` +
@@ -37,8 +37,8 @@ const School = () => {
         "&ipaddress=0.0.0.0&pageno=1&pagelimit=1000"
     );
     setData({ data: data, loading: false });
-    data = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    data = await fetchDataFromApi("selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=city&ipaddress=0.0.0.0"
     );

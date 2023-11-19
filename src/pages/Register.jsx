@@ -61,8 +61,8 @@ const Register = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    var data = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    var data = await fetchDataFromApi("selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=designation&ipaddress=0.0.0.0"
     );
@@ -76,8 +76,8 @@ const Register = () => {
     });
     setDesignationList({ data: copyData, loading: false });
     copyData = [];
-    data = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    data = await fetchDataFromApi("selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=state&ipaddress=0.0.0.0"
     );
@@ -90,8 +90,8 @@ const Register = () => {
     });
     setStateList({ data: copyData, loading: false });
     copyData = [];
-    data = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    data = await fetchDataFromApi("selectionlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=country&ipaddress=0.0.0.0"
     );
@@ -107,8 +107,8 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var data = await fetchDataFromApi(
-      "/api/memberregister/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&membername=" +
+    var data = await fetchDataFromApi("memberregister",
+      "membername=" +
         `${form.membername}` +
         "&nickname=" +
         `${form.nickname}` +
@@ -130,8 +130,10 @@ const Register = () => {
         `${form.mobileno2}` +
         "&emailid=" +
         `${form.emailid}` +
-        "&address=" +
-        `${form.address}` +
+        "&address1=" +
+        `${form.address1}` +
+        "&address2=" +
+        `${form.address2}` +
         "&city=" +
         `${form.city}` +
         "&statecode=" +
@@ -203,8 +205,8 @@ const Register = () => {
   const [form, setForm] = useState({
     membername: "",
     nickname: "",
-    salutation: "",
-    sexcode: "",
+    salutation: "1",
+    sexcode: "1",
     age: "",
     desigcode: "",
     spousename: "",
@@ -212,11 +214,12 @@ const Register = () => {
     mobileno1: "",
     mobileno2: "",
     emailid: "",
-    address: "",
+    address1: "",
+    address2: "",
     city: "",
     statecode: "",
     pincode: "",
-    countrycode: "",
+    countrycode: "IND",
     birthdate: "",
     annidate: "",
     reggstin: "",
@@ -360,7 +363,15 @@ const Register = () => {
             <input
               className="px-3 py-1.5 rounded-md border"
               type="text"
-              name="address"
+              name="address1"
+              placeholder="Address"
+              required
+              onChange={(e) => handle(e)}
+            />
+            <input
+              className="px-3 py-1.5 rounded-md border"
+              type="text"
+              name="address2"
               placeholder="Address"
               required
               onChange={(e) => handle(e)}
@@ -370,6 +381,7 @@ const Register = () => {
                 options={genderList}
                 onChange={handleSelect}
                 placeholder="Gender"
+                defaultValue={{ label: "Male", value: "1" }}
                 name="sexcode"
                 className="w-1/2"
               />
@@ -377,6 +389,7 @@ const Register = () => {
                 options={salutationList}
                 onChange={handleSelect}
                 placeholder="Salutation"
+                defaultValue={{ label: "Mr.", value: "1" }}
                 name="salutation"
                 className="w-1/2"
               />
@@ -398,18 +411,19 @@ const Register = () => {
                 onChange={(e) => handle(e)}
               />
               <Select
-                options={countryList.data}
-                onChange={handleSelect}
-                placeholder="Country"
-                name="countrycode"
-                className="w-1/2"
-                required
-              />
-              <Select
                 options={stateList.data}
                 onChange={handleSelect}
                 placeholder="State"
                 name="statecode"
+                className="w-1/2"
+                required
+              />
+              <Select
+                options={countryList.data}
+                onChange={handleSelect}
+                defaultValue={{ label: "IND - India", value: "IND" }}
+                placeholder="Country"
+                name="countrycode"
                 className="w-1/2"
                 required
               />

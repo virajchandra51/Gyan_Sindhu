@@ -17,8 +17,8 @@ const CategoryBooks = () => {
     fetchData();
   }, [location.state.category.item_gr_code, global.branch_id]);
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
-      "/api/itemlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    const data = await fetchDataFromApi("itemlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&groupcode=" +
         `${location.state.category.item_gr_code}` +

@@ -78,8 +78,8 @@ const ClassSchoolBooks = () => {
   }
 
   const fetchData = async () => {
-    var data = await fetchDataFromApi(
-      "/api/booklist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    var data = await fetchDataFromApi("booklist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +

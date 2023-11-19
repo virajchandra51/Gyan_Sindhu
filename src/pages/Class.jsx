@@ -21,8 +21,8 @@ const Class = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    var data = await fetchDataFromApi(
-      "/api/classlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    var data = await fetchDataFromApi("classlist",
+      "compid=9&branchid=" +
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +

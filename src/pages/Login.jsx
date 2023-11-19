@@ -10,8 +10,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var data = await fetchDataFromApi(
-      "/api/memberlogin/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&userid=" +
+    var data = await fetchDataFromApi("memberlogin",
+      "userid=" +
         `${form.userid}` +
         "&password=" +
         `${form.password}` +

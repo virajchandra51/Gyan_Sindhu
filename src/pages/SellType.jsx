@@ -19,8 +19,8 @@ const SellType = () => {
     fetchData();
   }, [location.state.sellType]);
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
-      "/api/selectionlist/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&compid=9&branchid=" +
+    const data = await fetchDataFromApi("selectionlist",
+      "&compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${location.state.sellType}` +
