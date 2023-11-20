@@ -1,8 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import CategoryBooks from "./pages/CategoryBooks";
 import SellType from "./pages/SellType";
 import School from "./pages/School";

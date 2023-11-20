@@ -76,7 +76,7 @@ const School = () => {
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
             Sindhu.
           </div>
-          <div className="flex justify-around">
+          <div className="flex justify-around flex-col md:flex-row gap-2">
             <div className="flex justify-center items-center text-start gap-4">
               <strong>City :</strong>
               <Select
@@ -89,7 +89,7 @@ const School = () => {
             </div>
             <div className="flex justify-center items-center text-start gap-4">
               <strong>School :</strong>
-              <div className="w-[300px] rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+              <div className="md:w-[300px] rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"

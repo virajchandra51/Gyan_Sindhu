@@ -17,7 +17,7 @@ const SellType = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [location.state.sellType]);
   const fetchData = async () => {
     const data = await fetchDataFromApi("selectionlist",
       "&compid=9&branchid=" +
