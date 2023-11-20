@@ -21,14 +21,22 @@ export const cartSlice = createSlice({
     },
     updateCart: (state, action) => {
       console.log(action.payload);
-      state.cartItems = state.cartItems.map((p) => {
-        if (p.school_code !== action.payload.school_code && p.class_code !== action.payload.class_code) {
-            p.totalPrice = p.oneQuantityPrice * action.payload.quantity;
-            p.quantity = action.payload.quantity;
-          return { ...p, [action.payload.key]: action.payload.quantity };
-        }
-        return p;
-      });
+      const item = state.cartItems.find((i) => i.school_code === action.payload.school_code && i.class_code === action.payload.class_code);
+      console.log(item);
+      if(item)
+      {
+        console.log("found");
+        item.quantity = action.payload.quantity;
+        item.totalPrice = (parseFloat(item.quantity)*parseFloat(item.oneQuantityPrice)).toFixed(2);
+      }
+      // state.cartItems = state.cartItems.map((p) => {
+      //   if (p.school_code !== action.payload.school_code && p.class_code !== action.payload.class_code) {
+      //       p.totalPrice = p.oneQuantityPrice * action.payload.quantity;
+      //       p.quantity = action.payload.quantity;
+      //     return { ...p, [action.payload.key]: action.payload.quantity };
+      //   }
+      //   return p;
+      // });
     },
     removeFromCart: (state, action) => {
       console.log(action.payload)

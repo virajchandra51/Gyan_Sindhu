@@ -5,48 +5,73 @@ import { useDispatch } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import dummy from "../../public/sampleProduct.jpeg";
 import { SimpleDialogContainer, simpleConfirm } from "react-simple-dialogs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CartItem = ({ data }) => {
-  // const p = data.attributes;
   const dispatch = useDispatch();
-  // const updateCartItem = (e, key) => {
-  //   let payload = {
-  //     key,
-  //     val: key === "quantity" ? parseInt(e.target.value) : e.target.value,
-  //     id: data.id,
-  //   };
-  //   dispatch(updateCart(payload));
-  // };
   const showConfirmationDelete = async () => {
     if (
       await simpleConfirm(
         "Are you sure you wish to remove this product from your cart?"
       )
-    ) {
+      ) {
       dispatch(
         removeFromCart({
           school_code: data.school_code,
           class_code: data.class_code,
         })
       );
-      console.log("Confirmed! 😄");
     } else {
-      console.log("Not confirmed. 🥲");
     }
   };
   console.log(data);
 
   function handleInc(data) {
-    let payload = {
-      key: "quantity",
-      quantity: data.quantity+1,
-      school_code: data.school_code,
-      class_code: data.class_code,
-    };
-    dispatch(updateCart(payload));
+    if (data.quantity === 10) {
+      toast.info("Maximum Quantity Reached!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      let payload = {
+        key: "quantity",
+        quantity: data.quantity + 1,
+        school_code: data.school_code,
+        class_code: data.class_code,
+      };
+      dispatch(updateCart(payload));
+    }
   }
 
-  function handleDec() {}
+  function handleDec() {
+    if (data.quantity === 1) {
+      toast.info("Minimum Quantity Reached!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      let payload = {
+        key: "quantity",
+        quantity: data.quantity - 1,
+        school_code: data.school_code,
+        class_code: data.class_code,
+      };
+      dispatch(updateCart(payload));
+    }
+  }
 
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b">
@@ -126,6 +151,7 @@ const CartItem = ({ data }) => {
         </div>
       </div>
       <SimpleDialogContainer />
+      <ToastContainer />
     </div>
   );
 };

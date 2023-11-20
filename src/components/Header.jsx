@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  // console.log(cart);
 
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
@@ -80,7 +80,7 @@ const Header = () => {
             setMobileMenu={setMobileMenu}
           />
         )}
-        <div className="bg-gray-200 w-[300px] rounded py-2 justify-start items-center hidden md:flex">
+        <div className="bg-gray-200 w-[300px] rounded py-2 justify-start items-center hidden lg:flex">
           <BsSearch className="mx-3 fill-gray-500" />
           <input
             className="text-sm text-gray-500 w-full bg-transparent outline-none"
