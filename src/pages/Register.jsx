@@ -65,7 +65,8 @@ const Register = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    var data = await fetchDataFromApi("selectionlist",
+    var data = await fetchDataFromApi(
+      "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=designation&ipaddress=0.0.0.0"
@@ -80,7 +81,8 @@ const Register = () => {
     });
     setDesignationList({ data: copyData, loading: false });
     copyData = [];
-    data = await fetchDataFromApi("selectionlist",
+    data = await fetchDataFromApi(
+      "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=state&ipaddress=0.0.0.0"
@@ -94,7 +96,8 @@ const Register = () => {
     });
     setStateList({ data: copyData, loading: false });
     copyData = [];
-    data = await fetchDataFromApi("selectionlist",
+    data = await fetchDataFromApi(
+      "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=country&ipaddress=0.0.0.0"
@@ -108,7 +111,8 @@ const Register = () => {
     });
     setCountryList({ data: copyData, loading: false });
     copyData = [];
-    data = await fetchDataFromApi("selectionlist",
+    data = await fetchDataFromApi(
+      "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=city&ipaddress=0.0.0.0"
@@ -125,7 +129,21 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var data = await fetchDataFromApi("memberregister",
+    if (form.regaadhar.length>0 && form.regaadhar.length !== 16) {
+      toast.error("Aadhar Number should be 16 digits!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    var data = await fetchDataFromApi(
+      "memberregister",
       "membername=" +
         `${form.membername}` +
         "&nickname=" +
@@ -176,7 +194,7 @@ const Register = () => {
     );
     console.log(data);
     data = data[0];
-    if (data.success_status === '1') {
+    if (data.success_status === "1") {
       // localStorage.setItem("UserData", JSON.stringify(data));
       toast.success(data.success_message, {
         position: "bottom-right",
@@ -191,7 +209,7 @@ const Register = () => {
       // setTimeout(() => {
       //   window.location.href = "/";
       // }, 3000);
-    } else if (data.success_status === '0') {
+    } else if (data.success_status === "0") {
       toast.error(data.success_message, {
         position: "bottom-right",
         autoClose: 3000,
@@ -202,19 +220,17 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
       });
-    }
-    else
-    {
-        toast.info(data.success_message, {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          });
+    } else {
+      toast.info(data.success_message, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
     // console.log(data[0].member_id);
   };
@@ -365,14 +381,14 @@ const Register = () => {
             <div className="flex gap-4">
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="text"
+                type="number"
                 name="reggstin"
                 placeholder="GST No."
                 onChange={(e) => handle(e)}
               />
               <input
                 className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="text"
+                type="number"
                 name="regaadhar"
                 placeholder="Aadhar No."
                 onChange={(e) => handle(e)}
