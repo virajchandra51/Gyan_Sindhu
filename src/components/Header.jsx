@@ -127,7 +127,7 @@ const Header = () => {
               onClick={() =>
                 setShowBranchMenu((showBranchMenu) => !showBranchMenu)
               }
-              className="text-[15px] md:text-[20px] ml-[4px]"
+              className="text-[15px] md:text-[20px]"
             />
           </div>
           {/* Icon end */}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const CategoryCarousal = ({ data, sellType }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -98,7 +100,7 @@ const CategoryCarousal = ({ data, sellType }) => {
       </div>
       <div style={slidesOverflow}>
         <div style={getSlidesStyle()}>
-          {data?.map((item, index) => {
+          {data.length>0? data.map((item, index) => {
             return (
               <div
                 className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
@@ -107,7 +109,7 @@ const CategoryCarousal = ({ data, sellType }) => {
                 {item[`${sellType}_name`]}
               </div>
             );
-          })}
+          }):<Skeleton containerClassName="flex-1 gap-4" count={5} height={20}/>}
         </div>
       </div>
       <Link

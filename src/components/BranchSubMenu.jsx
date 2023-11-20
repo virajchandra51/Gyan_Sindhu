@@ -53,6 +53,7 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
                 onClick={() =>
                   handleBranchClick(branch.branch_id, branch.branch_description)
                 }
+                on
               >
                 {branch.branch_description}
               </li>

@@ -8,6 +8,8 @@ import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
 import dummy from "../../public/sampleProduct.jpeg";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const School = () => {
   const global = useSelector((state) => state.global);
@@ -147,7 +149,7 @@ const School = () => {
               <div className="text-2xl">Oops ... No School Found!</div>
             )
           ) : (
-            <></>
+            <Skeleton containerClassName="w-screen flex-1 gap-4" count={10} height={20}/>
           )}
         </div>
         {/* grid end */}

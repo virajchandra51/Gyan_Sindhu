@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const CategoryBooks = () => {
   const global = useSelector((state) => state.global);
@@ -47,9 +49,9 @@ const CategoryBooks = () => {
 
         {/* products grid start */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-          {productList?.map((product) => (
+          {productList.length>0 ? productList.map((product) => (
             <ProductCard key={product?.id} product={product} />
-          ))}
+          )): <Skeleton containerClassName="flex-1 w-screen gap-4" count={10} height={20}/>}
         </div>
         {/* products grid end */}
       </Wrapper>

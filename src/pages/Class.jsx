@@ -3,11 +3,11 @@ import Wrapper from "../components/Wrapper";
 import { fetchDataFromApi } from "../utils/api";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Select from "react-select";
-import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Class = () => {
   const global = useSelector((state) => state.global);
@@ -73,7 +73,7 @@ const Class = () => {
               <div className="text-2xl">Oops ... No School Found!</div>
             )
           ) : (
-            <></>
+            <Skeleton containerClassName="w-screen flex-1 gap-4" count={10} height={20}/>
           )}
         </div>
         {/* grid end */}

@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const SellType = () => {
   const global = useSelector((state) => state.global);
@@ -19,7 +21,8 @@ const SellType = () => {
     fetchData();
   }, [location.key]);
   const fetchData = async () => {
-    const data = await fetchDataFromApi("selectionlist",
+    const data = await fetchDataFromApi(
+      "selectionlist",
       "&compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
@@ -47,15 +50,22 @@ const SellType = () => {
 
         {/* grid start */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-          {!data.loading &&
-            data.data?.map((item, index) => (
+          {!data.loading ? (
+            data.data.map((item, index) => (
               <div
                 className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                 key={index}
               >
                 {item[`${location.state.sellType}_name`]}
               </div>
-            ))}
+            ))
+          ) : (
+            <Skeleton
+              containerClassName="w-screen flex-1 gap-4"
+              count={10}
+              height={20}
+            />
+          )}
         </div>
         {/* grid end */}
       </Wrapper>
