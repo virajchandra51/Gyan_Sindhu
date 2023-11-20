@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
         <h2 className="text-lg font-medium">{product.item_name}</h2>
         <div className="flex items-center text-black/[0.5]">
           <p className="mr-2 text-lg font-semibold">
-            Author - {product.publisher_name}
+            Publisher - {product.publisher_name}
           </p>
           <>
             <p className="ml-auto text-base font-medium text-green-500">

@@ -55,6 +55,10 @@ const Register = () => {
     data: [],
     loading: true,
   });
+  const [cityList, setCityList] = useState({
+    data: [],
+    loading: true,
+  });
   const global = useSelector((state) => state.global);
 
   useEffect(() => {
@@ -103,6 +107,20 @@ const Register = () => {
       copyData.push(obj);
     });
     setCountryList({ data: copyData, loading: false });
+    copyData = [];
+    data = await fetchDataFromApi("selectionlist",
+      "compid=9&branchid=" +
+        `${global.branch_id}` +
+        "&seltype=city&ipaddress=0.0.0.0"
+    );
+    data.forEach((item) => {
+      var obj = {
+        label: item.city_name,
+        value: item.city_code,
+      };
+      copyData.push(obj);
+    });
+    setCityList({ data: copyData, loading: false });
   };
 
   const handleSubmit = async (e) => {
@@ -401,21 +419,21 @@ const Register = () => {
                 className="w-1/2"
               />
             </div>
-            <div className="flex gap-4">
-              <input
-                className="px-3 py-1.5 rounded-md border"
-                type="text"
-                name="city"
+            <div className="flex gap-4 md:flex-row flex-col">
+              <Select
+                options={cityList.data}
+                onChange={handleSelect}
                 placeholder="City"
+                name="city"
+                className="w-full md:w-1/2"
                 required
-                onChange={(e) => handle(e)}
               />
               <Select
                 options={stateList.data}
                 onChange={handleSelect}
                 placeholder="State"
                 name="statecode"
-                className="w-1/2"
+                className="w-full md:w-1/2"
                 required
               />
               <Select
@@ -424,7 +442,7 @@ const Register = () => {
                 defaultValue={{ label: "IND - India", value: "IND" }}
                 placeholder="Country"
                 name="countrycode"
-                className="w-1/2"
+                className="w-full md:w-1/2"
                 required
               />
               <input
