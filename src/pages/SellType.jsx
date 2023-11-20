@@ -9,7 +9,7 @@ import Layout from "../Layout";
 const SellType = () => {
   const global = useSelector((state) => state.global);
   const location = useLocation();
-  console.log(location.state);
+  console.log(location.key);
   const [data, setData] = useState({
     data: [],
     loading: true,
@@ -17,7 +17,7 @@ const SellType = () => {
 
   useEffect(() => {
     fetchData();
-  }, [location.state.sellType]);
+  }, [location.key]);
   const fetchData = async () => {
     const data = await fetchDataFromApi("selectionlist",
       "&compid=9&branchid=" +
