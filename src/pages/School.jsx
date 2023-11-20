@@ -106,7 +106,7 @@ const School = () => {
         {/* heading and paragaph end */}
 
         {/* grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-14 px-5 md:px-0">
+        <div className="flex flex-wrap justify-center gap-5 my-14 px-5 md:px-0">
           {!data.loading ? (
             data.data[0].school_name !== undefined ? (
               data.data?.map((item, index) => (
@@ -117,7 +117,7 @@ const School = () => {
                     school_code: item.school_code,
                     school_name: item.school_name,
                   }}
-                  className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+                  className="min-w-[30%] max-w-[30%] transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="max-w-sm m-4 bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
                     <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
