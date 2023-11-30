@@ -94,13 +94,15 @@ const SellType = () => {
         {/* grid end */}
         <ReactPaginate
           breakLabel="..."
+          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
           nextLabel="next >"
           onPageChange={(e) => handlePageClick(e)}
           pageRangeDisplayed={5}
           pageCount={pageCount}
           previousLabel="< previous"
           renderOnZeroPageCount={null}
-          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl"
+          activeClassName="bg-[var(--secondary-c)] text-white"
+          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center"
         />
       </Wrapper>
     </Layout>
