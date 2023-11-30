@@ -7,6 +7,8 @@ import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import ReactPaginate from "react-paginate";
+import { paginationValue } from "../utils/constants";
 
 const SellType = () => {
   const global = useSelector((state) => state.global);
@@ -20,6 +22,7 @@ const SellType = () => {
   useEffect(() => {
     fetchData();
   }, [location.key]);
+  
   const fetchData = async () => {
     const data = await fetchDataFromApi(
       "selectionlist",
@@ -32,6 +35,25 @@ const SellType = () => {
     setData({ data: data, loading: false });
   };
   console.log(data.data);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  // Simulate fetching items from another resources.
+  // (This could be items from props; or items loaded in a local state
+  // from an API endpoint with useEffect and useState)
+
+  const endOffset = itemOffset + paginationValue;
+  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const pageCount = Math.ceil(data.data.length / paginationValue);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * paginationValue) % data.data.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
   return (
     <Layout>
       <Wrapper>
@@ -51,7 +73,7 @@ const SellType = () => {
         {/* grid start */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
           {!data.loading ? (
-            data.data.map((item, index) => (
+            data.data.slice(itemOffset, endOffset).map((item, index) => (
               <div
                 className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                 key={index}
@@ -68,6 +90,16 @@ const SellType = () => {
           )}
         </div>
         {/* grid end */}
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl"
+        />
       </Wrapper>
     </Layout>
   );
