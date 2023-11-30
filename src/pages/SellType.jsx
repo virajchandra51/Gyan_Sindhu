@@ -22,7 +22,7 @@ const SellType = () => {
   useEffect(() => {
     fetchData();
   }, [location.key]);
-  
+
   const fetchData = async () => {
     const data = await fetchDataFromApi(
       "selectionlist",
@@ -44,6 +44,7 @@ const SellType = () => {
   const endOffset = itemOffset + paginationValue;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const pageCount = Math.ceil(data.data.length / paginationValue);
+  const currentItems = data.data.slice(itemOffset, endOffset);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -52,6 +53,7 @@ const SellType = () => {
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
     setItemOffset(newOffset);
+    currentItems = data.data.slice(newOffset, endOffset);
   };
 
   return (
@@ -73,7 +75,7 @@ const SellType = () => {
         {/* grid start */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
           {!data.loading ? (
-            data.data.slice(itemOffset, endOffset).map((item, index) => (
+            currentItems.map((item, index) => (
               <div
                 className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                 key={index}
@@ -93,7 +95,7 @@ const SellType = () => {
         <ReactPaginate
           breakLabel="..."
           nextLabel="next >"
-          onPageChange={handlePageClick}
+          onPageChange={(e) => handlePageClick(e)}
           pageRangeDisplayed={5}
           pageCount={pageCount}
           previousLabel="< previous"
