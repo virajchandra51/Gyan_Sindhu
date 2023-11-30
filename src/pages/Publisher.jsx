@@ -3,17 +3,18 @@ import Wrapper from "../components/Wrapper";
 import { fetchDataFromApi } from "../utils/api";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import Layout from "../Layout";
+import dummy from "../../public/sampleProduct.jpeg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
 import { paginationValue } from "../utils/constants";
 
-const SellType = () => {
+const Publisher = () => {
   const global = useSelector((state) => state.global);
-  const location = useLocation();
-  console.log(location.key);
+  const [publishername, setPublisherName] = useState("");
   const [data, setData] = useState({
     data: [],
     loading: true,
@@ -21,25 +22,25 @@ const SellType = () => {
 
   useEffect(() => {
     fetchData();
-  }, [location.key]);
+  }, []);
 
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
+    var data = await fetchDataFromApi(
       "selectionlist",
       "&compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=" +
-        `${location.state.sellType}` +
+        "&seltype=publisher" +
         "&ipaddress=0.0.0.0"
     );
     setData({ data: data, loading: false });
   };
-  console.log(data.data);
 
+  console.log(data);
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
+  const handleChanglePublisher = (event) => {
+    setPublisherName(event.target.value);
+  };
+
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + paginationValue;
@@ -63,27 +64,61 @@ const SellType = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            {location.state.sellType.charAt(0).toUpperCase() +
-              location.state.sellType.slice(1)}
+            Publisher
           </div>
-          <div className="text-md md:text-xl">
+          <div className="text-md md:text-xl mb-5">
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
             Sindhu.
+          </div>
+          <div className="flex justify-around flex-col md:flex-row gap-2">
+            <div className="flex justify-center items-center text-start gap-4">
+              <strong>Publisher :</strong>
+              <div className="md:w-[300px] rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+                <BsSearch className="mx-3 fill-slate-500" />
+                <input
+                  className="w-full bg-transparent outline-none"
+                  placeholder="Search our store here.."
+                  type="text"
+                  onChange={handleChanglePublisher}
+                />
+              </div>
+            </div>
           </div>
         </div>
         {/* heading and paragaph end */}
 
         {/* grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+        <div className="flex flex-wrap justify-center gap-5 my-14 px-5 md:px-0">
           {!data.loading ? (
-            currentItems.map((item, index) => (
-              <div
-                className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
-                key={index}
-              >
-                {item[`${location.state.sellType}_name`]}
-              </div>
-            ))
+            data.data[0].publisher_name !== undefined ? (
+              currentItems?.map((item, index) => (
+                <Link
+                  key={index}
+                  className="min-w-[30%] max-w-[30%] transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+                >
+                  <div className="max-w-sm m-4 bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
+                      {item.photo_file_url === null ? (
+                        <img className="rounded-t-lg" src={dummy} alt="" />
+                      ) : (
+                        <img
+                          className="rounded-t-lg"
+                          src={item.photo_file_url}
+                          alt=""
+                        />
+                      )}
+                    </div>
+                    <div className="border-t-2 flex justify-center items-start mb-4 px-4 flex-col">
+                      <h5 className="my-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
+                        {item.publisher_name}
+                      </h5>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className="text-2xl">Oops ... No Publisher Found!</div>
+            )
           ) : (
             <Skeleton
               containerClassName="w-screen flex-1 gap-4"
@@ -110,4 +145,4 @@ const SellType = () => {
   );
 };
 
-export default SellType;
+export default Publisher;
