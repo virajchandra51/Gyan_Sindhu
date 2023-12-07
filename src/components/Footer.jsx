@@ -57,7 +57,7 @@ const Footer = () => {
                         {/* MENU START */}
                         <div className="flex flex-col gap-3">
                             <div className="font-oswald font-medium uppercase text-sm">
-                                About Gyan Sindhu
+                                About Skoolio - A unit of Gyan Sindhu
                             </div>
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Phone : +91-8874211000
@@ -66,10 +66,10 @@ const Footer = () => {
                                 Email : md@gyansindhu.com
                             </div>
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Address 1 : #44 Chandrika Colony, Sigra <br/>Varanasi - 221010<br/>headoffice@gyansindhu.com
+                                Address 1 : #44 Chandrika Colony, Sigra <br/>Varanasi - 221010<br/>gyansindhu_vns@yahoo.co.in
                             </div>
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Address 2 : 137 2nd Cross Road, Amarjyothi, Domlur <br/>Bengaluru - 560071<br/>admin@gyansindhu.com
+                                Address 2 : 137, 2nd Cross, Amarjyothi, Domlur <br/>Bengaluru - 560071<br/>admin@gyansindhu.com
                             </div>
                         </div>
                         {/* MENU END */}
