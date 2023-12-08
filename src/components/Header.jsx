@@ -61,9 +61,9 @@ const Header = () => {
     <header
       className={`w-full bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 flex-col ${show}`}
     >
-      <Wrapper className="h-[90px] flex justify-between items-center">
+      <Wrapper className="h-[100px] flex justify-between items-center">
         <Link to="/">
-          <img src={logo} className="w-[200px] md:w-[250px]" />
+          <img src={logo} className="w-[180px] md:w-[220px]" />
         </Link>
         <Menu
           showCatMenu={showCatMenu}

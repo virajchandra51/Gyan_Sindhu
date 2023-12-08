@@ -9,7 +9,10 @@
     line-height: 24px;
     color: rgba(0, 0, 0, 1);
     --primary-c: #082645;
-    --secondary-c: #124171;
+    /* --primary-c: #1FB9D7; */
+    /* --primary-c: #000; */
+    /* --secondary-c: #124171; */
+    --secondary-c: #1FB9D7;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
