@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Layout from "../Layout";
 import emptyCart from "../assets/empty-cart.jpg";
 import CartItem from "../components/CartItem";
-import useRazorpay from "react-razorpay";
 import { RAZORPAY_KEY_ID } from "../utils/constants";
 import logo from "../../public/logo.png";
 
