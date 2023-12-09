@@ -55,7 +55,7 @@ const School = () => {
     });
     setSubTotal(v.toFixed(2));
   }, [cartItems]);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   async function displayRazorpay() {
     const res = await loadScript(
@@ -67,8 +67,7 @@ const School = () => {
       return;
     }
 
-    if(userData.member_id === "-1")
-    {
+    if (userData.member_id === "-1") {
       alert("Please Login to Skoolio in order to checkout!");
       return;
     }
@@ -96,7 +95,12 @@ const School = () => {
       description: "Test Transaction",
       image: logo,
       order_id: data[0].online_order_no,
-      callback_url: "http://localhost:5173/success",
+      // callback_url: "http://localhost:5173/success",
+      // redirect: true,
+      handler: (response) => {
+        console.log("succeeded");
+        window.location.href = "/success";
+      },
       prefill: {
         name: `${userData.salutation} ${userData.member_name}`,
         email: "olclko@gmail.com",
@@ -108,6 +112,7 @@ const School = () => {
       theme: {
         color: "#000",
       },
+      timeout: 300,
     };
 
     const paymentObject = new window.Razorpay(options);
