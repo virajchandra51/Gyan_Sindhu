@@ -8,7 +8,7 @@ import Layout from "../Layout";
 import emptyCart from "../assets/empty-cart.jpg";
 import CartItem from "../components/CartItem";
 import { RAZORPAY_KEY_ID } from "../utils/constants";
-import logo from "../../public/logo.png";
+import logo from "../../public/logo3.png";
 
 const School = () => {
   const global = useSelector((state) => state.global);
@@ -67,6 +67,12 @@ const School = () => {
       return;
     }
 
+    if(userData.member_id === "-1")
+    {
+      alert("Please Login to Skoolio in order to checkout!");
+      return;
+    }
+
     const data = await fetchDataFromApi(
       "orderinitiate",
       "compid=9&branchid=" +
@@ -88,7 +94,7 @@ const School = () => {
       currency: "INR",
       name: `${userData.salutation} ${userData.member_name}`,
       description: "Test Transaction",
-      image: { logo },
+      image: logo,
       order_id: data[0].online_order_no,
       callback_url: "http://localhost:5173/success",
       prefill: {
