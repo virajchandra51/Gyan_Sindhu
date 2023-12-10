@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { fetchDataFromApi } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
   const [userData, setUserData] = useState({});
+  const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("UserData") === null) {
       var data = {
@@ -16,15 +17,12 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
       setUserData(JSON.parse(localStorage.getItem("UserData")));
     }
   }, []);
-  function handleClick () {
-    if(userData.member_id=='-1')
-    {
-        window.location.href="/login"
-    }
-    else
-    {
-        localStorage.removeItem('UserData');
-        window.location.href="/"
+  function handleClick() {
+    if (userData.member_id == "-1") {
+    navigate("/login");
+    } else {
+      localStorage.removeItem("UserData");
+    navigate("/");
     }
   }
   return (

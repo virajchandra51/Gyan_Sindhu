@@ -4,20 +4,23 @@ import { fetchDataFromApi } from "../utils/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var data = await fetchDataFromApi("memberlogin",
+    var data = await fetchDataFromApi(
+      "memberlogin",
       "userid=" +
         `${form.userid}` +
         "&password=" +
         `${form.password}` +
         "&ipaddress=0.0.0.0"
     );
-    console.log(data)
+    console.log(data);
     data = data[0];
     if (data.member_id === null || data.member_id === undefined) {
       toast.error("Sign In Unsuccessful. Check your Email or Password.", {
@@ -43,10 +46,9 @@ const Login = () => {
         theme: "dark",
       });
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/");
       }, 3000);
     }
-    console.log(data[0].member_id);
   };
 
   const [form, setForm] = useState({

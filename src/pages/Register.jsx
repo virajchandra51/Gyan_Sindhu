@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Select from "react-select";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const salutationList = [
   {
@@ -60,6 +61,7 @@ const Register = () => {
     loading: true,
   });
   const global = useSelector((state) => state.global);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -129,7 +131,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.regaadhar.length>0 && form.regaadhar.length !== 16) {
+    if (form.regaadhar.length > 0 && form.regaadhar.length !== 16) {
       toast.error("Aadhar Number should be 16 digits!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -206,9 +208,9 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
       });
-      // setTimeout(() => {
-      //   window.location.href = "/";
-      // }, 3000);
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } else if (data.success_status === "0") {
       toast.error(data.success_message, {
         position: "bottom-right",

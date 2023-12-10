@@ -5,13 +5,19 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
-import emptyCart from "../assets/empty-cart.jpg";
+import emptyCartPic from "../assets/empty-cart.jpg";
 import CartItem from "../components/CartItem";
 import { RAZORPAY_KEY_ID } from "../utils/constants";
 import logo from "../../public/logo3.png";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../store/cartSlice";
+
 
 const School = () => {
   const global = useSelector((state) => state.global);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({});
   useEffect(() => {
@@ -95,11 +101,12 @@ const School = () => {
       description: "Test Transaction",
       image: logo,
       order_id: data[0].online_order_no,
-      // callback_url: "http://localhost:5173/success",
+      // callback_url: "/success",
       // redirect: true,
       handler: (response) => {
+        dispatch(emptyCart());
         console.log("succeeded");
-        window.location.href = "/success";
+        navigate("/success");
       },
       prefill: {
         name: `${userData.salutation} ${userData.member_name}`,
@@ -185,7 +192,7 @@ const School = () => {
           {cartItems.length < 1 && (
             <div className="flex-[2] flex flex-col items-center pb-[50px] md:-mt-14">
               <img
-                src={emptyCart}
+                src={emptyCartPic}
                 width={300}
                 height={300}
                 className="w-[300px] md:w-[400px]"

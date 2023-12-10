@@ -44,10 +44,15 @@ export const cartSlice = createSlice({
         (p) => p.school_code !== action.payload.school_code && p.class_code !== action.payload.class_code
       );
     },
+
+    emptyCart: (state, action) => {
+      state.cartItems = [];
+    }
+
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToCart, updateCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, updateCart, removeFromCart, emptyCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
