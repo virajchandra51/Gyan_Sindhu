@@ -23,6 +23,7 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
     } else {
       localStorage.removeItem("UserData");
       navigate("/");
+      navigate(0);
     }
   }
   return (
