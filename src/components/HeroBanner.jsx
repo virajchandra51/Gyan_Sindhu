@@ -6,7 +6,6 @@ import '../../node_modules/react-responsive-carousel/lib/styles/carousel.css'
 
 import slide1 from "../assets/slide-1.png";
 import slide2 from "../assets/slide-2.jpg";
-import slide3 from "../assets/slide-3.png";
 
 const HeroBanner = () => {
   return (

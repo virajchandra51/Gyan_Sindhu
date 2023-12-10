@@ -19,10 +19,10 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
   }, []);
   function handleClick() {
     if (userData.member_id == "-1") {
-    navigate("/login");
+      navigate("/login");
     } else {
       localStorage.removeItem("UserData");
-    navigate("/");
+      navigate("/");
     }
   }
   return (
