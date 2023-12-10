@@ -4,7 +4,6 @@ import { Carousel } from "react-responsive-carousel";
 import { BiArrowBack } from "react-icons/bi";
 import '../../node_modules/react-responsive-carousel/lib/styles/carousel.css'
 
-import slide1 from "../assets/slide-1.png";
 import slide2 from "../assets/slide-2.jpg";
 
 const HeroBanner = () => {
@@ -53,7 +52,7 @@ const HeroBanner = () => {
         </div>
         <div>
           <img
-            src={slide3}
+            src={slide2}
             className="aspect-[16/10] md:aspect-auto object-cover"
           />
           <div className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90">
