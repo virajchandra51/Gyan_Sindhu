@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { emptyCart } from "../store/cartSlice";
 
-
 const School = () => {
   const global = useSelector((state) => state.global);
   const navigate = useNavigate();
@@ -106,7 +105,10 @@ const School = () => {
       handler: (response) => {
         dispatch(emptyCart());
         console.log("succeeded");
-        navigate("/success");
+        console.log(response);
+        navigate("/success", {
+          state: { order_id: response.razorpay_order_id },
+        });
       },
       prefill: {
         name: `${userData.salutation} ${userData.member_name}`,

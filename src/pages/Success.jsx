@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Layout from "../Layout";
+import { useLocation } from "react-router-dom";
 
 const Success = () => {
+  const location = useLocation();
   return (
     <Layout>
       <div className="min-h-[650px] flex items-center">
@@ -14,6 +16,9 @@ const Success = () => {
             </div>
             <div className="text-lg font-bold mt-2">
               Your order has been placed successfully.
+            </div>
+            <div className="text-lg font-bold mt-2">
+              Your order id is {location.state.order_id}
             </div>
             <div className="text-base mt-5">
               For any product related query, drop an email to
