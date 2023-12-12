@@ -349,7 +349,7 @@ const Register = () => {
                 className="px-3 py-1.5 w-1/2 rounded-md border"
                 type="text"
                 name="mobileno2"
-                placeholder="Mobile 2"
+                placeholder="Mobile No 2"
                 onChange={(e) => handle(e)}
               />
             </div>
@@ -400,7 +400,7 @@ const Register = () => {
               className="px-3 py-1.5 rounded-md border"
               type="text"
               name="address1"
-              placeholder="Address"
+              placeholder="Address 1"
               required
               onChange={(e) => handle(e)}
             />
@@ -408,7 +408,7 @@ const Register = () => {
               className="px-3 py-1.5 rounded-md border"
               type="text"
               name="address2"
-              placeholder="Address"
+              placeholder="Address 2"
               required
               onChange={(e) => handle(e)}
             />

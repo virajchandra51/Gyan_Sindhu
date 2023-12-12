@@ -43,7 +43,11 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
           <ul className="bg-white min-w-[250px] text-black">
             {data.map((item, index) => {
               return (
-                <Link key={index} to={item.url}>
+                <Link
+                  key={index}
+                  to={item.url}
+                  state={{ member_id: userData.member_id }}
+                >
                   <li className="h-12 flex justify-between border-y-[1px] items-center px-3 hover:bg-black/[0.03]">
                     {item.name}
                   </li>
