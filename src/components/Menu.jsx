@@ -12,17 +12,18 @@ const data = [
 ];
 
 const Menu = ({ showCatMenu, setShowCatMenu, setGroup }) => {
-  const global = useSelector((state) => state.global)
+  const global = useSelector((state) => state.global);
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
     fetchData();
   }, [global.branch_id]);
-  
+
   const fetchData = async () => {
-    const data = await fetchDataFromApi("itemgrouplist",
+    const data = await fetchDataFromApi(
+      "itemgrouplist",
       "compid=9&branchid=" +
-      `${global.branch_id}` +
-      "&groupcode=1&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
+        `${global.branch_id}` +
+        "&groupcode=1&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
     );
     setCategoryList(data);
   };
@@ -48,10 +49,14 @@ const Menu = ({ showCatMenu, setShowCatMenu, setGroup }) => {
                 {item.name}
                 <BsChevronDown size={14} />
                 {showCatMenu && (
-                  <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
+                  <ul className="bg-white absolute top-6 left-0 min-w-[250px] text-black shadow-lg">
                     {categoryList?.map((category, index) => {
                       return (
-                        <Link key={index} to={`/categorybooks/${category.item_gr_name}`} state={{category: category}}>
+                        <Link
+                          key={index}
+                          to={`/categorybooks/${category.item_gr_name}`}
+                          state={{ category: category }}
+                        >
                           <li
                             onClick={() =>
                               handleGroupClick(
@@ -59,7 +64,7 @@ const Menu = ({ showCatMenu, setShowCatMenu, setGroup }) => {
                                 category.item_gr_name
                               )
                             }
-                            className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md"
+                            className="h-12 flex justify-between border-b-[1px] items-center px-3 hover:bg-black/[0.03]"
                           >
                             {category.item_gr_name}
                             <span className="opacity-50 text-sm">

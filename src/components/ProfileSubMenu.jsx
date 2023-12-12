@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const data = [{ id: 1, name: "My Profile", url: "/profile" }];
 
 const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
   const [userData, setUserData] = useState({});
@@ -29,17 +32,28 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
   return (
     <>
       {showProfileMenu && (
-        <div className="bg-white absolute top-12 right-0 min-w-[280px] px-4 py-4 text-black shadow-lg flex flex-col justify-center items-center">
+        <div className="bg-white absolute top-12 right-0  text-black shadow-lg flex flex-col justify-center items-start">
           {userData.member_id == "-1" ? (
-            <h2>You are not logged in!</h2>
+            <h2 className="my-4 px-3">You are not logged in!</h2>
           ) : (
-            <h2>
+            <h2 className="my-4 px-3">
               Welcome, {userData.salutation} {userData.member_name}
             </h2>
           )}
+          <ul className="bg-white min-w-[250px] text-black">
+            {data.map((item, index) => {
+              return (
+                <Link key={index} to={item.url}>
+                  <li className="h-12 flex justify-between border-y-[1px] items-center px-3 hover:bg-black/[0.03]">
+                    {item.name}
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
           <div
             onClick={handleClick}
-            className="mt-4 bg-[var(--primary-c)] text-white w-[80%] h-[44px] rounded-full cursor-pointer hover:bg-[var(--secondary-c)] flex justify-center items-center"
+            className="my-4 mx-auto bg-[var(--primary-c)] text-white w-[80%] h-[44px] rounded-full cursor-pointer hover:bg-[var(--secondary-c)] flex justify-center items-center"
           >
             {userData.member_id == "-1" ? "Sign In" : "Sign Out"}
           </div>
