@@ -12,6 +12,8 @@ import logo from "../../public/logo3.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { emptyCart } from "../store/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const School = () => {
   const global = useSelector((state) => state.global);
@@ -68,12 +70,30 @@ const School = () => {
     );
 
     if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
+      toast.error("Checkout failed to load. Are you online?", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       return;
     }
 
     if (userData.member_id === "-1") {
-      alert("Please Login to Skoolio in order to checkout!");
+      toast.error("Please Login to Skoolio in order to checkout!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       return;
     }
 
@@ -106,22 +126,22 @@ const School = () => {
         dispatch(emptyCart());
         console.log("succeeded");
         console.log(response);
-        
+
         const cartItemsPost = { cart_items: [] };
 
-        cartItems.forEach((cartItem,index) => {
+        cartItems.forEach((cartItem, index) => {
           const currentSetQuantity = cartItem.quantity;
-          cartItem.data.forEach((cartItemSub,index) => {
-            cartItemSub.data.forEach((item,index) => {
+          cartItem.data.forEach((cartItemSub, index) => {
+            cartItemSub.data.forEach((item, index) => {
               var obj = {
                 item_code: item.item_code,
                 net_sale_rate: item.net_sale_rate,
                 item_stock: item.item_stock,
-                cart_quantity: item.cart_quantity*currentSetQuantity,
-              }
+                cart_quantity: item.cart_quantity * currentSetQuantity,
+              };
               cartItemsPost.cart_items.push(obj);
             });
-          })
+          });
         });
 
         const orderData = await fetchDataFromApiWithResponse(
@@ -137,11 +157,10 @@ const School = () => {
         );
 
         console.log(orderData);
-        
+
         // navigate("/success", {
         //   state: { order_id: response.razorpay_order_id },
         // });
-
       },
       prefill: {
         name: `${userData.salutation} ${userData.member_name}`,
@@ -164,6 +183,7 @@ const School = () => {
   return (
     <Layout>
       <div className="w-full md:py-20">
+        <ToastContainer />
         <Wrapper>
           {cartItems.length > 0 && (
             <>
