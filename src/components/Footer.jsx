@@ -34,11 +34,11 @@ const Footer = () => {
                         {/* MENU START */}
                         <div className="flex flex-col gap-3">
                             <div className="font-oswald font-medium uppercase text-sm">
-                                get help
+                                Pages
                             </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Order Status
-                            </div>
+                            <Link to={"/about"} className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                                About Us
+                            </Link>
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Delivery
                             </div>
@@ -48,9 +48,9 @@ const Footer = () => {
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Payment Options
                             </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                            <Link to={"/contactus"} className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Contact Us
-                            </div>
+                            </Link>
                         </div>
                         {/* MENU END */}
 
@@ -59,18 +59,18 @@ const Footer = () => {
                             <div className="font-oswald font-medium uppercase text-sm">
                                 About Skoolio - A unit of Gyan Sindhu
                             </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                            <a href="tel:+91-8874211000" className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Phone : +91-8874211000
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                            </a>
+                            <a href="mailto:md@gyansindhu.com" className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Email : md@gyansindhu.com
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                            </a>
+                            <Link to="https://maps.app.goo.gl/ZxRwgmQ3jracFYpB6" target="_blank" className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Address 1 : #44 Chandrika Colony, Sigra <br/>Varanasi - 221010<br/>gyansindhu_vns@yahoo.co.in
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Address 2 : 137, 2nd Cross, Amarjyothi, Domlur <br/>Bengaluru - 560071<br/>admin@gyansindhu.com
-                            </div>
+                            </Link>
+                            <Link to="https://maps.app.goo.gl/DdudH9q9FwfHvBRa6" target="_blank" className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                                Address 2 : #137, 2nd Cross, Amarjyothi, Domlur <br/>Bengaluru - 560071<br/>admin@gyansindhu.com
+                            </Link>
                         </div>
                         {/* MENU END */}
                     </div>
