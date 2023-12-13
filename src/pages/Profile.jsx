@@ -291,7 +291,7 @@ const Profile = () => {
     e.preventDefault();
     setDisabledForm((prev) => !prev);
   }
-  
+
   return (
     <Layout>
       <div className="min-h-[650px] flex items-center">
@@ -311,274 +311,345 @@ const Profile = () => {
                   className="flex flex-col gap-4"
                   onSubmit={(e) => handleSubmit(e)}
                 >
-                  <input
-                    className="px-3 py-1.5 mt-8 rounded-md border"
-                    type="text"
-                    name="member_name"
-                    placeholder="Member Name"
-                    required
-                    value={profileData.data?.member_name}
-                    onChange={(e) => handle(e)}
-                    disabled={disabledForm}
-                  />
-                  <input
-                    className="px-3 py-1.5 rounded-md border"
-                    type="text"
-                    name="nick_name"
-                    placeholder="Nick Name"
-                    value={profileData.data?.nick_name}
-                    onChange={(e) => handle(e)}
-                    disabled={disabledForm}
-                  />
-                  <input
-                    className="px-3 py-1.5 rounded-md border"
-                    type="text"
-                    name="email_id"
-                    placeholder="Email"
-                    required
-                    value={profileData.data?.email_id}
-                    onChange={(e) => handle(e)}
-                    disabled={disabledForm}
-                  />
-
-                  <div className="flex gap-4">
+                  <div className="flex flex-col items-start mt-8">
+                    <p>Member Name</p>
                     <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
+                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
-                      name="spouse_name"
-                      placeholder="Spouse Name"
-                      value={profileData.data?.spouse_name}
+                      name="member_name"
+                      placeholder="Member Name"
+                      required
+                      value={profileData.data?.member_name}
                       onChange={(e) => handle(e)}
                       disabled={disabledForm}
                     />
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <p>Nick Name</p>
                     <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
+                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
-                      name="children"
-                      placeholder="Children"
-                      value={profileData.data?.children}
+                      name="nick_name"
+                      placeholder="Nick Name"
+                      value={profileData.data?.nick_name}
+                      onChange={(e) => handle(e)}
+                      disabled={disabledForm}
+                    />
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <p>Email</p>
+                    <input
+                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                      type="text"
+                      name="email_id"
+                      placeholder="Email"
+                      required
+                      value={profileData.data?.email_id}
                       onChange={(e) => handle(e)}
                       disabled={disabledForm}
                     />
                   </div>
                   <div className="flex gap-4">
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Spouse Name</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="spouse_name"
+                        placeholder="Spouse Name"
+                        value={profileData.data?.spouse_name}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Children</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="children"
+                        placeholder="Children"
+                        value={profileData.data?.children}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Mobile No 1</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="mobile_no1"
+                        placeholder="Mobile No 1"
+                        value={profileData.data?.mobile_no1}
+                        required
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Mobile No 2</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="mobile_no2"
+                        placeholder="Mobile No 2"
+                        value={profileData.data?.mobile_no2}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Age</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="age"
+                        placeholder="Age"
+                        value={profileData.data?.age}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Birth Date</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        onFocus={(e) => (e.target.type = "date")}
+                        onBlur={(e) => (e.target.type = "text")}
+                        name="birth_date"
+                        placeholder="Birth Date"
+                        value={profileData.data?.birth_date}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Anniversary Date</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="anni_date"
+                        onFocus={(e) => (e.target.type = "date")}
+                        onBlur={(e) => (e.target.type = "text")}
+                        placeholder="Anniversary Date"
+                        value={profileData.data?.anni_date}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>GST No.</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="reg_gstin"
+                        placeholder="GST No."
+                        value={profileData.data?.reg_gstin}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Aadhar No.</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="reg_aadhar"
+                        placeholder="Aadhar No."
+                        value={profileData.data?.reg_aadhar}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <p>Address 1</p>
                     <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
+                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
-                      name="mobile_no1"
-                      placeholder="Mobile No 1"
-                      value={profileData.data?.mobile_no1}
+                      name="address1"
+                      placeholder="Address 1"
+                      value={profileData.data?.address1}
                       required
                       onChange={(e) => handle(e)}
                       disabled={disabledForm}
                     />
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <p>Address 2</p>
                     <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
+                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
-                      name="mobile_no2"
-                      placeholder="Mobile No 2"
-                      value={profileData.data?.mobile_no2}
+                      name="address2"
+                      placeholder="Address 2"
+                      value={profileData.data?.address2}
+                      required
                       onChange={(e) => handle(e)}
                       disabled={disabledForm}
                     />
                   </div>
                   <div className="flex gap-4">
-                    <input
-                      className="px-3 py-1.5 rounded-md border"
-                      type="text"
-                      name="age"
-                      placeholder="Age"
-                      value={profileData.data?.age}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
-                    <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
-                      type="text"
-                      onFocus={(e) => (e.target.type = "date")}
-                      onBlur={(e) => (e.target.type = "text")}
-                      name="birth_date"
-                      placeholder="Birth Date"
-                      value={profileData.data?.birth_date}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
-                    <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
-                      type="text"
-                      name="anni_date"
-                      onFocus={(e) => (e.target.type = "date")}
-                      onBlur={(e) => (e.target.type = "text")}
-                      placeholder="Anniversary Date"
-                      value={profileData.data?.anni_date}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
-                  </div>
-                  <div className="flex gap-4">
-                    <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
-                      type="text"
-                      name="reg_gstin"
-                      placeholder="GST No."
-                      value={profileData.data?.reg_gstin}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
-                    <input
-                      className="px-3 py-1.5 w-1/2 rounded-md border"
-                      type="text"
-                      name="reg_aadhar"
-                      placeholder="Aadhar No."
-                      value={profileData.data?.reg_aadhar}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
-                  </div>
-                  <input
-                    className="px-3 py-1.5 rounded-md border"
-                    type="text"
-                    name="address1"
-                    placeholder="Address 1"
-                    value={profileData.data?.address1}
-                    required
-                    onChange={(e) => handle(e)}
-                    disabled={disabledForm}
-                  />
-                  <input
-                    className="px-3 py-1.5 rounded-md border"
-                    type="text"
-                    name="address2"
-                    placeholder="Address 2"
-                    value={profileData.data?.address2}
-                    required
-                    onChange={(e) => handle(e)}
-                    disabled={disabledForm}
-                  />
-                  <div className="flex gap-4">
-                    <Select
-                      options={genderList}
-                      onChange={handleSelect}
-                      value={{
-                        value: profileData.data?.sex_code,
-                        label: genderList.filter((item) => {
-                          return item.value === profileData.data?.sex_code;
-                        })[0]?.label,
-                      }}
-                      placeholder="Gender"
-                      defaultValue={{ label: "Male", value: "1" }}
-                      name="sex_code"
-                      className="w-1/2"
-                      isDisabled={disabledForm}
-                    />
-                    <Select
-                      options={salutationList}
-                      onChange={handleSelect}
-                      placeholder="Salutation"
-                      defaultValue={{ label: "Mr.", value: "1" }}
-                      name="salutation"
-                      className="w-1/2"
-                      value={{
-                        value: salutationList.filter((item) => {
-                          return item.label === profileData.data?.salutation;
-                        })[0]?.value,
-                        label: profileData.data?.salutation,
-                      }}
-                      isDisabled={disabledForm}
-                    />
-                    <Select
-                      options={designationList.data}
-                      onChange={handleSelect}
-                      placeholder="Designation"
-                      name="desig_code"
-                      className="w-1/2"
-                      value={{
-                        value: profileData.data?.desig_code,
-                        label: designationList.data.filter((item) => {
-                          return item.value === profileData.data?.desig_code;
-                        })[0]?.label,
-                      }}
-                      isDisabled={disabledForm}
-                    />
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Gender</p>
+                      <Select
+                        options={genderList}
+                        onChange={handleSelect}
+                        value={{
+                          value: profileData.data?.sex_code,
+                          label: genderList.filter((item) => {
+                            return item.value === profileData.data?.sex_code;
+                          })[0]?.label,
+                        }}
+                        placeholder="Gender"
+                        defaultValue={{ label: "Male", value: "1" }}
+                        name="sex_code"
+                        className="w-full"
+                        isDisabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Salutation</p>
+                      <Select
+                        options={salutationList}
+                        onChange={handleSelect}
+                        placeholder="Salutation"
+                        defaultValue={{ label: "Mr.", value: "1" }}
+                        name="salutation"
+                        className="w-full"
+                        value={{
+                          value: salutationList.filter((item) => {
+                            return item.label === profileData.data?.salutation;
+                          })[0]?.value,
+                          label: profileData.data?.salutation,
+                        }}
+                        isDisabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Designation</p>
+                      <Select
+                        options={designationList.data}
+                        onChange={handleSelect}
+                        placeholder="Designation"
+                        name="desig_code"
+                        className="w-full"
+                        value={{
+                          value: profileData.data?.desig_code,
+                          label: designationList.data.filter((item) => {
+                            return item.value === profileData.data?.desig_code;
+                          })[0]?.label,
+                        }}
+                        isDisabled={disabledForm}
+                      />
+                    </div>
                   </div>
                   <div className="flex gap-4 md:flex-row flex-col">
-                    <Select
-                      options={cityList.data}
-                      onChange={handleSelect}
-                      placeholder="City"
-                      name="city_code"
-                      className="w-full md:w-1/2"
-                      required
-                      value={{
-                        value: profileData.data?.city_code,
-                        label: cityList.data.filter((item) => {
-                          return item.value === profileData.data?.city_code;
-                        })[0]?.label,
-                      }}
-                      isDisabled={disabledForm}
-                    />
-                    <Select
-                      options={stateList.data}
-                      onChange={handleSelect}
-                      placeholder="State"
-                      name="ctry_state_code"
-                      className="w-full md:w-1/2"
-                      required
-                      value={{
-                        value: profileData.data?.ctry_state_code,
-                        label: stateList.data.filter((item) => {
-                          return (
-                            item.value === profileData.data?.ctry_state_code
-                          );
-                        })[0]?.label,
-                      }}
-                      isDisabled={disabledForm}
-                    />
-                    <Select
-                      options={countryList.data}
-                      onChange={handleSelect}
-                      value={{
-                        value: profileData.data?.country_code,
-                        label: countryList.data.filter((item) => {
-                          return item.value === profileData.data?.country_code;
-                        })[0]?.label,
-                      }}
-                      placeholder="Country"
-                      name="country_code"
-                      className="w-full md:w-1/2"
-                      required
-                      isDisabled={disabledForm}
-                    />
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>City</p>
+                      <Select
+                        options={cityList.data}
+                        onChange={handleSelect}
+                        placeholder="City"
+                        name="city_code"
+                        className="w-full"
+                        required
+                        value={{
+                          value: profileData.data?.city_code,
+                          label: cityList.data.filter((item) => {
+                            return item.value === profileData.data?.city_code;
+                          })[0]?.label,
+                        }}
+                        isDisabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>State</p>
+                      <Select
+                        options={stateList.data}
+                        onChange={handleSelect}
+                        placeholder="State"
+                        name="ctry_state_code"
+                        className="w-full"
+                        required
+                        value={{
+                          value: profileData.data?.ctry_state_code,
+                          label: stateList.data.filter((item) => {
+                            return (
+                              item.value === profileData.data?.ctry_state_code
+                            );
+                          })[0]?.label,
+                        }}
+                        isDisabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-[50%]">
+                      <p>Country</p>
+                      <Select
+                        options={countryList.data}
+                        onChange={handleSelect}
+                        value={{
+                          value: profileData.data?.country_code,
+                          label: countryList.data.filter((item) => {
+                            return (
+                              item.value === profileData.data?.country_code
+                            );
+                          })[0]?.label,
+                        }}
+                        placeholder="Country"
+                        name="country_code"
+                        className="w-full"
+                        required
+                        isDisabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <p>Pin Code</p>
+                      <input
+                        className="px-3 py-1.5 rounded-md border"
+                        type="text"
+                        name="pin_code"
+                        placeholder="Pin Code"
+                        value={profileData.data?.pin_code}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <p>Languages Known</p>
                     <input
-                      className="px-3 py-1.5 rounded-md border"
+                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
-                      name="pin_code"
-                      placeholder="Pin Code"
-                      value={profileData.data?.pin_code}
+                      name="languages_known"
+                      placeholder="Languages Known"
+                      value={profileData.data?.languages_known}
                       onChange={(e) => handle(e)}
                       disabled={disabledForm}
-                      required
                     />
                   </div>
-                  <input
-                    className="px-3 py-1.5 rounded-md border"
-                    type="text"
-                    name="languages_known"
-                    placeholder="Languages Known"
-                    value={profileData.data?.languages_known}
-                    onChange={(e) => handle(e)}
-                    disabled={disabledForm}
-                  />
+
                   <div className="relative">
-                    <input
-                      className="px-3 py-1.5 rounded-md border w-full"
-                      type={showPassword ? "text" : "password"}
-                      name="mem_password"
-                      placeholder="Password"
-                      value={profileData.data?.mem_password}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
+                    <div className="flex flex-col items-start">
+                      <p>Password</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type={showPassword ? "text" : "password"}
+                        name="mem_password"
+                        placeholder="Password"
+                        value={profileData.data?.mem_password}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
                     {showPassword ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

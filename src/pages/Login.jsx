@@ -79,23 +79,29 @@ const Login = () => {
             className="flex flex-col gap-4"
             onSubmit={(e) => handleSubmit(e)}
           >
-            <input
-              className="px-3 py-1.5 mt-8 rounded-md border"
-              type="text"
-              name="userid"
-              required
-              placeholder="Email or Mobile No"
-              onChange={(e) => handle(e)}
-            />
-            <div className="relative">
+            <div className="flex flex-col items-start mt-8">
+              <p>Email or Mobile No.</p>
               <input
-                className="px-3 py-1.5 rounded-md border w-full"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Password"
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                type="text"
+                name="userid"
                 required
+                placeholder="Email or Mobile No."
                 onChange={(e) => handle(e)}
               />
+            </div>
+            <div className="relative">
+              <div className="flex flex-col items-start">
+                <p>Password</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  required
+                  onChange={(e) => handle(e)}
+                />
+              </div>
               {showPassword ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +109,7 @@ const Login = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-2 right-2"
+                  className="absolute cursor-pointer top-[38px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
@@ -128,7 +134,7 @@ const Login = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-2 right-2"
+                  className="absolute cursor-pointer top-[38px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
