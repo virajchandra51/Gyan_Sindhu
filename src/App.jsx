@@ -13,6 +13,7 @@ import Success from "./pages/Success";
 import Register from "./pages/Register";
 import Publisher from "./pages/Publisher";
 import Profile from "./pages/Profile";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/failed" element={<Failed />} />
           <Route path="/success" element={<Success />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/about" element={<About />} />
           <Route path="/:selltype" element={<SellType />} />
         </Routes>
       </BrowserRouter>
