@@ -657,7 +657,7 @@ const Profile = () => {
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
-                        className="absolute cursor-pointer top-2 right-2"
+                        className="absolute cursor-pointer top-[38px] right-2"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
                         <path
@@ -682,7 +682,7 @@ const Profile = () => {
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
-                        className="absolute cursor-pointer top-2 right-2"
+                        className="absolute cursor-pointer top-[38px] right-2"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
                         <path
