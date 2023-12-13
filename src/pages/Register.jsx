@@ -296,197 +296,265 @@ const Register = () => {
             className="flex flex-col gap-4"
             onSubmit={(e) => handleSubmit(e)}
           >
-            <input
-              className="px-3 py-1.5 mt-8 rounded-md border"
-              type="text"
-              name="membername"
-              placeholder="Member Name"
-              required
-              onChange={(e) => handle(e)}
-            />
-            <input
-              className="px-3 py-1.5 rounded-md border"
-              type="text"
-              name="nickname"
-              placeholder="Nick Name"
-              onChange={(e) => handle(e)}
-            />
-            <input
-              className="px-3 py-1.5 rounded-md border"
-              type="text"
-              name="emailid"
-              placeholder="Email"
-              required
-              onChange={(e) => handle(e)}
-            />
-
-            <div className="flex gap-4">
+            <div className="flex flex-col items-start mt-8">
+              <p>Member Name</p>
               <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                 type="text"
-                name="spousename"
-                placeholder="Spouse Name"
-                onChange={(e) => handle(e)}
-              />
-              <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="text"
-                name="children"
-                placeholder="Children"
-                onChange={(e) => handle(e)}
-              />
-            </div>
-            <div className="flex gap-4">
-              <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="text"
-                name="mobileno1"
-                placeholder="Mobile No 1"
+                name="membername"
+                placeholder="Member Name"
                 required
                 onChange={(e) => handle(e)}
               />
+            </div>
+            <div className="flex flex-col items-start">
+              <p>Nick Name</p>
               <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                 type="text"
-                name="mobileno2"
-                placeholder="Mobile No 2"
+                name="nickname"
+                placeholder="Nick Name"
+                onChange={(e) => handle(e)}
+              />
+            </div>
+            <div className="flex flex-col items-start">
+              <p>Email</p>
+              <input
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                type="text"
+                name="emailid"
+                placeholder="Email"
+                required
                 onChange={(e) => handle(e)}
               />
             </div>
             <div className="flex gap-4">
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Spouse Name</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  name="spousename"
+                  placeholder="Spouse Name"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Children</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  name="children"
+                  placeholder="Children"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Mobile No 1</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  name="mobileno1"
+                  placeholder="Mobile No 1"
+                  required
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Mobile No 2</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  name="mobileno2"
+                  placeholder="Mobile No 2"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Age</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  name="age"
+                  placeholder="Age"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Birth Date</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  onFocus={(e) => (e.target.type = "date")}
+                  onBlur={(e) => (e.target.type = "text")}
+                  name="birthdate"
+                  placeholder="Birth Date"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Anniversary Date</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="text"
+                  name="annidate"
+                  onFocus={(e) => (e.target.type = "date")}
+                  onBlur={(e) => (e.target.type = "text")}
+                  placeholder="Anniversary Date"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex flex-col items-start w-[50%]">
+                <p>GST No.</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="number"
+                  name="reggstin"
+                  placeholder="GST No."
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Aadhar No.</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type="number"
+                  name="regaadhar"
+                  placeholder="Aadhar No."
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-start">
+              <p>Address 1</p>
               <input
-                className="px-3 py-1.5 rounded-md border"
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                 type="text"
-                name="age"
-                placeholder="Age"
+                name="address1"
+                placeholder="Address 1"
+                required
                 onChange={(e) => handle(e)}
               />
+            </div>
+            <div className="flex flex-col items-start">
+              <p>Address 2</p>
               <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                 type="text"
-                onFocus={(e) => (e.target.type = "date")}
-                onBlur={(e) => (e.target.type = "text")}
-                name="birthdate"
-                placeholder="Birth Date"
-                onChange={(e) => handle(e)}
-              />
-              <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="text"
-                name="annidate"
-                onFocus={(e) => (e.target.type = "date")}
-                onBlur={(e) => (e.target.type = "text")}
-                placeholder="Anniversary Date"
+                name="address2"
+                placeholder="Address 2"
+                required
                 onChange={(e) => handle(e)}
               />
             </div>
             <div className="flex gap-4">
-              <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="number"
-                name="reggstin"
-                placeholder="GST No."
-                onChange={(e) => handle(e)}
-              />
-              <input
-                className="px-3 py-1.5 w-1/2 rounded-md border"
-                type="number"
-                name="regaadhar"
-                placeholder="Aadhar No."
-                onChange={(e) => handle(e)}
-              />
-            </div>
-            <input
-              className="px-3 py-1.5 rounded-md border"
-              type="text"
-              name="address1"
-              placeholder="Address 1"
-              required
-              onChange={(e) => handle(e)}
-            />
-            <input
-              className="px-3 py-1.5 rounded-md border"
-              type="text"
-              name="address2"
-              placeholder="Address 2"
-              required
-              onChange={(e) => handle(e)}
-            />
-            <div className="flex gap-4">
-              <Select
-                options={genderList}
-                onChange={handleSelect}
-                placeholder="Gender"
-                defaultValue={{ label: "Male", value: "1" }}
-                name="sexcode"
-                className="w-1/2"
-              />
-              <Select
-                options={salutationList}
-                onChange={handleSelect}
-                placeholder="Salutation"
-                defaultValue={{ label: "Mr.", value: "1" }}
-                name="salutation"
-                className="w-1/2"
-              />
-              <Select
-                options={designationList.data}
-                onChange={handleSelect}
-                placeholder="Designation"
-                name="desigcode"
-                className="w-1/2"
-              />
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Gender</p>
+                <Select
+                  options={genderList}
+                  onChange={handleSelect}
+                  placeholder="Gender"
+                  defaultValue={{ label: "Male", value: "1" }}
+                  name="sexcode"
+                  className="w-[100%]"
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Salutation</p>
+                <Select
+                  options={salutationList}
+                  onChange={handleSelect}
+                  placeholder="Salutation"
+                  defaultValue={{ label: "Mr.", value: "1" }}
+                  name="salutation"
+                  className="w-[100%]"
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Designation</p>
+                <Select
+                  options={designationList.data}
+                  onChange={handleSelect}
+                  placeholder="Designation"
+                  name="desigcode"
+                  className="w-[100%]"
+                />
+              </div>
             </div>
             <div className="flex gap-4 md:flex-row flex-col">
-              <Select
-                options={cityList.data}
-                onChange={handleSelect}
-                placeholder="City"
-                name="city"
-                className="w-full md:w-1/2"
-                required
-              />
-              <Select
-                options={stateList.data}
-                onChange={handleSelect}
-                placeholder="State"
-                name="statecode"
-                className="w-full md:w-1/2"
-                required
-              />
-              <Select
-                options={countryList.data}
-                onChange={handleSelect}
-                defaultValue={{ label: "IND - India", value: "IND" }}
-                placeholder="Country"
-                name="countrycode"
-                className="w-full md:w-1/2"
-                required
-              />
+              <div className="flex flex-col items-start w-[50%]">
+                <p>City</p>
+                <Select
+                  options={cityList.data}
+                  onChange={handleSelect}
+                  placeholder="City"
+                  name="city"
+                  className="w-full"
+                  required
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>State</p>
+                <Select
+                  options={stateList.data}
+                  onChange={handleSelect}
+                  placeholder="State"
+                  name="statecode"
+                  className="w-full"
+                  required
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Country</p>
+                <Select
+                  options={countryList.data}
+                  onChange={handleSelect}
+                  defaultValue={{ label: "IND - India", value: "IND" }}
+                  placeholder="Country"
+                  name="countrycode"
+                  className="w-full"
+                  required
+                />
+              </div>
+              <div className="flex flex-col items-start w-[50%]">
+                <p>Pin Code</p>
+                <input
+                  className="px-3 py-1.5 rounded-md border"
+                  type="text"
+                  name="pincode"
+                  placeholder="Pin Code"
+                  onChange={(e) => handle(e)}
+                  required
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-start">
+              <p>Languages Known</p>
               <input
-                className="px-3 py-1.5 rounded-md border"
+                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                 type="text"
-                name="pincode"
-                placeholder="Pin Code"
+                name="languagesknown"
+                placeholder="Languages Known"
                 onChange={(e) => handle(e)}
-                required
               />
             </div>
-            <input
-              className="px-3 py-1.5 rounded-md border"
-              type="text"
-              name="languagesknown"
-              placeholder="Languages Known"
-              onChange={(e) => handle(e)}
-            />
             <div className="relative">
-              <input
-                className="px-3 py-1.5 rounded-md border w-full"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Password"
-                onChange={(e) => handle(e)}
-              />
+              <div className="flex flex-col items-start">
+                <p>Password</p>
+                <input
+                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
               {showPassword ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
