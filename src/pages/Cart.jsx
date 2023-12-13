@@ -1,6 +1,6 @@
 import React from "react";
 import Wrapper from "../components/Wrapper";
-import { fetchDataFromApi } from "../utils/api";
+import { fetchDataFromApi, fetchDataFromApiWithResponse } from "../utils/api";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -102,13 +102,46 @@ const School = () => {
       order_id: data[0].online_order_no,
       // callback_url: "/success",
       // redirect: true,
-      handler: (response) => {
+      handler: async (response) => {
         dispatch(emptyCart());
         console.log("succeeded");
         console.log(response);
-        navigate("/success", {
-          state: { order_id: response.razorpay_order_id },
+        
+        const cartItemsPost = { cart_items: [] };
+
+        cartItems.forEach((cartItem,index) => {
+          const currentSetQuantity = cartItem.quantity;
+          cartItem.data.forEach((cartItemSub,index) => {
+            cartItemSub.data.forEach((item,index) => {
+              var obj = {
+                item_code: item.item_code,
+                net_sale_rate: item.net_sale_rate,
+                item_stock: item.item_stock,
+                cart_quantity: item.cart_quantity*currentSetQuantity,
+              }
+              cartItemsPost.cart_items.push(obj);
+            });
+          })
         });
+
+        const orderData = await fetchDataFromApiWithResponse(
+          cartItemsPost,
+          "orderfinalise",
+          "compid=9&branchid=" +
+            `${global.branch_id}` +
+            "&vno=" +
+            `${data[0].vno}` +
+            "&paymentid" +
+            `${response.razorpay_payment_id}` +
+            "&ipaddress=0.0.0.0"
+        );
+
+        console.log(orderData);
+        
+        // navigate("/success", {
+        //   state: { order_id: response.razorpay_order_id },
+        // });
+
       },
       prefill: {
         name: `${userData.salutation} ${userData.member_name}`,
