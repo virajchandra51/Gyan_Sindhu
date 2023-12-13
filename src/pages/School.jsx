@@ -117,7 +117,7 @@ const School = () => {
                     school_code: item.school_code,
                     school_name: item.school_name,
                   }}
-                  className="min-w-[30%] max-w-[30%] transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+                  className="md:min-w-[30%] md:max-w-[30%] transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="max-w-sm m-4 bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
                     <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
