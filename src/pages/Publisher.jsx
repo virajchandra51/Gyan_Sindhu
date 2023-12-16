@@ -35,7 +35,7 @@ const Publisher = () => {
     setData({ data: data, loading: false });
   };
 
-  console.log(data);
+  // console.log(data);
 
   const handleChanglePublisher = (event) => {
     setPublisherName(event.target.value);
@@ -44,16 +44,16 @@ const Publisher = () => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + paginationValue;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const pageCount = Math.ceil(data.data.length / paginationValue);
   const currentItems = data.data.slice(itemOffset, endOffset);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * paginationValue) % data.data.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
     setItemOffset(newOffset);
     currentItems = data.data.slice(newOffset, endOffset);
   };

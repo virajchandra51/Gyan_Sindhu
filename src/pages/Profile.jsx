@@ -244,7 +244,20 @@ const Profile = () => {
     console.log(data);
     data = data[0];
     if (data.success_status === "1") {
-      // localStorage.setItem("UserData", JSON.stringify(data));
+      
+      const res = {
+        activity_status: userData.data.activity_status,
+        member_id: userData.data.member_id,
+        member_name: profileData.data.member_name,
+        nick_name: profileData.data.nick_name,
+        rate_index: userData.data.rate_index,
+        salutation: profileData.data.salutation,
+        star_rating: userData.data.star_rating,
+      };
+      setDisabledForm((prev) => !prev);
+
+      localStorage.setItem("UserData", JSON.stringify(res));
+      
       toast.success(data.success_message, {
         position: "bottom-right",
         autoClose: 3000,
