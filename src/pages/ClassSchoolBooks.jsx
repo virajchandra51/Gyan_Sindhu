@@ -146,7 +146,7 @@ const ClassSchoolBooks = () => {
                             Publisher/Brand - {product.publisher_name}
                           </p>
                           <div className="ml-auto flex items-end">
-                            <p className="mr-20">Qty - {product.quantity}</p>
+                            <p className="mr-20">{product.quantity} {product.unit_name}</p>
                             <p className="text-xl font-medium text-green-500">
                               &#8377;{product.net_sale_rate}
                             </p>
