@@ -26,8 +26,11 @@ export const fetchDataFromApiWithResponse = async (
   api_endpoint,
   api_parameter
 ) => {
+
+  console.log(JSON.stringify(bodyData));
   const options = {
     method: "POST",
+    mode: 'cors',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bodyData),
   };
@@ -41,6 +44,7 @@ export const fetchDataFromApiWithResponse = async (
       `${api_parameter}`,
     options
   );
+  // console.log(`${base_url}${api_endpoint}`+"/?apikey="+`${api_key}`+"&orgid="+`${org_id}`+"&"+`${api_parameter}`)
   const data = await res.json();
   return data;
 };

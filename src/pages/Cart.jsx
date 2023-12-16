@@ -116,7 +116,7 @@ const School = () => {
       key: RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
       amount: "1000",
       currency: "INR",
-      name: `${userData.salutation} ${userData.member_name}`,
+      name: "A unit of Gyan Sindhu",
       description: "Test Transaction",
       image: logo,
       order_id: data[0].online_order_no,
@@ -137,7 +137,7 @@ const School = () => {
                 item_code: item.item_code,
                 net_sale_rate: item.net_sale_rate,
                 item_stock: item.item_stock,
-                cart_quantity: item.cart_quantity * currentSetQuantity,
+                cart_quantity: item.quantity * currentSetQuantity,
               };
               cartItemsPost.cart_items.push(obj);
             });
@@ -151,16 +151,23 @@ const School = () => {
             `${global.branch_id}` +
             "&vno=" +
             `${data[0].vno}` +
-            "&paymentid" +
+            "&paymentid=" +
             `${response.razorpay_payment_id}` +
             "&ipaddress=0.0.0.0"
         );
 
         console.log(orderData);
-
-        // navigate("/success", {
-        //   state: { order_id: response.razorpay_order_id },
-        // });
+        if(orderData[0].success_status === "1") {
+          navigate("/success", {
+            state: { order_id: response.razorpay_order_id },
+          });
+        }
+        else
+        {
+          navigate("/failed", {
+            state: { order_id: response.razorpay_order_id },
+          });
+        }
       },
       prefill: {
         name: `${userData.salutation} ${userData.member_name}`,
