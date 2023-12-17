@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import sampleProduct from "../../public/sampleProduct.jpeg";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
   return (
     <Link
       href="/"

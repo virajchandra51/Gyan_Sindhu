@@ -103,7 +103,7 @@ const SellType = () => {
           previousLabel="< previous"
           renderOnZeroPageCount={null}
           activeClassName="bg-[var(--secondary-c)] text-white"
-          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center"
+          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
         />
       </Wrapper>
     </Layout>

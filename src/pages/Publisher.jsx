@@ -109,9 +109,14 @@ const Publisher = () => {
                       )}
                     </div>
                     <div className="border-t-2 flex justify-center items-start mb-4 px-4 flex-col">
-                      <h5 className="my-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
+                      <h5 className="mt-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
                         {item.publisher_name}
                       </h5>
+                      {item.any_remark && (
+                        <p className="text-lg tracking-tight text-gray-900 dark:text-white">
+                          {item.any_remark}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </Link>
@@ -130,7 +135,7 @@ const Publisher = () => {
         {/* grid end */}
         <ReactPaginate
           breakLabel="..."
-          pageClassName="border-2 w-10 h-10 justify-center flex items-center mb-12"
+          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
           nextLabel="next >"
           onPageChange={(e) => handlePageClick(e)}
           pageRangeDisplayed={5}
@@ -138,7 +143,7 @@ const Publisher = () => {
           previousLabel="< previous"
           renderOnZeroPageCount={null}
           activeClassName="bg-[var(--secondary-c)] text-white"
-          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center"
+          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
         />
       </Wrapper>
     </Layout>
