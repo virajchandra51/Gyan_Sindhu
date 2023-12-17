@@ -77,7 +77,7 @@ const Publisher = () => {
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"
-                  placeholder="Search our store here.."
+                  placeholder="Search our publishers here.."
                   type="text"
                   onChange={handleChanglePublisher}
                 />
@@ -130,7 +130,7 @@ const Publisher = () => {
         {/* grid end */}
         <ReactPaginate
           breakLabel="..."
-          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
+          pageClassName="border-2 w-10 h-10 justify-center flex items-center mb-12"
           nextLabel="next >"
           onPageChange={(e) => handlePageClick(e)}
           pageRangeDisplayed={5}

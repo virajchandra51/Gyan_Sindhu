@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import sampleProduct from "../../public/sampleProduct.jpeg";
 
 const ProductCard = ({ product }) => {
+  console.log(product);
   return (
     <Link
       href="/"
@@ -21,6 +22,8 @@ const ProductCard = ({ product }) => {
             </p>
           </>
         </div>
+        <p className="text-md font-medium">Item Code - {product.item_code}</p>
+        <p className="text-md font-medium">Item Stock - {product.item_stock}</p>
       </div>
     </Link>
   );
