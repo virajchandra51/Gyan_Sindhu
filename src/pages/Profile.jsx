@@ -171,13 +171,34 @@ const Profile = () => {
     setProfileData({ data: n, loading: false });
   }
 
+  function isANumber(str) {
+    return !/\D/.test(str);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       profileData.data.reg_aadhar.length > 0 &&
-      profileData.data.reg_aadhar.length !== 16
+      profileData.data.reg_aadhar.length !== 16 &&
+      !isANumber(profileData.data.reg_aadhar)
     ) {
       toast.error("Aadhar Number should be 16 digits!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    if (
+      profileData.data.reg_gstin.length > 0 &&
+      profileData.data.reg_gstin.length !== 15
+    ) {
+      toast.error("GSTIN Number should be 15 digits!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -244,7 +265,6 @@ const Profile = () => {
     console.log(data);
     data = data[0];
     if (data.success_status === "1") {
-      
       const res = {
         activity_status: userData.data.activity_status,
         member_id: userData.data.member_id,
@@ -257,7 +277,7 @@ const Profile = () => {
       setDisabledForm((prev) => !prev);
 
       localStorage.setItem("UserData", JSON.stringify(res));
-      
+
       toast.success(data.success_message, {
         position: "bottom-right",
         autoClose: 3000,

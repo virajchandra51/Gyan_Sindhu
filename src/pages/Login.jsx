@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import bgImage from "../assets/bgImage.jpg";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -195,8 +196,9 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-center bg-[var(--primary-c)] w-[70%] text-center">
-          <div className="text-white px-8 text-xl font-bold">
+        <div className="hidden md:flex items-center relative justify-center bg-[var(--primary-c)] w-[70%] text-center">
+          <img src={bgImage} className="absolute top-0 right-0 z-0 h-full opacity-50"/>
+          <div className="text-white px-8 text-3xl font-extrabold z-10">
             One Stop Solution Gyan Sindhu
           </div>
         </div>

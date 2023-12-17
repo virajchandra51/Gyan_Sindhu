@@ -7,6 +7,7 @@ import Select from "react-select";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import bgImage from "../assets/bgImage.jpg";
 
 const salutationList = [
   {
@@ -129,10 +130,31 @@ const Register = () => {
     setCityList({ data: copyData, loading: false });
   };
 
+  function isANumber(str) {
+    return !/\D/.test(str);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.regaadhar.length > 0 && form.regaadhar.length !== 16) {
-      toast.error("Aadhar Number should be 16 digits!", {
+    if (
+      form.regaadhar.length > 0 &&
+      form.regaadhar.length !== 16 &&
+      !isANumber(form.regaadhar)
+    ) {
+      toast.error("Aadhar Number should be 16 length and digits only!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    if (form.reggstin.length > 0 && form.reggstin.length !== 15) {
+      toast.error("GSTIN Number should be 15 digits!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -305,6 +327,7 @@ const Register = () => {
                 placeholder="Member Name"
                 required
                 onChange={(e) => handle(e)}
+                autoCapitalize="sentences"
               />
             </div>
             <div className="flex flex-col items-start">
@@ -414,7 +437,7 @@ const Register = () => {
                 <p>GST No.</p>
                 <input
                   className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
-                  type="number"
+                  type="text"
                   name="reggstin"
                   placeholder="GST No."
                   onChange={(e) => handle(e)}
@@ -424,7 +447,7 @@ const Register = () => {
                 <p>Aadhar No.</p>
                 <input
                   className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
-                  type="number"
+                  type="text"
                   name="regaadhar"
                   placeholder="Aadhar No."
                   onChange={(e) => handle(e)}
@@ -615,8 +638,12 @@ const Register = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-center bg-[var(--primary-c)] w-[50%] text-center">
-          <div className="text-white px-8 text-xl font-bold text-center">
+        <div className="hidden md:flex relative items-center justify-center bg-[var(--primary-c)] w-[50%] text-center">
+          <img
+            src={bgImage}
+            className="absolute top-0 right-0 z-0 h-full opacity-50"
+          />
+          <div className="text-white px-8 text-2xl font-extrabold z-10">
             One Stop Solution Gyan Sindhu
           </div>
         </div>

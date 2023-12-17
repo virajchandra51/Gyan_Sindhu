@@ -40,20 +40,24 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
               Welcome, {userData.salutation} {userData.member_name}
             </h2>
           )}
-          <ul className="bg-white min-w-[250px] text-black">
-            {data.map((item, index) => {
-              return (
-                <Link
-                  key={index}
-                  to={item.url}
-                  state={{ member_id: userData.member_id }}
-                >
-                  <li className="h-12 flex justify-between border-y-[1px] items-center px-3 hover:bg-black/[0.03]">
-                    {item.name}
-                  </li>
-                </Link>
-              );
-            })}
+          <ul className="bg-white min-w-[270px] text-black">
+            {userData.member_id == "-1" ? (
+              <Link to={'/register'} className="h-12 flex justify-between border-y-[1px] items-center px-3 hover:bg-black/[0.03]">Register Now</Link>
+            ) : (
+              data.map((item, index) => {
+                return (
+                  <Link
+                    key={index}
+                    to={item.url}
+                    state={{ member_id: userData.member_id }}
+                  >
+                    <li className="h-12 flex justify-between border-y-[1px] items-center px-3 hover:bg-black/[0.03]">
+                      {item.name}
+                    </li>
+                  </Link>
+                );
+              })
+            )}
           </ul>
           <div
             onClick={handleClick}
