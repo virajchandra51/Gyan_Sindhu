@@ -10,6 +10,7 @@ import MenuMobile from "./MenuMobile";
 import { BsCart, BsSearch, BsPerson, BsHouse } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
+import { MdVerified } from "react-icons/md";
 import { useSelector } from "react-redux";
 import logo from "../../public/logo.png";
 
@@ -43,7 +44,25 @@ const Header = () => {
   const cart = useSelector((state) => state.cart);
   // console.log(cart);
 
+  const [userData, setUserData] = useState({
+    data: [],
+    loading: true,
+  });
+
   useEffect(() => {
+    if (localStorage.getItem("UserData") === null) {
+      var data = {
+        member_id: "-1",
+        person_name: "",
+        salutation: "",
+      };
+      setUserData({ data: data, loading: false });
+    } else {
+      setUserData({
+        data: JSON.parse(localStorage.getItem("UserData")),
+        loading: false,
+      });
+    }
     window.addEventListener("scroll", controlNavbar);
     return () => {
       window.removeEventListener("scroll", controlNavbar);
@@ -100,6 +119,7 @@ const Header = () => {
               setShowProfileMenu={setShowProfileMenu}
             />
             <BsPerson className="text-[19px] md:text-[24px]" />
+            {userData.data.member_id !== "-1" && <MdVerified className="absolute text-[16px] fill-[var(--secondary-c)] right-1 bottom-2"/>}
           </div>
           {/* Icon end */}
 

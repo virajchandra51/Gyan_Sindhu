@@ -10,8 +10,12 @@ import Layout from "../Layout";
 import dummy from "../../public/sampleProduct.jpeg";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useLayoutEffect } from "react";
 
 const School = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const global = useSelector((state) => state.global);
   const [cityCode, setCityCode] = useState(0);
   const [schoolName, setSchoolName] = useState("");

@@ -14,8 +14,12 @@ import { useDispatch } from "react-redux";
 import { emptyCart } from "../store/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLayoutEffect } from "react";
 
 const School = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const global = useSelector((state) => state.global);
   const navigate = useNavigate();
   const dispatch = useDispatch();

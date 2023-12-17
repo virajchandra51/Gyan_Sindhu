@@ -11,8 +11,12 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
 import { paginationValue } from "../utils/constants";
+import { useLayoutEffect } from "react";
 
 const Publisher = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const global = useSelector((state) => state.global);
   const [publishername, setPublisherName] = useState("");
   const [data, setData] = useState({

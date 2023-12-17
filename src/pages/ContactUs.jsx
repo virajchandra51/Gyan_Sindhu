@@ -2,8 +2,12 @@ import React from "react";
 import Wrapper from "../components/Wrapper";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
+import { useLayoutEffect } from "react";
 
 const ContactUs = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Layout>
       <Wrapper>

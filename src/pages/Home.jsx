@@ -4,10 +4,14 @@ import { fetchDataFromApi } from "../utils/api";
 import HeroBanner from "../components/HeroBanner";
 import CategoryCarousal from "../components/CategoryCarousal";
 import Layout from "../Layout";
+import { useLayoutEffect } from "react";
 
 const sellTypes = ["publisher", "subject", "writer"];
 
 const Home = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const global = useSelector((state) => state.global);
   const [data1, setData1] = useState({
     data: [],

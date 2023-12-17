@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { FaPencilAlt } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLayoutEffect } from "react";
 
 const salutationList = [
   {
@@ -45,6 +46,9 @@ const genderList = [
 ];
 
 const Profile = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
 

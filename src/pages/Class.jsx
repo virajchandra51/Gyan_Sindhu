@@ -8,8 +8,12 @@ import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useLayoutEffect } from "react";
 
 const Class = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const global = useSelector((state) => state.global);
   const location = useLocation();
   const [data, setData] = useState({

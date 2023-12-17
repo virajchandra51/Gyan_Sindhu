@@ -2,13 +2,13 @@ import React from "react";
 
 import { Carousel } from "react-responsive-carousel";
 import { BiArrowBack } from "react-icons/bi";
-import '../../node_modules/react-responsive-carousel/lib/styles/carousel.css'
+import "../../node_modules/react-responsive-carousel/lib/styles/carousel.css";
 
-import slide2 from "../assets/slide-2.jpg";
+import CarouselData from "../assets/data/carouselData";
 
 const HeroBanner = () => {
   return (
-    <div className="relative text-white text-[20px] w-full max-w-[1360px] mx-auto">
+    <div className="relative text-white text-[20px] w-full max-w-[1360px] max-h-[500px] mx-auto">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
@@ -32,33 +32,18 @@ const HeroBanner = () => {
           </div>
         )}
       >
-        {/* <div>
-          <img
-            src={slide1}
-            className="aspect-[16/10] md:aspect-auto object-cover"
-          />
-          <div className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90">
-            Shop now
-          </div>
-        </div> */}
-        <div>
-          <img
-            src={slide2}
-            className="aspect-[16/10] md:aspect-auto object-cover"
-          />
-          <div className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90">
-            Shop now
-          </div>
-        </div>
-        <div>
-          <img
-            src={slide2}
-            className="aspect-[16/10] md:aspect-auto object-cover"
-          />
-          <div className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90">
-            Shop now
-          </div>
-        </div>
+        {CarouselData.map((item, index) => {
+          return(
+          <div key={index}>
+            <img
+              src={item.img}
+              className="aspect-[16/10] md:aspect-auto h-[500px] object-cover"
+            />
+            <div className="px-[15px] md:px-[40px] py-[10px] md:py-[25px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[30px] uppercase font-medium cursor-pointer hover:opacity-90">
+              {item.caption}
+            </div>
+          </div>)
+        })}
       </Carousel>
     </div>
   );

@@ -11,9 +11,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { addToCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
 import Skeleton from "react-loading-skeleton";
+import { useLayoutEffect } from "react";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const ClassSchoolBooks = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const global = useSelector((state) => state.global);
   const location = useLocation();
 

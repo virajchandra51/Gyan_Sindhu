@@ -6,8 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/bgImage.jpg";
+import { useLayoutEffect } from "react";
 
 const Login = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -194,10 +198,16 @@ const Login = () => {
               </div>
             </Link>
           </div>
+          <Link to={'/'} className="w-[20%] text-center mt-24 bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300">
+            Home
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center relative justify-center bg-[var(--primary-c)] w-[70%] text-center">
-          <img src={bgImage} className="absolute top-0 right-0 z-0 h-full opacity-50"/>
+          <img
+            src={bgImage}
+            className="absolute object-cover top-0 right-0 z-0 h-full opacity-50"
+          />
           <div className="text-white px-8 text-3xl font-extrabold z-10">
             One Stop Solution Gyan Sindhu
           </div>
