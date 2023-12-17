@@ -90,17 +90,17 @@ const Header = () => {
         </div>
         <div className="flex items-center text-black">
           {/* Icon start */}
-            <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
-              <ProfileSubMenu 
-                showProfileMenu={showProfileMenu}
-                setShowProfileMenu={setShowProfileMenu}
-              />
-              <BsPerson className="text-[19px] md:text-[24px]" 
-                onClick={() =>
-                setShowProfileMenu((showProfileMenu) => !showProfileMenu)
-              }
-              />
-            </div>
+          <div
+            onMouseEnter={() => setShowProfileMenu(true)}
+            onMouseLeave={() => setShowProfileMenu(false)}
+            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative"
+          >
+            <ProfileSubMenu
+              showProfileMenu={showProfileMenu}
+              setShowProfileMenu={setShowProfileMenu}
+            />
+            <BsPerson className="text-[19px] md:text-[24px]" />
+          </div>
           {/* Icon end */}
 
           {/* Icon start */}
@@ -117,18 +117,16 @@ const Header = () => {
           {/* Icon end */}
 
           {/* Icon start */}
-          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+          <div
+            onMouseEnter={() => setShowBranchMenu(true)}
+            onMouseLeave={() => setShowBranchMenu(false)}
+            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative"
+          >
             <BranchSubMenu
               showBranchMenu={showBranchMenu}
               setShowBranchMenu={setShowBranchMenu}
             />
-
-            <BsHouse
-              onClick={() =>
-                setShowBranchMenu((showBranchMenu) => !showBranchMenu)
-              }
-              className="text-[15px] md:text-[20px]"
-            />
+            <BsHouse className="text-[15px] md:text-[20px]" />
           </div>
           {/* Icon end */}
 

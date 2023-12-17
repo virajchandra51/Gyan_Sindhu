@@ -35,7 +35,7 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
   return (
     <>
       {showBranchMenu && (
-        <ul className="bg-white absolute top-12 right-0 min-w-[270px] px-1 py-1 text-black shadow-lg">
+        <ul className="bg-white absolute top-11 right-0 min-w-[500px] text-black shadow-lg">
           <li
             className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md"
             onClick={() =>
@@ -49,7 +49,7 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
             return (
               <li
                 key={index}
-                className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md"
+                className="h-12 flex justify-between border-b-[1px] items-center px-3 hover:bg-black/[0.03]"
                 onClick={() =>
                   handleBranchClick(branch.branch_id, branch.branch_description)
                 }

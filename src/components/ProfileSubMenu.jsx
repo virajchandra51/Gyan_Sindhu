@@ -32,7 +32,7 @@ const ProfileSubMenu = ({ showProfileMenu, setShowProfileMenu }) => {
   return (
     <>
       {showProfileMenu && (
-        <div className="bg-white absolute top-12 right-0  text-black shadow-lg flex flex-col justify-center items-start">
+        <div className="bg-white absolute top-11 right-0  text-black shadow-lg flex flex-col justify-center items-start">
           {userData.member_id == "-1" ? (
             <h2 className="my-4 px-3">You are not logged in!</h2>
           ) : (
