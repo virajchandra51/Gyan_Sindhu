@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       href="/"
-      className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+      className="transform overflow-hidden border-2 bg-white duration-200 hover:scale-105 cursor-pointer"
     >
       <img width={500} height={500} alt="" src={sampleProduct} />
       <div className="p-4 text-black/[0.9]">

@@ -48,7 +48,7 @@ const CategoryBooks = () => {
         {/* heading and paragaph end */}
 
         {/* products grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
           {productList.length>0 ? productList.map((product) => (
             <ProductCard key={product?.id} product={product} />
           )): <Skeleton containerClassName="flex-1 w-screen gap-4" count={10} height={20}/>}
