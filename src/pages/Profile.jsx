@@ -39,7 +39,7 @@ const genderList = [
     value: "2",
   },
   {
-    label: "Other",
+    label: "Third Gender",
     value: "3",
   },
 ];
@@ -623,6 +623,8 @@ const Profile = () => {
                         isDisabled={disabledForm}
                       />
                     </div>
+                  </div>
+                  <div className="flex gap-4 md:flex-row flex-col">
                     <div className="flex flex-col items-start w-[50%]">
                       <p>Country</p>
                       <Select
@@ -643,10 +645,10 @@ const Profile = () => {
                         isDisabled={disabledForm}
                       />
                     </div>
-                    <div className="flex flex-col items-start">
+                    <div className="flex flex-col items-start w-[50%]">
                       <p>Pin Code</p>
                       <input
-                        className="px-3 py-1.5 rounded-md border"
+                        className="px-3 py-1.5 rounded-md border w-full"
                         type="text"
                         name="pin_code"
                         placeholder="Pin Code"

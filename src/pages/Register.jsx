@@ -38,7 +38,7 @@ const genderList = [
     value: "2",
   },
   {
-    label: "Other",
+    label: "Third Gender",
     value: "3",
   },
 ];
@@ -533,7 +533,9 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="flex flex-col items-start w-[50%]">
+            </div>
+            <div className="flex gap-4 md:flex-row flex-col">
+              <div className="flex flex-col items-start w-full">
                 <p>Country</p>
                 <Select
                   options={countryList.data}
@@ -545,10 +547,10 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="flex flex-col items-start w-[50%]">
+              <div className="flex flex-col items-start w-full">
                 <p>Pin Code</p>
                 <input
-                  className="px-3 py-1.5 rounded-md border"
+                  className="px-3 py-1.5 rounded-md border w-full"
                   type="text"
                   name="pincode"
                   placeholder="Pin Code"
