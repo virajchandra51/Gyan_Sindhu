@@ -10,9 +10,9 @@ const ProductCard = ({ product }) => {
     >
       <img width={500} height={500} alt="" src={sampleProduct} />
       <div className="p-4 text-black/[0.9]">
-        <h2 className="text-lg font-medium">{product.item_name}</h2>
+        <h2 className="text-lg font-bold">{product.item_name}</h2>
         <div className="flex items-center text-black/[0.5]">
-          <p className="mr-2 text-lg font-semibold">
+          <p className="mr-2 text-md font-semibold">
             Publisher - {product.publisher_name}
           </p>
           <>
@@ -21,8 +21,8 @@ const ProductCard = ({ product }) => {
             </p>
           </>
         </div>
-        <p className="text-md font-medium">Item Code - {product.item_code}</p>
-        <p className="text-md font-medium">Item Stock - {product.item_stock}</p>
+        <p className="text-sm font-medium">Item Code - {product.item_code}</p>
+        <p className="text-sm font-medium">Item Stock - {product.item_stock}</p>
       </div>
     </Link>
   );
