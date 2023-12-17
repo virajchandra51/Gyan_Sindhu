@@ -413,7 +413,8 @@ const Register = () => {
                   className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                   type="text"
                   onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => (e.target.type = "text")}
+                  min="1997-01-01" max="2100-12-31"
+                  // onBlur={(e) => (e.target.type = "text")}
                   name="birthdate"
                   placeholder="Birth Date"
                   onChange={(e) => handle(e)}
@@ -426,7 +427,8 @@ const Register = () => {
                   type="text"
                   name="annidate"
                   onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => (e.target.type = "text")}
+                  min="1997-01-01" max="2100-12-31"
+                  // onBlur={(e) => (e.target.type = "text")}
                   placeholder="Anniversary Date"
                   onChange={(e) => handle(e)}
                 />
