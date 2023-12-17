@@ -454,7 +454,9 @@ const Profile = () => {
                         className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                         type="text"
                         onFocus={(e) => (e.target.type = "date")}
-                        onBlur={(e) => (e.target.type = "text")}
+                        min="1997-01-01"
+                        max="2100-12-31"
+                        // onBlur={(e) => (e.target.type = "text")}
                         name="birth_date"
                         placeholder="Birth Date"
                         value={profileData.data?.birth_date}
@@ -469,7 +471,9 @@ const Profile = () => {
                         type="text"
                         name="anni_date"
                         onFocus={(e) => (e.target.type = "date")}
-                        onBlur={(e) => (e.target.type = "text")}
+                        min="1997-01-01"
+                        max="2100-12-31"
+                        // onBlur={(e) => (e.target.type = "text")}
                         placeholder="Anniversary Date"
                         value={profileData.data?.anni_date}
                         onChange={(e) => handle(e)}
