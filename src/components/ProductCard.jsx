@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
           </>
         </div>
         <p className="text-sm font-medium">Item Code - {product.item_code}</p>
-        <p className="text-sm font-medium">Item Stock - {product.item_stock}</p>
+        <p className="text-sm font-medium">Item Stock - {product.item_stock} {product.unit_name}</p>
       </div>
     </Link>
   );

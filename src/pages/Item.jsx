@@ -31,6 +31,7 @@ const Item = () => {
       theme: "dark",
     });
   };
+  console.log(location.state.product);
   return (
     <Layout>
       <ToastContainer />
@@ -38,7 +39,7 @@ const Item = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            About Us
+            Product Details
           </div>
           <div className="text-md md:text-xl">
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
@@ -82,12 +83,9 @@ const Item = () => {
               </p>
               {true && (
                 <>
-                  <p className="text-base  font-medium line-through">
-                    &#8377;30
-                  </p>
                   <p className="ml-auto text-base font-medium text-green-500">
                     {/* {getDiscountedPricePercentage(p.original_price, p.price)}% */}
-                    5% off
+                    {location.state.product.disc_percent}% off
                   </p>
                 </>
               )}
@@ -96,13 +94,13 @@ const Item = () => {
             <div className="text-md font-medium text-black/[0.5]">
               incl. of taxes
             </div>
-            <div className="text-md font-medium text-black/[0.5] mb-20">
+            <div className="text-md font-medium text-black/[0.5] mb-12">
               {`(Also includes all applicable duties)`}
             </div>
 
             {/* ADD TO CART BUTTON START */}
             <button
-              className="w-full py-4 rounded-full bg-[var(--primary-c)] text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:bg-[var(--secondary-c)]"
+              className="w-full py-4 rounded-full bg-[var(--primary-c)] text-white text-lg font-medium transition-transform active:scale-95 mb-12 hover:bg-[var(--secondary-c)]"
               onClick={() => {
                 // dispatch(
                 //   addToCart({
@@ -120,9 +118,18 @@ const Item = () => {
 
             <div>
               <div className="text-lg font-bold mb-5">Product Details</div>
-              <div className="markdown text-md mb-5">
-                {/* <ReactMarkdown>{p.description}</ReactMarkdown> */}
-                <p>Hello</p>
+              <div className="text-md mb-5">
+                <p>edition_no : {location.state.product.edition_no}</p>
+                <p>isbn_code : {location.state.product.isbn_code}</p>
+                <p>item_code : {location.state.product.item_code}</p>
+                <p>item_stock : {location.state.product.item_stock}</p>
+                <p>item_type : {location.state.product.item_type}</p>
+                <p>mrp : {location.state.product.mrp}</p>
+                <p>sale_rate : {location.state.product.sale_rate}</p>
+                <p>subject_name : {location.state.product.subject_name}</p>
+                <p>tax_percent : {location.state.product.tax_percent}</p>
+                <p>unit_name : {location.state.product.unit_name}</p>
+                <p>writer_name : {location.state.product.writer_name}</p>
               </div>
             </div>
           </div>
