@@ -5,10 +5,23 @@ import sampleProduct from "../../public/sampleProduct.jpeg";
 const ProductCard = ({ product }) => {
   return (
     <Link
-      href="/"
+      to={"/item"}
+      state={{ product: product }}
       className="transform overflow-hidden border-2 bg-white duration-200 hover:scale-105 cursor-pointer"
     >
-      <img width={500} height={500} alt="" src={sampleProduct} />
+      <div className="h-[250px]">
+        {product.photo_file_url === "" ||
+        product.photo_file_url === null ||
+        product.photo_file_url === undefined ? (
+          <img width={500} height={500} alt="" src={sampleProduct} />
+        ) : (
+          <img
+            className="object-contain h-[250px] w-full"
+            alt=""
+            src={product.photo_file_url}
+          />
+        )}
+      </div>
       <div className="p-4 text-black/[0.9]">
         <h2 className="text-lg font-bold">{product.item_name}</h2>
         <div className="flex items-center text-black/[0.5]">

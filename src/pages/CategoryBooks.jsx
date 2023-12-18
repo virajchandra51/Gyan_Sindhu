@@ -28,7 +28,7 @@ const CategoryBooks = () => {
         `${global.branch_id}` +
         "&groupcode=" +
         `${location.state.category.item_gr_code}` +
-        "&ipaddress=0.0.0.0&pageno=2&pagelimit=10"
+        "&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
     );
     console.log(data);
     setProductList(data);
