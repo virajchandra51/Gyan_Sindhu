@@ -31,19 +31,18 @@ const Publisher = () => {
   const handlePageClick = (event) => {
     setPageNo(event.selected + 1);
   };
-  console.log(pageCount);
 
   //pagination logic ends
 
   useEffect(() => {
     fetchData();
-  }, [publisherName]);
+  }, [publisherName, pageno]);
 
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "selectionlist",
       "&compid=9&branchid=" +
-        `${global.branch_id}` +
+      `${global.branch_id}` +
         "&seltype=publisher&publishername=" +
         `${publisherName}` +
         "&ipaddress=0.0.0.0&pageno=" +
@@ -71,14 +70,13 @@ const Publisher = () => {
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
             Sindhu.
           </div>
-          <div className="flex justify-around flex-col md:flex-row gap-2">
-            <div className="flex justify-center items-center text-start gap-4">
-              <strong>Publisher :</strong>
-              <div className="md:w-[300px] rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+          <div className="flex justify-around gap-2">
+            <div className="flex justify-center w-full items-center text-start gap-4">
+              <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"
-                  placeholder="Search our publishers here.."
+                  placeholder="Search by Publisher Name ..."
                   type="text"
                   onChange={handleChanglePublisher}
                 />

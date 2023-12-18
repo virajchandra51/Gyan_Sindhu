@@ -72,7 +72,7 @@ const School = () => {
   const handleChangeSchool = (event) => {
     setSchoolName(event.target.value);
   };
-  
+
   return (
     <Layout>
       <Wrapper>
@@ -86,28 +86,25 @@ const School = () => {
             Sindhu.
           </div>
           <div className="flex justify-around flex-col md:flex-row gap-2">
-            <div className="flex justify-center items-center text-start gap-4">
-              <strong>City :</strong>
+            <div className="flex justify-center w-full items-center text-start gap-4">
               <Select
                 options={cityList.data}
                 onChange={handleChangeCity}
                 isSearchable={true}
                 isClearable={true}
-                placeholder="Filter by City ..."
+                className="w-full"
+                placeholder="Search by City ..."
               />
             </div>
-            <div className="flex justify-center items-center text-start gap-4">
-              <strong>School :</strong>
-              <div className="md:w-[300px] rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+              <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"
-                  placeholder="Search our schools here.."
+                  placeholder="Search by School Name ..."
                   type="text"
                   onChange={handleChangeSchool}
                 />
               </div>
-            </div>
           </div>
         </div>
         {/* heading and paragaph end */}

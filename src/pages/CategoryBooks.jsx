@@ -27,7 +27,6 @@ const CategoryBooks = () => {
   const handlePageClick = (event) => {
     setPageNo(event.selected + 1);
   };
-  console.log(pageCount);
 
   //pagination logic ends
 
@@ -51,7 +50,6 @@ const CategoryBooks = () => {
     setProductList(data);
   };
 
-  console.log(productList);
 
   return (
     <Layout>
