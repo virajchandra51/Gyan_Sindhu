@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useLayoutEffect } from "react";
 
 const CategoryBooks = () => {
@@ -23,7 +23,8 @@ const CategoryBooks = () => {
     fetchData();
   }, [location.state.category.item_gr_code, global.branch_id]);
   const fetchData = async () => {
-    const data = await fetchDataFromApi("itemlist",
+    const data = await fetchDataFromApi(
+      "itemlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&groupcode=" +
@@ -52,11 +53,21 @@ const CategoryBooks = () => {
         {/* heading and paragaph end */}
 
         {/* products grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
-          {productList.length>0 ? productList.map((product) => (
-            <ProductCard key={product?.id} product={product} />
-          )): <Skeleton containerClassName="flex-1 w-screen gap-4" count={10} height={20}/>}
-        </div>
+        {productList.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
+            {productList.map((product) => (
+              <ProductCard key={product?.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          <div className="mb-14">
+            <Skeleton
+              containerClassName="w-full gap-4"
+              count={10}
+              height={20}
+            />
+          </div>
+        )}
         {/* products grid end */}
       </Wrapper>
     </Layout>

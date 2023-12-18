@@ -8,8 +8,8 @@ import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
 import dummy from "../../public/sampleProduct.jpeg";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useLayoutEffect } from "react";
 
 const School = () => {
@@ -33,7 +33,8 @@ const School = () => {
     fetchData();
   }, [cityCode, schoolName]);
   const fetchData = async () => {
-    var data = await fetchDataFromApi("schoollist",
+    var data = await fetchDataFromApi(
+      "schoollist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&citycode=" +
@@ -43,7 +44,8 @@ const School = () => {
         "&ipaddress=0.0.0.0&pageno=1&pagelimit=1000"
     );
     setData({ data: data, loading: false });
-    data = await fetchDataFromApi("selectionlist",
+    data = await fetchDataFromApi(
+      "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
         "&seltype=city&ipaddress=0.0.0.0"
@@ -110,10 +112,10 @@ const School = () => {
         {/* heading and paragaph end */}
 
         {/* grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-          {!data.loading ? (
-            data.data[0].school_name !== undefined ? (
-              data.data?.map((item, index) => (
+        {!data.loading ? (
+          data.data[0].school_name !== undefined ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+              {data.data?.map((item, index) => (
                 <Link
                   key={index}
                   to={"/class"}
@@ -148,14 +150,20 @@ const School = () => {
                     </div>
                   </div>
                 </Link>
-              ))
-            ) : (
-              <div className="text-2xl">Oops ... No School Found!</div>
-            )
+              ))}
+            </div>
           ) : (
-            <Skeleton containerClassName="w-screen flex-1 gap-4" count={10} height={20}/>
-          )}
-        </div>
+            <div className="text-2xl">Oops ... No School Found!</div>
+          )
+        ) : (
+          <div className="mb-14">
+            <Skeleton
+              containerClassName="w-full gap-4"
+              count={10}
+              height={20}
+            />
+          </div>
+        )}
         {/* grid end */}
       </Wrapper>
     </Layout>

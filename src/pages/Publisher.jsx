@@ -92,10 +92,10 @@ const Publisher = () => {
         {/* heading and paragaph end */}
 
         {/* grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-          {!data.loading ? (
-            data.data[0].publisher_name !== undefined ? (
-              currentItems?.map((item, index) => (
+        {!data.loading ? (
+          data.data[0].publisher_name !== undefined ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+              {currentItems?.map((item, index) => (
                 <Link
                   key={index}
                   className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
@@ -124,18 +124,20 @@ const Publisher = () => {
                     </div>
                   </div>
                 </Link>
-              ))
-            ) : (
-              <div className="text-2xl">Oops ... No Publisher Found!</div>
-            )
+              ))}
+            </div>
           ) : (
+            <div className="text-2xl">Oops ... No Publisher Found!</div>
+          )
+        ) : (
+          <div className="mb-14">
             <Skeleton
-              containerClassName="w-screen flex-1 gap-4"
+              containerClassName="w-full gap-4"
               count={10}
               height={20}
             />
-          )}
-        </div>
+          </div>
+        )}
         {/* grid end */}
         <ReactPaginate
           breakLabel="..."

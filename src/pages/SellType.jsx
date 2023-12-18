@@ -40,7 +40,6 @@ const SellType = () => {
   };
   console.log(data.data);
 
-
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
   // from an API endpoint with useEffect and useState)
@@ -78,24 +77,26 @@ const SellType = () => {
         {/* heading and paragaph end */}
 
         {/* grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
-          {!data.loading ? (
-            currentItems.map((item, index) => (
+        {!data.loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
+            {currentItems.map((item, index) => (
               <div
                 className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                 key={index}
               >
                 {item[`${location.state.sellType}_name`]}
               </div>
-            ))
-          ) : (
+            ))}
+          </div>
+        ) : (
+          <div className="mb-14">
             <Skeleton
-              containerClassName="w-screen flex-1 gap-4"
+              containerClassName="w-full gap-4"
               count={10}
               height={20}
             />
-          )}
-        </div>
+          </div>
+        )}
         {/* grid end */}
         <ReactPaginate
           breakLabel="..."
