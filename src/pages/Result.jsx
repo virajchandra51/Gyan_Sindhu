@@ -7,9 +7,11 @@ import { useLocation } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from "react";
 import { fetchDataFromApi } from "../utils/api";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
+import { paginationValue } from "../utils/constants";
 
 const Result = () => {
   useLayoutEffect(() => {
@@ -18,15 +20,27 @@ const Result = () => {
 
   const global = useSelector((state) => state.global);
   const location = useLocation();
-
   const [searchResult, setSearchResult] = useState({
     data: [],
     loading: true,
   });
 
+  const [pageno, setPageNo] = useState(1);
+  const [pageCount, setPageCount] = useState(-1);
+
+  //pagination logic starts
+
+  const handlePageClick = (event) => {
+    setPageNo(event.selected + 1);
+  };
+
+  console.log(pageCount);
+
+  //pagination logic ends
+
   useEffect(() => {
     fetchData();
-  }, [location.state.search]);
+  }, [location.state.search, pageno]);
 
   const fetchData = async () => {
     const data = await fetchDataFromApi(
@@ -35,8 +49,12 @@ const Result = () => {
         `${global.branch_id}` +
         "&groupcode=0&itemname=" +
         `${location.state.search}` +
-        "&ipaddress=0.0.0.0&pageno=1&pagelimit=1000"
+        "&ipaddress=0.0.0.0&pageno=" +
+        `${pageno}` +
+        "&pagelimit=" +
+        `${paginationValue}`
     );
+    setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setSearchResult({ data: data, loading: false });
   };
 
@@ -58,11 +76,33 @@ const Result = () => {
         {/* heading and paragaph end */}
         {/* products grid start */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
-          {searchResult.data.length>0 ? searchResult.data.map((product) => (
-            <ProductCard key={product?.id} product={product} />
-          )): <Skeleton containerClassName="flex-1 w-screen gap-4" count={10} height={20}/>}
+          {searchResult.data.length > 0 ? (
+            searchResult.data.map((product) => (
+              <ProductCard key={product?.id} product={product} />
+            ))
+          ) : (
+            <Skeleton
+              containerClassName="flex-1 w-screen gap-4"
+              count={10}
+              height={20}
+            />
+          )}
         </div>
         {/* products grid end */}
+        {pageCount > 0 && (
+          <ReactPaginate
+            breakLabel="..."
+            pageClassName="border-2 w-10 h-10 justify-center flex items-center"
+            nextLabel="next >"
+            onPageChange={(e) => handlePageClick(e)}
+            pageRangeDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            activeClassName="bg-[var(--secondary-c)] text-white"
+            className="flex flex-row gap-4 my-4 justify-end px-4 text-md items-center mb-12"
+          />
+        )}
       </Wrapper>
     </Layout>
   );

@@ -20,13 +20,14 @@ const CategoryBooks = () => {
   const location = useLocation();
   const [productList, setProductList] = useState([]);
   const [pageno, setPageNo] = useState(1);
+  const [pageCount, setPageCount] = useState(-1);
 
   //pagination logic starts
 
-  const pageCount = Math.ceil(productList[0]?.record_count / paginationValue);
   const handlePageClick = (event) => {
     setPageNo(event.selected + 1);
   };
+  console.log(pageCount);
 
   //pagination logic ends
 
@@ -46,6 +47,7 @@ const CategoryBooks = () => {
         "&pagelimit=" +
         `${paginationValue}`
     );
+    setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setProductList(data);
   };
 
