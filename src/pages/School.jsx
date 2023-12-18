@@ -72,6 +72,7 @@ const School = () => {
   const handleChangeSchool = (event) => {
     setSchoolName(event.target.value);
   };
+  
   return (
     <Layout>
       <Wrapper>
@@ -101,7 +102,7 @@ const School = () => {
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"
-                  placeholder="Search our store here.."
+                  placeholder="Search our schools here.."
                   type="text"
                   onChange={handleChangeSchool}
                 />

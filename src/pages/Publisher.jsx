@@ -18,48 +18,45 @@ const Publisher = () => {
     window.scrollTo(0, 0);
   });
   const global = useSelector((state) => state.global);
-  const [publishername, setPublisherName] = useState("");
+  const [publisherName, setPublisherName] = useState("");
   const [data, setData] = useState({
     data: [],
     loading: true,
   });
+  const [pageno, setPageNo] = useState(1);
+  const [pageCount, setPageCount] = useState(-1);
+
+  //pagination logic starts
+
+  const handlePageClick = (event) => {
+    setPageNo(event.selected + 1);
+  };
+  console.log(pageCount);
+
+  //pagination logic ends
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [publisherName]);
 
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "selectionlist",
       "&compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=publisher" +
-        "&ipaddress=0.0.0.0"
+        "&seltype=publisher&publishername=" +
+        `${publisherName}` +
+        "&ipaddress=0.0.0.0&pageno=" +
+        `${pageno}` +
+        "&pagelimit=" +
+        `${paginationValue}`
     );
+    setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setData({ data: data, loading: false });
   };
 
-  // console.log(data);
-
   const handleChanglePublisher = (event) => {
     setPublisherName(event.target.value);
-  };
-
-  const [itemOffset, setItemOffset] = useState(0);
-
-  const endOffset = itemOffset + paginationValue;
-  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const pageCount = Math.ceil(data.data.length / paginationValue);
-  const currentItems = data.data.slice(itemOffset, endOffset);
-
-  // Invoke when user click to request another page.
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * paginationValue) % data.data.length;
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // );
-    setItemOffset(newOffset);
-    currentItems = data.data.slice(newOffset, endOffset);
   };
 
   return (
@@ -95,7 +92,7 @@ const Publisher = () => {
         {!data.loading ? (
           data.data[0].publisher_name !== undefined ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-              {currentItems?.map((item, index) => (
+              {data.data?.map((item, index) => (
                 <Link
                   key={index}
                   className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
@@ -127,7 +124,9 @@ const Publisher = () => {
               ))}
             </div>
           ) : (
-            <div className="text-2xl">Oops ... No Publisher Found!</div>
+            <div className="text-2xl text-center mb-14">
+              Oops ... No Publisher Found!
+            </div>
           )
         ) : (
           <div className="mb-14">
@@ -139,18 +138,20 @@ const Publisher = () => {
           </div>
         )}
         {/* grid end */}
-        <ReactPaginate
-          breakLabel="..."
-          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
-          nextLabel="next >"
-          onPageChange={(e) => handlePageClick(e)}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-          activeClassName="bg-[var(--secondary-c)] text-white"
-          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
-        />
+        {pageCount > 1 && (
+          <ReactPaginate
+            breakLabel="..."
+            pageClassName="border-2 w-10 h-10 justify-center flex items-center"
+            nextLabel="next >"
+            onPageChange={(e) => handlePageClick(e)}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            activeClassName="bg-[var(--secondary-c)] text-white"
+            className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
+          />
+        )}
       </Wrapper>
     </Layout>
   );
