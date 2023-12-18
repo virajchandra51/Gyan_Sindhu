@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Wrapper from "./Wrapper";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "./Menu";
 import BranchSubMenu from "./BranchSubMenu";
 import ProfileSubMenu from "./ProfileSubMenu";
@@ -26,6 +26,7 @@ const Header = () => {
   const [showCatMenu, setShowCatMenu] = useState(false);
   const [showBranchMenu, setShowBranchMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [search, setSearch] = useState("");
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const controlNavbar = () => {
@@ -48,6 +49,19 @@ const Header = () => {
     data: [],
     loading: true,
   });
+
+  const navigate = useNavigate();
+
+  const handleSearch = (event) => {
+    if (event.key === "Enter") {
+      navigate("/result", { state: { search: search } });
+    }
+  };
+
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
+
 
   useEffect(() => {
     if (localStorage.getItem("UserData") === null) {
@@ -100,12 +114,16 @@ const Header = () => {
           />
         )}
         <div className="bg-gray-200 w-[300px] rounded py-2 justify-start items-center hidden lg:flex">
-          <BsSearch className="mx-3 fill-gray-500" />
           <input
-            className="text-sm text-gray-500 w-full bg-transparent outline-none"
+            className="text-sm mx-3 text-black w-full bg-transparent outline-none"
             placeholder="Search our store here.."
             type="text"
+            name="search"
+            onKeyDown={handleSearch}
+            value={search}
+            onChange={handleSearchChange}
           />
+          <BsSearch className="mx-3 fill-black cursor-pointer" />
         </div>
         <div className="flex items-center text-black">
           {/* Icon start */}
@@ -119,7 +137,9 @@ const Header = () => {
               setShowProfileMenu={setShowProfileMenu}
             />
             <BsPerson className="text-[19px] md:text-[24px]" />
-            {userData.data.member_id !== "-1" && <MdVerified className="absolute text-[16px] fill-[var(--secondary-c)] right-1 bottom-2"/>}
+            {userData.data.member_id !== "-1" && (
+              <MdVerified className="absolute text-[12px] md:text-[16px] fill-[var(--secondary-c)] right-0 md:right-1 bottom-1 md:bottom-2" />
+            )}
           </div>
           {/* Icon end */}
 

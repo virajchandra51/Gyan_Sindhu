@@ -15,6 +15,8 @@ import Publisher from "./pages/Publisher";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
+import Item from "./pages/Item";
+import Result from "./pages/Result";
 
 function App() {
   return (
@@ -30,11 +32,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/item" element={<Item />} />
           <Route path="/failed" element={<Failed />} />
           <Route path="/success" element={<Success />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/result" element={<Result />} />
           <Route path="/:selltype" element={<SellType />} />
         </Routes>
       </BrowserRouter>
