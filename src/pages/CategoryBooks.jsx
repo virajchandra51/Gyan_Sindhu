@@ -9,6 +9,8 @@ import Layout from "../Layout";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useLayoutEffect } from "react";
+import ReactPaginate from "react-paginate";
+import { paginationValue } from "../utils/constants";
 
 const CategoryBooks = () => {
   useLayoutEffect(() => {
@@ -16,12 +18,22 @@ const CategoryBooks = () => {
   });
   const global = useSelector((state) => state.global);
   const location = useLocation();
-  console.log(location.state);
-
   const [productList, setProductList] = useState([]);
+  const [pageno, setPageNo] = useState(1);
+
+  //pagination logic starts
+
+  const pageCount = Math.ceil(productList[0]?.record_count / paginationValue);
+  const handlePageClick = (event) => {
+    setPageNo(event.selected + 1);
+  };
+
+  //pagination logic ends
+
   useEffect(() => {
     fetchData();
-  }, [location.state.category.item_gr_code, global.branch_id]);
+  }, [location.state.category.item_gr_code, global.branch_id, pageno]);
+
   const fetchData = async () => {
     const data = await fetchDataFromApi(
       "itemlist",
@@ -29,9 +41,11 @@ const CategoryBooks = () => {
         `${global.branch_id}` +
         "&groupcode=" +
         `${location.state.category.item_gr_code}` +
-        "&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
+        "&ipaddress=0.0.0.0&pageno=" +
+        `${pageno}` +
+        "&pagelimit=" +
+        `${paginationValue}`
     );
-    console.log(data);
     setProductList(data);
   };
 
@@ -55,8 +69,8 @@ const CategoryBooks = () => {
         {/* products grid start */}
         {productList.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
-            {productList.map((product) => (
-              <ProductCard key={product?.id} product={product} />
+            {productList.map((product, index) => (
+              <ProductCard key={index} product={product} />
             ))}
           </div>
         ) : (
@@ -69,6 +83,18 @@ const CategoryBooks = () => {
           </div>
         )}
         {/* products grid end */}
+        <ReactPaginate
+          breakLabel="..."
+          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
+          nextLabel="next >"
+          onPageChange={(e) => handlePageClick(e)}
+          pageRangeDisplayed={2}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          activeClassName="bg-[var(--secondary-c)] text-white"
+          className="flex flex-row gap-4 my-4 justify-end px-4 text-md items-center mb-12"
+        />
       </Wrapper>
     </Layout>
   );
