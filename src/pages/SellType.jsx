@@ -10,6 +10,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
 import { paginationValue } from "../utils/constants";
 import { useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
 
 const SellType = () => {
   useLayoutEffect(() => {
@@ -80,12 +81,14 @@ const SellType = () => {
         {!data.loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
             {currentItems.map((item, index) => (
-              <div
-                className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
+              <Link
+                to={"/result"}
+                state={{ name: item[`${location.state.sellType}_name`], sellType: location.state.sellType }}
+                className="text-white duration-200 hover:scale-105 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                 key={index}
               >
                 {item[`${location.state.sellType}_name`]}
-              </div>
+              </Link>
             ))}
           </div>
         ) : (

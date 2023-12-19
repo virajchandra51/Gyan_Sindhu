@@ -25,6 +25,8 @@ const Result = () => {
     loading: true,
   });
 
+  console.log(location.state);
+
   const [pageno, setPageNo] = useState(1);
   const [pageCount, setPageCount] = useState(-1);
 
@@ -40,20 +42,46 @@ const Result = () => {
 
   useEffect(() => {
     fetchData();
-  }, [location.state.search, pageno]);
+  }, [location.state?.search, pageno]);
 
   const fetchData = async () => {
-    const data = await fetchDataFromApi(
-      "itemlist",
-      "compid=9&branchid=" +
-        `${global.branch_id}` +
+    var url = "compid=9&branchid=" + `${global.branch_id}`;
+    if (location.state.sellType) {
+      if (location.state.sellType === "publisher")
+        url +=
+          "&publishername=" +
+          `${location.state?.name}` +
+          "&ipaddress=0.0.0.0&pageno=" +
+          `${pageno}` +
+          "&pagelimit=" +
+          `${paginationValue}`;
+      else if (location.state.sellType === "subject")
+        url +=
+          "&subjectname=" +
+          `${location.state?.name}` +
+          "&ipaddress=0.0.0.0&pageno=" +
+          `${pageno}` +
+          "&pagelimit=" +
+          `${paginationValue}`;
+      else if (location.state.sellType === "writer")
+        url +=
+          "&writername=" +
+          `${location.state?.name}` +
+          "&ipaddress=0.0.0.0&pageno=" +
+          `${pageno}` +
+          "&pagelimit=" +
+          `${paginationValue}`;
+    } else {
+      url +=
         "&groupcode=0&itemname=" +
-        `${location.state.search}` +
+        `${location.state?.search}` +
         "&ipaddress=0.0.0.0&pageno=" +
         `${pageno}` +
         "&pagelimit=" +
-        `${paginationValue}`
-    );
+        `${paginationValue}`;
+    }
+    console.log(url);
+    const data = await fetchDataFromApi("itemlist", url);
     setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setSearchResult({ data: data, loading: false });
   };
@@ -66,7 +94,9 @@ const Result = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Search Results for "{location.state.search}"
+            {location.state.sellType
+              ? "Search Results for " + `${location.state.name}`
+              : "Search Results for " + `${location.state.search}`}
           </div>
           <div className="text-md md:text-xl">
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
@@ -75,19 +105,21 @@ const Result = () => {
         </div>
         {/* heading and paragaph end */}
         {/* products grid start */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
-          {searchResult.data.length > 0 ? (
-            searchResult.data.map((product) => (
+        {searchResult.data.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
+            {searchResult.data.map((product) => (
               <ProductCard key={product?.id} product={product} />
-            ))
-          ) : (
+            ))}
+          </div>
+        ) : (
+          <div className="mb-14">
             <Skeleton
-              containerClassName="flex-1 w-screen gap-4"
+              containerClassName="w-full gap-4"
               count={10}
               height={20}
             />
-          )}
-        </div>
+          </div>
+        )}
         {/* products grid end */}
         {pageCount > 0 && (
           <ReactPaginate

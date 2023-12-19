@@ -102,12 +102,14 @@ const CategoryCarousal = ({ data, sellType }) => {
         <div style={getSlidesStyle()}>
           {data.length>0? data.map((item, index) => {
             return (
-              <div
-                className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
+              <Link
+                to={'/result'}
+                state={{name: item[`${sellType}_name`], sellType: sellType}}
+                className="text-white duration-200 hover:scale-110 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)] rounded-md"
                 key={index}
               >
                 {item[`${sellType}_name`]}
-              </div>
+              </Link>
             );
           }):<Skeleton containerClassName="flex-1 gap-4" count={5} height={20}/>}
         </div>
