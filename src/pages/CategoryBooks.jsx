@@ -11,6 +11,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useLayoutEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { paginationValue } from "../utils/constants";
+import PaginationLeft from "../components/PaginationLeft";
+import PaginationRight from "../components/PaginationRight";
 
 const CategoryBooks = () => {
   useLayoutEffect(() => {
@@ -50,7 +52,6 @@ const CategoryBooks = () => {
     setProductList(data);
   };
 
-
   return (
     <Layout>
       <Wrapper>
@@ -85,15 +86,16 @@ const CategoryBooks = () => {
         {/* products grid end */}
         <ReactPaginate
           breakLabel="..."
-          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
-          nextLabel="next >"
+          pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
+          nextLabel={<PaginationRight />}
           onPageChange={(e) => handlePageClick(e)}
-          pageRangeDisplayed={2}
+          pageRangeDisplayed={0}
           pageCount={pageCount}
-          previousLabel="< previous"
+          marginPagesDisplayed={1}
+          previousLabel={<PaginationLeft />}
           renderOnZeroPageCount={null}
-          activeClassName="bg-[var(--secondary-c)] text-white"
-          className="flex flex-row gap-4 my-4 justify-end px-4 text-md items-center mb-12"
+          activeClassName="bg-[var(--primary-c)] text-white"
+          className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
         />
       </Wrapper>
     </Layout>

@@ -11,6 +11,8 @@ import ReactPaginate from "react-paginate";
 import { paginationValue } from "../utils/constants";
 import { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
+import PaginationLeft from "../components/PaginationLeft";
+import PaginationRight from "../components/PaginationRight";
 
 const SellType = () => {
   useLayoutEffect(() => {
@@ -83,7 +85,10 @@ const SellType = () => {
             {currentItems.map((item, index) => (
               <Link
                 to={"/result"}
-                state={{ name: item[`${location.state.sellType}_name`], sellType: location.state.sellType }}
+                state={{
+                  name: item[`${location.state.sellType}_name`],
+                  sellType: location.state.sellType,
+                }}
                 className="text-white duration-200 hover:scale-105 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                 key={index}
               >
@@ -103,14 +108,15 @@ const SellType = () => {
         {/* grid end */}
         <ReactPaginate
           breakLabel="..."
-          pageClassName="border-2 w-10 h-10 justify-center flex items-center"
-          nextLabel="next >"
+          pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
+          nextLabel={<PaginationRight />}
           onPageChange={(e) => handlePageClick(e)}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={0}
           pageCount={pageCount}
-          previousLabel="< previous"
+          marginPagesDisplayed={1}
+          previousLabel={<PaginationLeft />}
           renderOnZeroPageCount={null}
-          activeClassName="bg-[var(--secondary-c)] text-white"
+          activeClassName="bg-[var(--primary-c)] text-white"
           className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
         />
       </Wrapper>

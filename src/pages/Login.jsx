@@ -72,7 +72,7 @@ const Login = () => {
       <ToastContainer />
       <div className="h-screen w-full bg-gray-100 flex-col md:flex-row shadow-lg flex">
         <div className="px-8 md:px-12 flex justify-center flex-col w-full md:w-[50%]">
-          <h2 className="font-bold text-4xl my-4 text-[var(--primary-c)]">
+          <h2 className="font-bold text-4xl mt-8 text-[var(--primary-c)]">
             Login
           </h2>
           <p className="text-xl mt-4 text-[var(--primary-c)]">
@@ -152,7 +152,7 @@ const Login = () => {
                 </svg>
               )}
             </div>
-            <button className="bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300">
+            <button className="bg-[var(--primary-c)] rounded-full text-white py-2 mt-8 hover:bg-[var(--secondary-c)] duration-300">
               Login
             </button>
           </form>

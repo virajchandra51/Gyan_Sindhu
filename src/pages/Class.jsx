@@ -66,7 +66,7 @@ const Class = () => {
                   }}
                 >
                   <div
-                    className="text-white flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
+                    className="text-white duration-200 hover:scale-105 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)]"
                     key={index}
                   >
                     {item.class_name}

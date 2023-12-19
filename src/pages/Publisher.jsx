@@ -12,6 +12,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
 import { paginationValue } from "../utils/constants";
 import { useLayoutEffect } from "react";
+import PaginationLeft from "../components/PaginationLeft";
+import PaginationRight from "../components/PaginationRight";
 
 const Publisher = () => {
   useLayoutEffect(() => {
@@ -93,6 +95,8 @@ const Publisher = () => {
               {data.data?.map((item, index) => (
                 <Link
                   key={index}
+                  to={'/result'}
+                  state={{name: item.publisher_name, sellType: "publisher"}}
                   className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="md:max-w-sm m-4 bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
@@ -139,14 +143,15 @@ const Publisher = () => {
         {pageCount > 1 && (
           <ReactPaginate
             breakLabel="..."
-            pageClassName="border-2 w-10 h-10 justify-center flex items-center"
-            nextLabel="next >"
+            pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
+            nextLabel={<PaginationRight/>}
             onPageChange={(e) => handlePageClick(e)}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={0}
             pageCount={pageCount}
-            previousLabel="< previous"
+            marginPagesDisplayed={1}
+            previousLabel={<PaginationLeft/>}
             renderOnZeroPageCount={null}
-            activeClassName="bg-[var(--secondary-c)] text-white"
+            activeClassName="bg-[var(--primary-c)] text-white"
             className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
           />
         )}
