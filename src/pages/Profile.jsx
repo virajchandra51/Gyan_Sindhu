@@ -277,6 +277,8 @@ const Profile = () => {
         rate_index: userData.data.rate_index,
         salutation: profileData.data.salutation,
         star_rating: userData.data.star_rating,
+        email_id: profileData.data.email_id,
+        mobile_no1: profileData.data.mobile_no1,
       };
       setDisabledForm((prev) => !prev);
 

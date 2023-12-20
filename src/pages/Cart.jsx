@@ -118,7 +118,7 @@ const School = () => {
 
     const options = {
       key: RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-      amount: "1000",
+      amount: subTotal,
       currency: "INR",
       name: "A unit of Gyan Sindhu",
       description: "Test Transaction",
@@ -161,13 +161,39 @@ const School = () => {
         );
 
         console.log(orderData);
-        if(orderData[0].success_status === "1") {
+        if (orderData[0].success_status === "1") {
+
+          const date = new Date();
+          let day = date.getDate();
+          let month = date.getMonth() + 1;
+          let year = date.getFullYear();
+          let currentDate = `${day}-${month}-${year}`;
+
+          var emailData = {
+            service_id: "GmailSMTPService",
+            template_id: "template_bzbadrq",
+            user_id: "2luFHblbDCponNdj8",
+            template_params: {
+              member_name: userData?.member_name,
+              email_id: userData?.email_id,
+              order_date: currentDate,
+              order_id: response.razorpay_order_id,
+              order_amount: "₹ "+`${subTotal}`+" /-",
+            },
+          };
+
+          fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailData),
+          }).then((response) => console.log(response));
+
           navigate("/success", {
             state: { order_id: response.razorpay_order_id },
           });
-        }
-        else
-        {
+        } else {
           navigate("/failed", {
             state: { order_id: response.razorpay_order_id },
           });
