@@ -3,7 +3,8 @@ import Wrapper from "../components/Wrapper";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "../Layout";
 import { useLayoutEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { BiPlus, BiMinus } from "react-icons/bi";
 
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,9 +15,46 @@ import "react-toastify/dist/ReactToastify.css";
 import sampleProduct from "../../public/sampleProduct.jpeg";
 
 const Item = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  
+  const [qty, setQty] = useState(1);
+  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    setTotalPrice((qty * price).toFixed(2));
+  }, [qty]);
+  function handleInc() {
+    if (qty < 10) {
+      setQty((prevQty) => (prevQty = prevQty + 1));
+    } else {
+      toast.info("Maximum Quantity Reached!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  }
+  function handleDec() {
+    if (qty > 1) {
+      setQty((prevQty) => (prevQty = prevQty - 1));
+    } else {
+      toast.info("Minimum Quantity Reached!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  }
   const location = useLocation();
   const dispatch = useDispatch();
   const notify = () => {
@@ -39,7 +77,7 @@ const Item = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Product Details
+            Product
           </div>
           <div className="text-md md:text-xl">
             One Stop Solution for all Kinds of School Books & Supplies by Gyan
@@ -72,13 +110,13 @@ const Item = () => {
             </div>
 
             {/* PRODUCT SUBTITLE */}
-            <div className="text-lg font-semibold mb-5">
+            {/* <div className="text-lg font-semibold mb-5">
               Publisher - {location.state.product.publisher_name}
-            </div>
+            </div> */}
 
             {/* PRODUCT PRICE */}
-            <div className="flex items-center">
-              <p className="mr-2 text-lg font-semibold">
+            <div className="flex mt-8 items-center">
+              <p className="mr-2 text-xl font-semibold">
                 MRP : &#8377; {location.state.product.net_sale_rate}
               </p>
               {true && (
@@ -94,43 +132,70 @@ const Item = () => {
             <div className="text-md font-medium text-black/[0.5]">
               incl. of taxes
             </div>
-            <div className="text-md font-medium text-black/[0.5] mb-12">
+            <div className="text-md font-medium text-black/[0.5] mb-8">
               {`(Also includes all applicable duties)`}
             </div>
 
-            {/* ADD TO CART BUTTON START */}
-            <button
-              className="w-full py-4 rounded-full bg-[var(--primary-c)] text-white text-lg font-medium transition-transform active:scale-95 mb-12 hover:bg-[var(--secondary-c)]"
-              onClick={() => {
-                // dispatch(
-                //   addToCart({
-                //     ...product?.data?.[0],
-                //     selectedSize,
-                //     oneQuantityPrice: p.price,
-                //   })
-                // );
-                notify();
-              }}
-            >
-              Add to Cart
-            </button>
-            {/* ADD TO CART BUTTON END */}
-
             <div>
-              <div className="text-lg font-bold mb-5">Product Details</div>
+              <div className="text-2xl font-bold mb-5">Product Details</div>
               <div className="text-md mb-5">
-                <p>edition_no : {location.state.product.edition_no}</p>
-                <p>isbn_code : {location.state.product.isbn_code}</p>
-                <p>item_code : {location.state.product.item_code}</p>
-                <p>item_stock : {location.state.product.item_stock}</p>
-                <p>item_type : {location.state.product.item_type}</p>
-                <p>mrp : {location.state.product.mrp}</p>
-                <p>sale_rate : {location.state.product.sale_rate}</p>
-                <p>subject_name : {location.state.product.subject_name}</p>
-                <p>tax_percent : {location.state.product.tax_percent}</p>
-                <p>unit_name : {location.state.product.unit_name}</p>
-                <p>writer_name : {location.state.product.writer_name}</p>
+                <p>Edition No. : {location.state.product.edition_no}</p>
+                <p>ISBN Code : {location.state.product.isbn_code}</p>
+                <p>Item Code : {location.state.product.item_code}</p>
+                <p>Item Stock : {location.state.product.item_stock}</p>
+                <p>Item Type : {location.state.product.item_type}</p>
+                <p>MRP : &#8377; {location.state.product.mrp}</p>
+                <p>Sale Rate : &#8377; {location.state.product.sale_rate}</p>
+                <p>Subject : {location.state.product.subject_name}</p>
+                <p>Tax Percent : {location.state.product.tax_percent}%</p>
+                <p>Unit : {location.state.product.unit_name}</p>
+                <p>Writer : {location.state.product.writer_name}</p>
               </div>
+            </div>
+
+            <div className="flex items-center gap-4 mb-12">
+              <div className="flex items-center">
+                <h1 className="font-bold">Qty: </h1>
+                <div className="ml-4 flex items-center justify-center border-2">
+                  <button
+                    className="text-center p-3 bg-gray-200 text-xl"
+                    type="button"
+                    onClick={handleDec}
+                  >
+                    <BiMinus />
+                  </button>
+                  <input
+                    type="text"
+                    name="qty"
+                    value={qty}
+                    className="text-center px-[6px] py-[10px] max-w-[80px] border-x-2"
+                  />
+                  <button
+                    className="text-center p-3 bg-gray-200 text-xl"
+                    type="button"
+                    onClick={handleInc}
+                  >
+                    <BiPlus />
+                  </button>
+                </div>
+              </div>
+              {/* ADD TO CART BUTTON START */}
+              <button
+                className="w-full py-4 rounded-full bg-[var(--primary-c)] text-white text-lg font-medium transition-transform active:scale-95 hover:bg-[var(--secondary-c)]"
+                onClick={() => {
+                  // dispatch(
+                  //   addToCart({
+                  //     ...product?.data?.[0],
+                  //     selectedSize,
+                  //     oneQuantityPrice: p.price,
+                  //   })
+                  // );
+                  notify();
+                }}
+              >
+                Add to Cart
+              </button>
+              {/* ADD TO CART BUTTON END */}
             </div>
           </div>
           {/* right column end */}

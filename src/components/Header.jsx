@@ -54,7 +54,7 @@ const Header = () => {
 
   const handleSearch = (event) => {
     if (event.key === "Enter") {
-      navigate("/result", { state: { search: search } });
+      navigate("/result", { state: { search: search, pageno: 1 } });
     }
   };
 

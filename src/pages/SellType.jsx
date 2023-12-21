@@ -51,7 +51,7 @@ const SellType = () => {
   const endOffset = itemOffset + paginationValue;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const pageCount = Math.ceil(data.data.length / paginationValue);
-  const currentItems = data.data.slice(itemOffset, endOffset);
+  var currentItems = data.data.slice(itemOffset, endOffset);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -62,6 +62,7 @@ const SellType = () => {
     setItemOffset(newOffset);
     currentItems = data.data.slice(newOffset, endOffset);
   };
+
 
   return (
     <Layout>

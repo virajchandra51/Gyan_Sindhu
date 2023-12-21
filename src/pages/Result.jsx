@@ -27,9 +27,13 @@ const Result = () => {
     loading: true,
   });
 
-  console.log(location.state);
+  const [renderKey, setRenderKey] = useState(0);
 
-  const [pageno, setPageNo] = useState(1);
+  useEffect(() => {
+    setPageNo(1);
+  }, [location.state?.search]);
+
+  const [pageno, setPageNo] = useState(location.state.pageno);
   const [pageCount, setPageCount] = useState(-1);
 
   //pagination logic starts
@@ -38,9 +42,10 @@ const Result = () => {
     setPageNo(event.selected + 1);
   };
 
-  console.log(pageCount);
-
   //pagination logic ends
+
+  console.log(pageno);
+  console.log(searchResult);
 
   useEffect(() => {
     fetchData();
@@ -87,9 +92,6 @@ const Result = () => {
     setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setSearchResult({ data: data, loading: false });
   };
-
-  console.log(searchResult);
-
   return (
     <Layout>
       <Wrapper>
@@ -124,19 +126,22 @@ const Result = () => {
         )}
         {/* products grid end */}
         {pageCount > 0 && (
-          <ReactPaginate
-            breakLabel="..."
-            pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
-            nextLabel={<PaginationRight />}
-            onPageChange={(e) => handlePageClick(e)}
-            pageRangeDisplayed={0}
-            pageCount={pageCount}
-            marginPagesDisplayed={1}
-            previousLabel={<PaginationLeft />}
-            renderOnZeroPageCount={null}
-            activeClassName="bg-[var(--primary-c)] text-white"
-            className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
-          />
+          <div key={renderKey}>
+            <ReactPaginate
+              breakLabel="..."
+              pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
+              nextLabel={<PaginationRight />}
+              onPageChange={(e) => handlePageClick(e)}
+              pageRangeDisplayed={0}
+              pageCount={pageCount}
+              initialPage={pageno-1}
+              marginPagesDisplayed={1}
+              previousLabel={<PaginationLeft />}
+              renderOnZeroPageCount={null}
+              activeClassName="bg-[var(--primary-c)] text-white"
+              className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
+            />
+          </div>
         )}
       </Wrapper>
     </Layout>

@@ -151,6 +151,7 @@ const Publisher = () => {
             marginPagesDisplayed={1}
             previousLabel={<PaginationLeft/>}
             renderOnZeroPageCount={null}
+            initialPage={0}
             activeClassName="bg-[var(--primary-c)] text-white"
             className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
           />

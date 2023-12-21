@@ -178,7 +178,7 @@ const School = () => {
               email_id: userData?.email_id,
               order_date: currentDate,
               order_id: response.razorpay_order_id,
-              order_amount: "₹ "+`${subTotal}`+" /-",
+              order_amount: "₹ "+`${subTotal}`,
             },
           };
 
