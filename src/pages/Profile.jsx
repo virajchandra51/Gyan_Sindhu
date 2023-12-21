@@ -46,9 +46,7 @@ const genderList = [
 ];
 
 const Profile = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
+
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -82,6 +80,7 @@ const Profile = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (localStorage.getItem("UserData") === null) {
       var data = {
         member_id: "-1",
@@ -106,7 +105,6 @@ const Profile = () => {
       "memberid=" + `${location.state.member_id}` + "&ipaddress=0.0.0.0"
     );
     setProfileData({ data: data[0], loading: false });
-
     data = await fetchDataFromApi(
       "selectionlist",
       "compid=9&branchid=" +
@@ -182,6 +180,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
+      profileData.data.reg_aadhar != null &&
       profileData.data.reg_aadhar.length > 0 &&
       profileData.data.reg_aadhar.length !== 16 &&
       !isANumber(profileData.data.reg_aadhar)
@@ -199,6 +198,7 @@ const Profile = () => {
       return;
     }
     if (
+      profileData.data.reg_gstin != null &&
       profileData.data.reg_gstin.length > 0 &&
       profileData.data.reg_gstin.length !== 15
     ) {
@@ -534,7 +534,6 @@ const Profile = () => {
                       name="address2"
                       placeholder="Address 2"
                       value={profileData.data?.address2}
-                      required
                       onChange={(e) => handle(e)}
                       disabled={disabledForm}
                     />

@@ -210,7 +210,7 @@ const Register = () => {
         `${form.address1}` +
         "&address2=" +
         `${form.address2}` +
-        "&city=" +
+        "&citycode=" +
         `${form.city}` +
         "&statecode=" +
         `${form.statecode}` +
@@ -235,7 +235,6 @@ const Register = () => {
     console.log(data);
     data = data[0];
     if (data.success_status === "1") {
-      // localStorage.setItem("UserData", JSON.stringify(data));
       toast.success(data.success_message, {
         position: "bottom-right",
         autoClose: 3000,
@@ -246,6 +245,7 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
       });
+      localStorage.setItem("UserData", JSON.stringify(data));
       setTimeout(() => {
         navigate("/");
       }, 3000);
@@ -425,6 +425,7 @@ const Register = () => {
                   className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                   type="text"
                   name="age"
+                  required
                   placeholder="Age"
                   onChange={(e) => handle(e)}
                 />
@@ -496,7 +497,6 @@ const Register = () => {
                 type="text"
                 name="address2"
                 placeholder="Address 2"
-                required
                 onChange={(e) => handle(e)}
               />
             </div>
@@ -518,7 +518,7 @@ const Register = () => {
                   options={salutationList}
                   onChange={handleSelect}
                   placeholder="Salutation"
-                  defaultValue={{ label: "Mr.", value: "1" }}
+                  defaultValue={{ label: "Mr.", value: "Mr." }}
                   name="salutation"
                   className="w-[100%]"
                 />
@@ -528,6 +528,7 @@ const Register = () => {
                 <Select
                   options={designationList.data}
                   onChange={handleSelect}
+                  required
                   placeholder="Designation"
                   name="desigcode"
                   className="w-[100%]"
