@@ -44,9 +44,6 @@ const Result = () => {
 
   //pagination logic ends
 
-  console.log(pageno);
-  console.log(searchResult);
-
   useEffect(() => {
     fetchData();
   }, [location.state?.search, pageno]);
@@ -87,7 +84,6 @@ const Result = () => {
         "&pagelimit=" +
         `${paginationValue}`;
     }
-    console.log(url);
     const data = await fetchDataFromApi("itemlist", url);
     setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setSearchResult({ data: data, loading: false });
@@ -109,11 +105,16 @@ const Result = () => {
         </div>
         {/* heading and paragaph end */}
         {/* products grid start */}
-        {searchResult.data.length > 0 ? (
+        {searchResult.data.length > 0 &&
+        searchResult.data[0]?.success_status != 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
             {searchResult.data.map((product) => (
               <ProductCard key={product?.id} product={product} />
             ))}
+          </div>
+        ) : searchResult.data[0]?.success_status == 0 ? (
+          <div className="text-2xl text-center mb-14">
+            Oops ... No Products Found!
           </div>
         ) : (
           <div className="mb-14">
@@ -134,7 +135,7 @@ const Result = () => {
               onPageChange={(e) => handlePageClick(e)}
               pageRangeDisplayed={0}
               pageCount={pageCount}
-              initialPage={pageno-1}
+              forcePage={pageno - 1}
               marginPagesDisplayed={1}
               previousLabel={<PaginationLeft />}
               renderOnZeroPageCount={null}
