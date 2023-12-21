@@ -104,9 +104,9 @@ const Item = () => {
           </div>
         </div>
         {/* heading and paragaph end */}
-        <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] mb-12">
+        <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[80px] mb-12">
           {/* left column start */}
-          <div className="w-full md:w-auto flex-[1.5] max-w-[500px] flex justify-center items-center mx-auto lg:mx-0">
+          <div className="w-full md:w-auto border-2 flex-[1.5] max-w-[500px] flex justify-center items-center mx-auto lg:mx-0">
             {location.state.product.photo_file_url === "" ||
             location.state.product.photo_file_url === null ||
             location.state.product.photo_file_url === undefined ? (
@@ -215,7 +215,7 @@ const Item = () => {
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col items-center gap-4 my-12">
+            <div className="flex md:flex-row flex-col items-center gap-4 mt-12">
               <div className="flex items-center">
                 <h1 className="font-bold">Qty: </h1>
                 <div className="ml-4 flex items-center justify-center border-2">
