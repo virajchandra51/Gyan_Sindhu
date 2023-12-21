@@ -321,7 +321,13 @@ const Register = () => {
     <div className="">
       <ToastContainer />
       <div className=" bg-gray-100 flex-col md:flex-row shadow-lg flex">
-        <div className="px-12 md:py-12 flex justify-center flex-col w-full md:w-[90%]">
+        <div className="p-8 flex justify-center flex-col w-full md:w-[90%]">
+        <Link
+          to={"/"}
+          className="w-[30%] max-w-[100px] text-center bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300"
+        >
+          Home
+        </Link>
           <h2 className="font-bold text-4xl my-4 text-[var(--primary-c)]">
             Register
           </h2>
@@ -712,9 +718,6 @@ const Register = () => {
               </div>
             </Link>
           </div>
-          <Link to={'/'} className="w-[20%] text-center mt-24 bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300">
-            Home
-          </Link>
         </div>
 
         <div className="hidden md:flex relative items-center justify-center bg-[var(--primary-c)] w-[50%] text-center">

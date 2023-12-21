@@ -44,6 +44,9 @@ const Result = () => {
 
   //pagination logic ends
 
+  console.log(pageno);
+  console.log(searchResult.data[0]);
+
   useEffect(() => {
     fetchData();
   }, [location.state?.search, pageno]);
@@ -84,6 +87,7 @@ const Result = () => {
         "&pagelimit=" +
         `${paginationValue}`;
     }
+    console.log(url);
     const data = await fetchDataFromApi("itemlist", url);
     setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setSearchResult({ data: data, loading: false });

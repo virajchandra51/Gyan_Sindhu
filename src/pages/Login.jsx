@@ -71,7 +71,13 @@ const Login = () => {
     <div className="h-screen w-screen">
       <ToastContainer />
       <div className="h-screen w-full bg-gray-100 flex-col md:flex-row shadow-lg flex">
-        <div className="px-8 md:px-12 flex justify-center flex-col w-full md:w-[50%]">
+        <div className="p-8 flex justify-center flex-col w-full md:w-[50%]">
+        <Link
+          to={"/"}
+          className="w-[30%] max-w-[100px] text-center bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300"
+        >
+          Home
+        </Link>
           <h2 className="font-bold text-4xl mt-8 text-[var(--primary-c)]">
             Login
           </h2>
@@ -198,9 +204,6 @@ const Login = () => {
               </div>
             </Link>
           </div>
-          <Link to={'/'} className="w-[20%] text-center mt-24 bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300">
-            Home
-          </Link>
         </div>
 
         <div className="hidden md:flex items-center relative justify-center bg-[var(--primary-c)] w-[70%] text-center">
