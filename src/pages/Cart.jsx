@@ -171,7 +171,7 @@ const School = () => {
 
           var emailData = {
             service_id: "GmailSMTPService",
-            template_id: "template_bzbadrq",
+            template_id: "OrderConfirmationMail",
             user_id: "2luFHblbDCponNdj8",
             template_params: {
               member_name: userData?.member_name,
