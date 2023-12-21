@@ -13,15 +13,33 @@ import { addToCart } from "../store/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import sampleProduct from "../../public/sampleProduct.jpeg";
+import { fetchDataFromApi } from "../utils/api";
 
 const Item = () => {
   const [qty, setQty] = useState(1);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const [ISBN, setISBN] = useState({ data: [], loading: true });
+
   useEffect(() => {
     setTotalPrice((qty * price).toFixed(2));
   }, [qty]);
+
+  useEffect(() => {
+    if (location.state.product.isbn_code) fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetchDataFromApi(
+      "barcode",
+      "type=isbn&text=" +
+        `${location.state.product.isbn_code}` +
+        "&ipaddress=0.0.0.0"
+    );
+    setISBN({ data: data[0], loading: false });
+  };
+
   function handleInc() {
     if (qty < 10) {
       setQty((prevQty) => (prevQty = prevQty + 1));
@@ -68,7 +86,9 @@ const Item = () => {
       theme: "dark",
     });
   };
+
   console.log(location.state.product);
+
   return (
     <Layout>
       <ToastContainer />
@@ -84,16 +104,16 @@ const Item = () => {
           </div>
         </div>
         {/* heading and paragaph end */}
-        <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
+        <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] mb-12">
           {/* left column start */}
-          <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
+          <div className="w-full md:w-auto flex-[1.5] max-w-[500px] flex justify-center items-center mx-auto lg:mx-0">
             {location.state.product.photo_file_url === "" ||
             location.state.product.photo_file_url === null ||
             location.state.product.photo_file_url === undefined ? (
-              <img width={500} height={500} alt="" src={sampleProduct} />
+              <img width={250} height={250} alt="" src={sampleProduct} />
             ) : (
               <img
-                className="object-contain h-[250px] w-full"
+                className="object-contain h-[500px] w-full"
                 alt=""
                 src={location.state.product.photo_file_url}
               />
@@ -115,12 +135,12 @@ const Item = () => {
 
             {/* PRODUCT PRICE */}
             <div className="flex mt-8 items-center">
-              <p className="mr-2 text-xl font-semibold">
+              <p className="mr-2 mb-4 text-xl font-extrabold text-[var(--primary-c)]">
                 MRP : &#8377; {location.state.product.net_sale_rate}
               </p>
               {true && (
                 <>
-                  <p className="ml-auto text-base font-medium text-green-500">
+                  <p className="ml-auto mb-4 text-base font-medium text-green-500">
                     {/* {getDiscountedPricePercentage(p.original_price, p.price)}% */}
                     {location.state.product.disc_percent}% off
                   </p>
@@ -135,17 +155,34 @@ const Item = () => {
               {`(Also includes all applicable duties)`}
             </div>
 
+            {!ISBN.loading && ISBN.data?.image_file_url && <img src={ISBN.data?.image_file_url} className="w-[300px] mb-12"/>}
+
             <div>
               <div className="text-2xl font-bold mb-5">Product Details</div>
               <div className="text-md mb-5">
+                {location.state.product.publisher_name && (
+                  <p>
+                    <b>Publisher :</b> {location.state.product.publisher_name}
+                  </p>
+                )}
+                {location.state.product.subject_name && (
+                  <p>
+                    <b>Subject :</b> {location.state.product.subject_name}
+                  </p>
+                )}
+                {location.state.product.writer_name && (
+                  <p>
+                    <b>Writer :</b> {location.state.product.writer_name}
+                  </p>
+                )}
                 {location.state.product.edition_no && (
                   <p>
                     <b>Edition No. :</b> {location.state.product.edition_no}
                   </p>
                 )}
-                {location.state.product.isbn_code && (
+                {location.state.product.item_type && (
                   <p>
-                    <b>ISBN Code :</b> {location.state.product.isbn_code}
+                    <b>Item Type :</b> {location.state.product.item_type}
                   </p>
                 )}
                 {location.state.product.item_code && (
@@ -155,12 +192,8 @@ const Item = () => {
                 )}
                 {location.state.product.item_stock && (
                   <p>
-                    <b>Item Stock :</b> {location.state.product.item_stock}
-                  </p>
-                )}
-                {location.state.product.item_type && (
-                  <p>
-                    <b>Item Type :</b> {location.state.product.item_type}
+                    <b>Item Stock :</b> {location.state.product.item_stock}{" "}
+                    {location.state.product.unit_name}
                   </p>
                 )}
                 {location.state.product.mrp && (
@@ -174,24 +207,9 @@ const Item = () => {
                     {location.state.product.sale_rate}
                   </p>
                 )}
-                {location.state.product.subject_name && (
-                  <p>
-                    <b>Subject :</b> {location.state.product.subject_name}
-                  </p>
-                )}
                 {location.state.product.tax_percent && (
                   <p>
                     <b>Tax Percent :</b> {location.state.product.tax_percent}%
-                  </p>
-                )}
-                {location.state.product.unit_name && (
-                  <p>
-                    <b>Unit :</b> {location.state.product.unit_name}
-                  </p>
-                )}
-                {location.state.product.writer_name && (
-                  <p>
-                    <b>Writer :</b> {location.state.product.writer_name}
                   </p>
                 )}
               </div>

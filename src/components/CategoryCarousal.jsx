@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const CategoryCarousal = ({ data, sellType }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const carousalStyle = {
     borderTop: "2px solid #f1f1f1aa",
-    backgroundColor: "#eee"
   };
 
   const slidesOverflow = {
@@ -86,35 +85,46 @@ const CategoryCarousal = ({ data, sellType }) => {
     }
   };
 
-  
   return (
-    <div style={carousalStyle} className="h-[100%] w-[100%] relative flex flex-col pt-16 pb-24 px-8 my-16 mx-0">
-      <div className="mb-4 text-2xl font-bold capitalize">
-        Shop by {sellType} :
+    <div
+      style={carousalStyle}
+      className="h-[100%] w-[100%] relative flex flex-col pt-16 pb-24 px-8 my-16 mx-0"
+    >
+      <div className="mb-8 bg-[url('../../public/bgg.png')] p-8">
+        <div className="flex justify-between items-center">
+          <div className="text-2xl font-bold capitalize">
+            Shop by {sellType} :
+          </div>
+          <Link
+            className="text-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
+            to={`/${sellType}`}
+            state={{ sellType: sellType }}
+          >
+            Show More
+          </Link>
+        </div>
       </div>
       <div style={slidesOverflow}>
         <div style={getSlidesStyle()}>
-          {data.length>0? data.map((item, index) => {
-            return (
-              <Link
-                to={'/result'}
-                state={{name: item[`${sellType}_name`], sellType: sellType}}
-                className="text-white duration-200 hover:scale-110 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)] rounded-md"
-                key={index}
-              >
-                {item[`${sellType}_name`]}
-              </Link>
-            );
-          }):<Skeleton containerClassName="flex-1 gap-4" count={5} height={20}/>}
+          {data.length > 0 ? (
+            data.map((item, index) => {
+              return (
+                <Link
+                  to={"/result"}
+                  state={{ name: item[`${sellType}_name`], sellType: sellType }}
+                  className="text-white duration-200 hover:scale-110 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)] rounded-md"
+                  key={index}
+                >
+                  {item[`${sellType}_name`]}
+                </Link>
+              );
+            })
+          ) : (
+            <Skeleton containerClassName="flex-1 gap-4" count={5} height={20} />
+          )}
         </div>
       </div>
-      <Link
-        className="absolute right-[2rem] top-15 h-[30px] md:h-[50px] text-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
-        to={`/${sellType}`}
-        state={{sellType: sellType}}
-      >
-        Show More
-      </Link>
+
       <div
         className="absolute right-[4rem] md:right-[5.2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
         onClick={() => goToPrevious()}
