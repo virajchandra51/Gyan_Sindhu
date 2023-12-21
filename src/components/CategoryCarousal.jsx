@@ -8,14 +8,8 @@ const CategoryCarousal = ({ data, sellType }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const carousalStyle = {
-    height: "100%",
-    width: "100%",
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    padding: "4rem 2rem",
-    margin: "4rem 0",
     borderTop: "2px solid #f1f1f1aa",
+    backgroundColor: "#eee"
   };
 
   const slidesOverflow = {
@@ -92,9 +86,9 @@ const CategoryCarousal = ({ data, sellType }) => {
     }
   };
 
-
+  
   return (
-    <div style={carousalStyle}>
+    <div style={carousalStyle} className="h-[100%] w-[100%] relative flex flex-col pt-16 pb-24 px-8 my-16 mx-0">
       <div className="mb-4 text-2xl font-bold capitalize">
         Shop by {sellType} :
       </div>
@@ -122,13 +116,13 @@ const CategoryCarousal = ({ data, sellType }) => {
         Show More
       </Link>
       <div
-        className="absolute right-[4rem] md:right-[5.2rem] bottom-0 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
+        className="absolute right-[4rem] md:right-[5.2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
         onClick={() => goToPrevious()}
       >
         <BiArrowBack className="text-sm md:text-lg fill-white" />
       </div>
       <div
-        className="absolute right-[2rem] bottom-0 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
+        className="absolute right-[2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
         onClick={() => goToNext()}
       >
         <BiArrowBack className="rotate-180 text-sm md:text-lg fill-white" />

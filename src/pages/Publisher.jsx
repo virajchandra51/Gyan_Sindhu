@@ -153,7 +153,7 @@ const Publisher = () => {
             renderOnZeroPageCount={null}
             initialPage={0}
             activeClassName="bg-[var(--primary-c)] text-white"
-            className="flex flex-row gap-4 my-4 justify-end px-4 text-xl items-center mb-12"
+            className="flex flex-row gap-4 my-4 justify-center md:justify-end px-4 text-xl items-center mb-12"
           />
         )}
       </Wrapper>

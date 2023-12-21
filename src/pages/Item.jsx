@@ -197,7 +197,7 @@ const Item = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 mb-12">
+            <div className="flex md:flex-row flex-col items-center gap-4 my-12">
               <div className="flex items-center">
                 <h1 className="font-bold">Qty: </h1>
                 <div className="ml-4 flex items-center justify-center border-2">
@@ -212,7 +212,7 @@ const Item = () => {
                     type="text"
                     name="qty"
                     value={qty}
-                    className="text-center px-[6px] py-[10px] max-w-[80px] border-x-2"
+                    className="text-center px-[6px] py-[10px] w-full md:w-[80px] border-x-2"
                   />
                   <button
                     className="text-center p-3 bg-gray-200 text-xl"
