@@ -15,7 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 import sampleProduct from "../../public/sampleProduct.jpeg";
 
 const Item = () => {
-  
   const [qty, setQty] = useState(1);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -139,17 +138,62 @@ const Item = () => {
             <div>
               <div className="text-2xl font-bold mb-5">Product Details</div>
               <div className="text-md mb-5">
-                <p>Edition No. : {location.state.product.edition_no}</p>
-                <p>ISBN Code : {location.state.product.isbn_code}</p>
-                <p>Item Code : {location.state.product.item_code}</p>
-                <p>Item Stock : {location.state.product.item_stock}</p>
-                <p>Item Type : {location.state.product.item_type}</p>
-                <p>MRP : &#8377; {location.state.product.mrp}</p>
-                <p>Sale Rate : &#8377; {location.state.product.sale_rate}</p>
-                <p>Subject : {location.state.product.subject_name}</p>
-                <p>Tax Percent : {location.state.product.tax_percent}%</p>
-                <p>Unit : {location.state.product.unit_name}</p>
-                <p>Writer : {location.state.product.writer_name}</p>
+                {location.state.product.edition_no && (
+                  <p>
+                    <b>Edition No. :</b> {location.state.product.edition_no}
+                  </p>
+                )}
+                {location.state.product.isbn_code && (
+                  <p>
+                    <b>ISBN Code :</b> {location.state.product.isbn_code}
+                  </p>
+                )}
+                {location.state.product.item_code && (
+                  <p>
+                    <b>Item Code :</b> {location.state.product.item_code}
+                  </p>
+                )}
+                {location.state.product.item_stock && (
+                  <p>
+                    <b>Item Stock :</b> {location.state.product.item_stock}
+                  </p>
+                )}
+                {location.state.product.item_type && (
+                  <p>
+                    <b>Item Type :</b> {location.state.product.item_type}
+                  </p>
+                )}
+                {location.state.product.mrp && (
+                  <p>
+                    <b>MRP : &#8377;</b> {location.state.product.mrp}
+                  </p>
+                )}
+                {location.state.product.sale_rate && (
+                  <p>
+                    <b>Sale Rate : &#8377;</b>{" "}
+                    {location.state.product.sale_rate}
+                  </p>
+                )}
+                {location.state.product.subject_name && (
+                  <p>
+                    <b>Subject :</b> {location.state.product.subject_name}
+                  </p>
+                )}
+                {location.state.product.tax_percent && (
+                  <p>
+                    <b>Tax Percent :</b> {location.state.product.tax_percent}%
+                  </p>
+                )}
+                {location.state.product.unit_name && (
+                  <p>
+                    <b>Unit :</b> {location.state.product.unit_name}
+                  </p>
+                )}
+                {location.state.product.writer_name && (
+                  <p>
+                    <b>Writer :</b> {location.state.product.writer_name}
+                  </p>
+                )}
               </div>
             </div>
 
