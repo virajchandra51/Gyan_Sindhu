@@ -2,7 +2,6 @@ import React from "react";
 import Wrapper from "../components/Wrapper";
 import { Link, useLocation } from "react-router-dom";
 import Layout from "../Layout";
-import { useLayoutEffect } from "react";
 import { useState, useEffect } from "react";
 import { BiPlus, BiMinus } from "react-icons/bi";
 
@@ -24,9 +23,10 @@ const Item = () => {
 
   useEffect(() => {
     setTotalPrice((qty * price).toFixed(2));
-  }, [qty]);
+  }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (location.state.product.isbn_code) fetchData();
   }, []);
 
@@ -54,7 +54,7 @@ const Item = () => {
         progress: undefined,
         theme: "dark",
       });
-    }
+    }e
   }
   function handleDec() {
     if (qty > 1) {
