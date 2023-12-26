@@ -214,12 +214,11 @@ const Item = () => {
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col items-center gap-4 mt-12">
-              <div className="flex items-center">
-                <h1 className="font-bold">Qty: </h1>
-                <div className="ml-4 flex items-center justify-center border-2">
+            <div className="flex items-center gap-4 mt-12">
+              <div className="flex items-center w-1/2">
+                <div className="flex items-center justify-center border-[1px] rounded-full">
                   <button
-                    className="text-center p-3 bg-gray-200 text-xl"
+                    className="text-center py-[1.1rem] px-4 bg-gray-200 text-xl rounded-l-full"
                     type="button"
                     onClick={handleDec}
                   >
@@ -229,10 +228,10 @@ const Item = () => {
                     type="text"
                     name="qty"
                     value={qty}
-                    className="text-center px-[6px] py-[10px] w-full md:w-[80px] border-x-2"
+                    className="text-center p-[14px] w-full"
                   />
                   <button
-                    className="text-center p-3 bg-gray-200 text-xl"
+                    className="text-center p-[1.1rem] px-4 bg-gray-200 text-xl rounded-r-full"
                     type="button"
                     onClick={handleInc}
                   >
@@ -242,7 +241,7 @@ const Item = () => {
               </div>
               {/* ADD TO CART BUTTON START */}
               <button
-                className="w-full py-4 rounded-full bg-[var(--primary-c)] text-white text-lg font-medium transition-transform active:scale-95 hover:bg-[var(--secondary-c)]"
+                className="w-1/2 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg font-medium transition-transform active:scale-95 hover:bg-[var(--secondary-c)]"
                 onClick={() => {
                   // dispatch(
                   //   addToCart({

@@ -137,9 +137,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      form.password != form.confirm_password
-    ) {
+    if (form.password != form.confirm_password) {
       toast.error("Passwords Don't Match!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -322,18 +320,16 @@ const Register = () => {
       <ToastContainer />
       <div className=" bg-gray-100 flex-col md:flex-row shadow-lg flex">
         <div className="p-8 flex justify-center flex-col w-full md:w-[90%]">
-        <Link
-          to={"/"}
-          className="w-[30%] max-w-[100px] text-center bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300"
-        >
-          Home
-        </Link>
+          <Link
+            to={"/"}
+            className="w-[30%] max-w-[100px] text-center bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300"
+          >
+            Home
+          </Link>
           <h2 className="font-bold text-4xl my-4 text-[var(--primary-c)]">
             Register
           </h2>
-          <p className="text-xl text-[var(--primary-c)]">
-            Welcome to Skoolio!
-          </p>
+          <p className="text-xl text-[var(--primary-c)]">Welcome to Skoolio!</p>
 
           <form
             action=""
@@ -343,7 +339,7 @@ const Register = () => {
             <div className="flex flex-col items-start mt-8">
               <p>Member Name</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="membername"
                 placeholder="Member Name"
@@ -355,7 +351,7 @@ const Register = () => {
             {/* <div className="flex flex-col items-start">
               <p>Nick Name</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="nickname"
                 placeholder="Nick Name"
@@ -365,7 +361,7 @@ const Register = () => {
             <div className="flex flex-col items-start">
               <p>Email</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="emailid"
                 placeholder="Email"
@@ -377,7 +373,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Spouse Name</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="spousename"
                   placeholder="Spouse Name"
@@ -387,7 +383,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Children</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="children"
                   placeholder="Children"
@@ -399,7 +395,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Mobile No 1</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="mobileno1"
                   placeholder="Mobile No 1"
@@ -410,7 +406,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Mobile No 2</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="mobileno2"
                   placeholder="Mobile No 2"
@@ -422,7 +418,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Age</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="age"
                   required
@@ -433,7 +429,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Birth Date</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   onFocus={(e) => (e.target.type = "date")}
                   min="1997-01-01" max="2100-12-31"
@@ -446,7 +442,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Anniversary Date</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="annidate"
                   onFocus={(e) => (e.target.type = "date")}
@@ -461,7 +457,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>GST No.</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="reggstin"
                   placeholder="GST No."
@@ -471,7 +467,7 @@ const Register = () => {
               <div className="flex flex-col items-start w-[50%]">
                 <p>Aadhar No.</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="regaadhar"
                   placeholder="Aadhar No."
@@ -482,7 +478,7 @@ const Register = () => {
             <div className="flex flex-col items-start">
               <p>Address 1</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="address1"
                 placeholder="Address 1"
@@ -493,7 +489,7 @@ const Register = () => {
             <div className="flex flex-col items-start">
               <p>Address 2</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="address2"
                 placeholder="Address 2"
@@ -536,23 +532,23 @@ const Register = () => {
               </div>
             </div> */}
             <div className="flex gap-4 md:flex-row flex-col">
-              <div className="flex flex-col items-start w-[50%]">
+              <div className="flex flex-col items-start w-full">
                 <p>City</p>
                 <Select
                   options={cityList.data}
                   onChange={handleSelect}
-                  placeholder="City"
+                  placeholder="Select City"
                   name="city"
                   className="w-full"
                   required
                 />
               </div>
-              <div className="flex flex-col items-start w-[50%]">
+              <div className="flex flex-col items-start w-full">
                 <p>State</p>
                 <Select
                   options={stateList.data}
                   onChange={handleSelect}
-                  placeholder="State"
+                  placeholder="Select State"
                   name="statecode"
                   className="w-full"
                   required
@@ -587,7 +583,7 @@ const Register = () => {
             {/* <div className="flex flex-col items-start">
               <p>Languages Known</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="languagesknown"
                 placeholder="Languages Known"
@@ -598,7 +594,7 @@ const Register = () => {
               <div className="flex flex-col items-start">
                 <p>Password</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
@@ -612,7 +608,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[38px] right-2"
+                  className="absolute cursor-pointer top-[31px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
@@ -637,7 +633,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[38px] right-2"
+                  className="absolute cursor-pointer top-[31px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
@@ -654,7 +650,7 @@ const Register = () => {
               <div className="flex flex-col items-start">
                 <p>Confirm Password</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 rounded-md border w-[100%]"
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirm_password"
                   placeholder="Confirm Password"
@@ -668,7 +664,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[38px] right-2"
+                  className="absolute cursor-pointer top-[31px] right-2"
                   onClick={() => setShowConfirmPassword((prev) => !prev)}
                 >
                   <path
@@ -693,7 +689,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[38px] right-2"
+                  className="absolute cursor-pointer top-[31px] right-2"
                   onClick={() => setShowConfirmPassword((prev) => !prev)}
                 >
                   <path
@@ -713,10 +709,11 @@ const Register = () => {
 
           <div className="mt-3 text-xs gap-4 flex justify-between items-center text-[var(--primary-c)]">
             <p>Already have an account? </p>
-            <Link to="/login">
-              <div className="py-2 px-5 bg-white border rounded-full hover:opacity-[0.7] duration-300">
-                Login
-              </div>
+            <Link
+              to="/login"
+              className="py-2 px-5 bg-white border rounded-full hover:opacity-[0.7] duration-300"
+            >
+              Login
             </Link>
           </div>
         </div>
