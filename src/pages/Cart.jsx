@@ -226,8 +226,11 @@ const School = () => {
             <>
               {/* HEADING AND PARAGRAPH START */}
               <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
-                <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
+                <div className="text-[28px] md:text-[34px] mb-2 font-semibold leading-tight">
                   Shopping Cart
+                </div>
+                <div className="text-lg mb-4">
+                  Ordering Branch - {global.branch_name}
                 </div>
               </div>
               {/* HEADING AND PARAGRAPH END */}

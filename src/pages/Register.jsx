@@ -332,7 +332,7 @@ const Register = () => {
             Register
           </h2>
           <p className="text-xl text-[var(--primary-c)]">
-            Welcome to Gyan Sindhu!
+            Welcome to Skoolio!
           </p>
 
           <form

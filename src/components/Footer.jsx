@@ -5,7 +5,7 @@ import Wrapper from "./Wrapper";
 
 const Footer = () => {
   return (
-    <footer className="bg-[var(--primary-c)] text-white pt-14 pb-3">
+    <footer className="bg-[var(--primary-c)] text-white pt-14 pb-3 ">
       <Wrapper className="flex justify-between flex-col md:flex-row gap-[50px] md:gap-0">
         {/* LEFT START */}
         <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
@@ -43,13 +43,16 @@ const Footer = () => {
                 About Us
               </Link>
               <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                Delivery
+                Order Policy
               </div>
               <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                Returns
+                Return Policy
               </div>
               <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                 Payment Options
+              </div>
+              <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
+                Privacy Policy
               </div>
               <Link
                 to={"/contactus"}
@@ -65,12 +68,12 @@ const Footer = () => {
               <div className="font-oswald font-medium uppercase text-sm">
                 About Skoolio - A unit of Gyan Sindhu
               </div>
-              <a
+              {/* <a
                 href="tel:+91-8874211000"
                 className="text-sm text-white/[0.5] hover:text-white cursor-pointer"
               >
                 Phone : +91-8874211000
-              </a>
+              </a> */}
               <a
                 href="mailto:md@gyansindhu.com"
                 className="text-sm text-white/[0.5] hover:text-white cursor-pointer"

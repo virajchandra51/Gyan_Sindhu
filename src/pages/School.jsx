@@ -82,8 +82,7 @@ const School = () => {
             School
           </div>
           <div className="text-md md:text-xl mb-5">
-            One Stop Solution for all Kinds of School Books & Supplies by Gyan
-            Sindhu.
+            One Stop Solution for all Kinds of School Books & Supplies
           </div>
           <div className="flex justify-around flex-col md:flex-row gap-2">
             <div className="flex justify-center w-full items-center text-start gap-4">

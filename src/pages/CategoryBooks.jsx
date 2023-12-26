@@ -61,8 +61,7 @@ const CategoryBooks = () => {
             {location.state.category.item_gr_name}
           </div>
           <div className="text-md md:text-xl">
-            One Stop Solution for all Kinds of School Books & Supplies by Gyan
-            Sindhu.
+            One Stop Solution for all Kinds of School Books & Supplies
           </div>
         </div>
         {/* heading and paragaph end */}

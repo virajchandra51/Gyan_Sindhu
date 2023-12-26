@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const CategoryCarousal = ({ data, sellType }) => {
+const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const carousalStyle = {
@@ -93,7 +93,7 @@ const CategoryCarousal = ({ data, sellType }) => {
       <div className="mb-8 bg-[url('../../public/bgg.png')] p-8">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold capitalize">
-            Shop by {sellType} :
+            Shop by {sellTypeTitle} :
           </div>
           <Link
             className="text-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"

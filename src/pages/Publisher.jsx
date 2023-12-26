@@ -66,11 +66,10 @@ const Publisher = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Publisher
+            Publication
           </div>
           <div className="text-md md:text-xl mb-5">
-            One Stop Solution for all Kinds of School Books & Supplies by Gyan
-            Sindhu.
+            One Stop Solution for all Kinds of School Books & Supplies
           </div>
           <div className="flex justify-around gap-2">
             <div className="flex justify-center w-full items-center text-start gap-4">
@@ -78,7 +77,7 @@ const Publisher = () => {
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"
-                  placeholder="Search by Publisher Name ..."
+                  placeholder="Search by Publication Name ..."
                   type="text"
                   onChange={handleChanglePublisher}
                 />
@@ -117,7 +116,7 @@ const Publisher = () => {
                       </h5>
                       {item.any_remark && (
                         <p className="text-lg tracking-tight text-gray-900 dark:text-white">
-                          {item.any_remark}
+                          {item.any_remark.slice(3,item.any_remark.length-4)}
                         </p>
                       )}
                     </div>
@@ -127,7 +126,7 @@ const Publisher = () => {
             </div>
           ) : (
             <div className="text-2xl text-center mb-14">
-              Oops ... No Publisher Found!
+              Oops ... No Publication Found!
             </div>
           )
         ) : (

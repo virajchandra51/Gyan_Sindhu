@@ -85,23 +85,13 @@ const CartItem = ({ data }) => {
         <div className="flex flex-col md:flex-row justify-between">
           {/* PRODUCT TITLE */}
           <div className="text-lg md:text-2xl font-semibold text-black/[0.8]">
-            Products in {data.class_name} by {data.school_name}
-          </div>
-
-          {/* PRODUCT SUBTITLE */}
-          <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
-            hehe
+            {data.class_name} - {data.school_name}
           </div>
 
           {/* PRODUCT PRICE */}
           <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
             MRP : &#8377; {data.totalPrice}
           </div>
-        </div>
-
-        {/* PRODUCT SUBTITLE */}
-        <div className="text-md font-medium text-black/[0.5] hidden md:block">
-          Yo
         </div>
 
         <div className="flex items-center justify-between mt-4">

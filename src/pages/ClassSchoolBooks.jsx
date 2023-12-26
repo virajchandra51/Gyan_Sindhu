@@ -117,24 +117,22 @@ const ClassSchoolBooks = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Products in {location.state.class_name} by{" "}
-            {location.state.school_name}
+            {location.state.class_name} - {location.state.school_name}
           </div>
           <div className="text-md md:text-xl">
-            One Stop Solution for all Kinds of School Books & Supplies by Gyan
-            Sindhu.
+            One Stop Solution for all Kinds of School Books & Supplies
           </div>
         </div>
         {/* heading and paragaph end */}
 
         {/* products grid start */}
-        <div className="my-14 px-5 md:px-16">
+        <div className="mb-14 px-5 md:px-16">
           {productList.length > 0 ? (
             productList.map((productListItem, index) => {
               return (
                 <>
                   <div
-                    className="text-4xl font-bold my-8 text-green"
+                    className="text-4xl font-bold my-8 text-[var(--primary-c)]"
                     key={index}
                   >
                     {productListItem.item_type}
@@ -142,21 +140,20 @@ const ClassSchoolBooks = () => {
                   {productListItem.data.map((product, index) => {
                     return (
                       <div key={index} className="w-[97%] ml-auto">
-                        <h2 className="text-lg font-medium">
-                          {index + 1}. {product.item_name}
-                        </h2>
                         <div className="flex items-center text-black/[0.5]">
-                          <p className="mr-2 text-lg font-semibold">
-                            Publisher/Brand - {product.publisher_name}
-                          </p>
+                          <h2 className="text-lg font-bold text-black">
+                            {index + 1}. {product.item_name}
+                          </h2>
                           <div className="ml-auto flex items-end">
-                            <p className="mr-20">{product.quantity} {product.unit_name}</p>
+                            <p className="mr-20">
+                              {product.quantity} {product.unit_name}
+                            </p>
                             <p className="text-xl font-medium text-green-500">
                               &#8377;{product.net_sale_rate}
                             </p>
                           </div>
                         </div>
-                        <div className="h-[1px] bg-gray-200 my-4"></div>
+                        <div className="h-[1px] bg-gray-200 my-3"></div>
                       </div>
                     );
                   })}

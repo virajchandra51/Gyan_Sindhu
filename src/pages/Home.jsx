@@ -7,6 +7,7 @@ import Layout from "../Layout";
 import { useLayoutEffect } from "react";
 
 const sellTypes = ["publisher", "subject", "writer"];
+const sellTypesTitle = ["publication", "subject", "author"];
 
 const Home = () => {
   useLayoutEffect(() => {
@@ -93,9 +94,9 @@ const Home = () => {
     <Layout>
       {/* heading and paragaph start */}
       <HeroBanner />
-      {<CategoryCarousal data={data1.data} sellType={sellTypes[0]} />}
-      {<CategoryCarousal data={data2.data} sellType={sellTypes[1]} />}
-      {<CategoryCarousal data={data3.data} sellType={sellTypes[2]} />}
+      {<CategoryCarousal data={data1.data} sellType={sellTypes[0]} sellTypeTitle={sellTypesTitle[0]} />}
+      {<CategoryCarousal data={data2.data} sellType={sellTypes[1]} sellTypeTitle={sellTypesTitle[1]} />}
+      {<CategoryCarousal data={data3.data} sellType={sellTypes[2]} sellTypeTitle={sellTypesTitle[2]} />}
       {/* {<CategoryCarousal data={data4.data} sellType={sellTypes[3]} />}
       {<CategoryCarousal data={data5.data} sellType={sellTypes[4]} />} */}
       {/* heading and paragaph end */}

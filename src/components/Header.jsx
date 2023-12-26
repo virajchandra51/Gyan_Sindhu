@@ -16,9 +16,9 @@ import logo from "../../public/logo.png";
 
 const SellTypeData = [
   { id: 1, name: "School", url: "/school" },
-  { id: 2, name: "Publisher", url: "/publisher" },
+  { id: 2, name: "Publication", url: "/publisher" },
   { id: 3, name: "Subject", url: "/subject" },
-  { id: 4, name: "Writer", url: "/writer" },
+  { id: 4, name: "Author", url: "/writer" },
 ];
 
 const Header = () => {
@@ -130,7 +130,7 @@ const Header = () => {
           <div
             onMouseEnter={() => setShowProfileMenu(true)}
             onMouseLeave={() => setShowProfileMenu(false)}
-            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative"
+            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] duration-200 cursor-pointer relative"
           >
             <ProfileSubMenu
               showProfileMenu={showProfileMenu}
@@ -160,7 +160,7 @@ const Header = () => {
           <div
             onMouseEnter={() => setShowBranchMenu(true)}
             onMouseLeave={() => setShowBranchMenu(false)}
-            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative"
+            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] duration-200 cursor-pointer relative"
           >
             <BranchSubMenu
               showBranchMenu={showBranchMenu}
@@ -171,7 +171,7 @@ const Header = () => {
           {/* Icon end */}
 
           {/* Mobile icon start */}
-          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative ">
+          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] duration-200 cursor-pointer relative ">
             {mobileMenu ? (
               <VscChromeClose
                 className="text-[16px]"
@@ -193,7 +193,7 @@ const Header = () => {
             return (
               <Link
                 key={index}
-                state={{ sellType: item.name.toLowerCase() }}
+                state={{ sellType: item.url.toLowerCase().substring(1), sellTypeTitle: item.name }}
                 to={`${item.url}`}
                 className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)]"
               >
