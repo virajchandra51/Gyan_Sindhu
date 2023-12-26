@@ -17,12 +17,11 @@ const Counter = () => {
         <ScrollTrigger
           style={{ width: "100%" }}
           onEnter={() => setCounterOn(true)}
-          onExit={() => setCounterOn(false)}
         >
-            <div className="flex items-center h-[100px] justify-around">
-              <div className="">
+            <div className="flex items-center h-[130px] justify-around">
+              <div className="text-3xl">
                 <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "var(--secondary-c)" }}>
+                  <span style={{ color: "black" }}>
                     {counterOn && (
                       <CountUp
                         start={500}
@@ -36,9 +35,9 @@ const Counter = () => {
                   TEAMS
                 </p>
               </div>
-              <div className="">
+              <div className="text-3xl">
                 <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "var(--secondary-c)" }}>
+                  <span style={{ color: "black" }}>
                     {counterOn && (
                       <CountUp start={50} end={100} duration={1.5} delay={0} />
                     )}
@@ -47,9 +46,9 @@ const Counter = () => {
                   COLLEGES
                 </p>
               </div>
-              <div className="">
+              <div className="text-3xl">
                 <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "var(--secondary-c)" }}>
+                  <span style={{ color: "black" }}>
                     {counterOn && (
                       <CountUp
                         start={1000}
@@ -63,9 +62,9 @@ const Counter = () => {
                   DEVELOPERS
                 </p>
               </div>
-              <div className="">
+              <div className="text-3xl">
                 <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "var(--secondary-c)" }}>
+                  <span style={{ color: "black" }}>
                     {counterOn && (
                       <CountUp
                         start={100}

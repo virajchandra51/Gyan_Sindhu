@@ -21,7 +21,6 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
       return {
         display: "flex",
         height: "100%",
-        gap: "2rem",
         transition: "transform ease-out 0.3s",
         transform: `translateX(${-(currentIndex * (100 / data?.length))}%)`,
       };
@@ -30,7 +29,6 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
       return {
         display: "flex",
         height: "100%",
-        gap: "2rem",
         transition: "transform ease-out 0.3s",
         transform: `translateX(${-(currentIndex * (100 / data?.length))}%)`,
       };
@@ -39,7 +37,6 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
       return {
         display: "flex",
         height: "100%",
-        gap: "2rem",
         transition: "transform ease-out 0.3s",
         transform: `translateX(${-(currentIndex * (100 / data?.length))}%)`,
       };
@@ -47,7 +44,6 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
     return {
       display: "flex",
       height: "100%",
-      gap: "2rem",
       transition: "transform ease-out 0.3s",
       transform: `translateX(${-(currentIndex * (100 / data?.length))}%)`,
     };
@@ -90,7 +86,7 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
       style={carousalStyle}
       className="h-[100%] w-[100%] relative flex flex-col pt-16 pb-24 px-8 my-16 mx-0"
     >
-      <div className="mb-8 bg-[url('../../public/bgg.png')] p-8">
+      <div className="mb-8 bg-gray-200 p-8">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold capitalize">
             Shop by {sellTypeTitle} :
@@ -108,14 +104,18 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
         <div style={getSlidesStyle()}>
           {data.length > 0 ? (
             data.map((item, index) => {
+              console.log(item);
               return (
                 <Link
                   to={"/result"}
                   state={{ name: item[`${sellType}_name`], sellType: sellType }}
-                  className="text-white duration-200 hover:scale-110 hover:bg-[var(--secondary-c)] flex justify-center items-center min-w-fit px-16 py-8 text-center bg-[var(--primary-c)] rounded-md"
                   key={index}
+                  className="flex justify-center items-center w-auto h-[250px]"
                 >
-                  {item[`${sellType}_name`]}
+                  <img
+                    src={item.photo_file_url}
+                    className="duration-200 hover:opacity-80 object-contain w-full"
+                  ></img>
                 </Link>
               );
             })

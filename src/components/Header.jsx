@@ -195,7 +195,7 @@ const Header = () => {
                 key={index}
                 state={{ sellType: item.url.toLowerCase().substring(1), sellTypeTitle: item.name }}
                 to={`${item.url}`}
-                className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] font-medium"
+                className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] hover:text-white duration-200 font-semibold"
               >
                 <li>{item.name}</li>
               </Link>
