@@ -352,7 +352,7 @@ const Register = () => {
                 autoCapitalize="sentences"
               />
             </div>
-            <div className="flex flex-col items-start">
+            {/* <div className="flex flex-col items-start">
               <p>Nick Name</p>
               <input
                 className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
@@ -361,7 +361,7 @@ const Register = () => {
                 placeholder="Nick Name"
                 onChange={(e) => handle(e)}
               />
-            </div>
+            </div> */}
             <div className="flex flex-col items-start">
               <p>Email</p>
               <input
@@ -373,7 +373,7 @@ const Register = () => {
                 onChange={(e) => handle(e)}
               />
             </div>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
                 <p>Spouse Name</p>
                 <input
@@ -394,7 +394,7 @@ const Register = () => {
                   onChange={(e) => handle(e)}
                 />
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
                 <p>Mobile No 1</p>
@@ -418,7 +418,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
                 <p>Age</p>
                 <input
@@ -456,7 +456,7 @@ const Register = () => {
                   onChange={(e) => handle(e)}
                 />
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
                 <p>GST No.</p>
@@ -500,7 +500,7 @@ const Register = () => {
                 onChange={(e) => handle(e)}
               />
             </div>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
                 <p>Gender</p>
                 <Select
@@ -534,7 +534,7 @@ const Register = () => {
                   className="w-[100%]"
                 />
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-4 md:flex-row flex-col">
               <div className="flex flex-col items-start w-[50%]">
                 <p>City</p>
@@ -584,7 +584,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col items-start">
+            {/* <div className="flex flex-col items-start">
               <p>Languages Known</p>
               <input
                 className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
@@ -593,7 +593,7 @@ const Register = () => {
                 placeholder="Languages Known"
                 onChange={(e) => handle(e)}
               />
-            </div>
+            </div> */}
             <div className="relative">
               <div className="flex flex-col items-start">
                 <p>Password</p>
