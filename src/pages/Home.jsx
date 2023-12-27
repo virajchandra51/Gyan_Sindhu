@@ -7,8 +7,8 @@ import Counter from "../components/Counter";
 import Layout from "../Layout";
 import { useLayoutEffect } from "react";
 
-const sellTypes = ["publisher", "subject", "writer"];
-const sellTypesTitle = ["publication", "subject", "author"];
+const sellTypes = ["publisher", "school", "writer"];
+const sellTypesTitle = ["publication", "school", "author"];
 
 const Home = () => {
   useLayoutEffect(() => {
@@ -44,12 +44,12 @@ const Home = () => {
     res = res.slice(0, 10);
     setData1({ data: res, loading: false });
     res = await fetchDataFromApi(
-      "selectionlist",
+      "schoollist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=" +
-        `${sellTypes[1]}` +
-        "&ipaddress=0.0.0.0"
+        "&citycode=0" +
+        "&schoolname=" +
+        "&ipaddress=0.0.0.0&pageno=1&pagelimit=1000"
     );
     res = res.slice(0, 10);
     setData2({ data: res, loading: false });

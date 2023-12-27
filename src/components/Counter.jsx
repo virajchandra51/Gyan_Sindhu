@@ -9,76 +9,65 @@ const Counter = () => {
   return (
     <div className="flex flex-col items-center w-full my-8">
       <div className="text-center max-w-[800px] mx-auto my-8">
-          <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Why Should You Choose Us?
-          </div>
+        <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
+          Why Should You Choose Us?
         </div>
-      <div className="bg-[var(--primary-c)] text-white w-full">
+      </div>
+      <div className="bg-[var(--primary-c)] text-white w-[95%] rounded-md">
         <ScrollTrigger
           style={{ width: "100%" }}
           onEnter={() => setCounterOn(true)}
         >
-            <div className="flex items-center h-[130px] justify-around">
-              <div className="text-3xl">
-                <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "black" }}>
-                    {counterOn && (
-                      <CountUp
-                        start={500}
-                        end={1000}
-                        duration={1.5}
-                        delay={0}
-                      />
-                    )}
-                    +
-                  </span>{" "}
-                  TEAMS
-                </p>
-              </div>
-              <div className="text-3xl">
-                <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "black" }}>
-                    {counterOn && (
-                      <CountUp start={50} end={100} duration={1.5} delay={0} />
-                    )}
-                    +
-                  </span>{" "}
-                  COLLEGES
-                </p>
-              </div>
-              <div className="text-3xl">
-                <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "black" }}>
-                    {counterOn && (
-                      <CountUp
-                        start={1000}
-                        end={2000}
-                        duration={1.5}
-                        delay={0}
-                      />
-                    )}
-                    +
-                  </span>{" "}
-                  DEVELOPERS
-                </p>
-              </div>
-              <div className="text-3xl">
-                <p className="codeutsava__section-statistics-format-card-description">
-                  <span style={{ color: "black" }}>
-                    {counterOn && (
-                      <CountUp
-                        start={100}
-                        end={3000}
-                        duration={1.5}
-                        delay={0}
-                      />
-                    )}
-                    +
-                  </span>{" "}
-                  VISITORS
-                </p>
-              </div>
+          <div className="flex items-center h-[150px] justify-around">
+            <div className="text-2xl">
+              <p className="font-xs text-center">
+                <span className="font-extrabold text-4xl">
+                  {counterOn && (
+                    <CountUp start={0} end={25} duration={5} delay={0.5} />
+                  )}
+                  +
+                  <br />
+                </span>{" "}
+                Years Experience
+              </p>
             </div>
+            <div className="text-2xl">
+              <p className="font-xs text-center">
+                <span className="font-extrabold text-4xl">
+                  {counterOn && (
+                    <CountUp start={0} end={50} duration={5} delay={0.5} />
+                  )}
+                  K+
+                  <br />
+                </span>{" "}
+                Clients Served
+              </p>
+            </div>
+            <div className="text-2xl">
+              <p className="font-xs text-center">
+                <span className="font-extrabold text-4xl">
+                  {counterOn && (
+                    <CountUp start={0} end={100} duration={5} delay={0.5} />
+                  )}
+                  +
+                  <br />
+                </span>{" "}
+                Schools
+              </p>
+            </div>
+            <div className="text-2xl">
+              <p className="font-xs text-center">
+                <span className="font-extrabold text-4xl">
+                  {counterOn && (
+                    <CountUp start={0} end={10} duration={5} delay={0.5} />
+                  )}
+                  K+
+                  <br />
+                </span>{" "}
+                Products
+              </p>
+            </div>
+          </div>
         </ScrollTrigger>
       </div>
     </div>

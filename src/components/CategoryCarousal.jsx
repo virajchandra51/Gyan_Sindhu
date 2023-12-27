@@ -86,17 +86,18 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
       style={carousalStyle}
       className="h-[100%] w-[100%] relative flex flex-col pt-16 pb-24 px-8 my-16 mx-0"
     >
-      <div className="mb-8 bg-gray-200 p-8">
+      <div className="mb-8">
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold capitalize">
+          <div className="text-3xl font-bold capitalize">
             Shop by {sellTypeTitle} :
           </div>
           <Link
-            className="text-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
+            className="text-yellow-500 z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
             to={`/${sellType}`}
             state={{ sellType: sellType }}
           >
-            Show More
+            See all
+            <BiArrowBack className="rotate-180 ml-1 text-sm md:text-lg fill-yellow-500" />
           </Link>
         </div>
       </div>
@@ -106,17 +107,22 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
             data.map((item, index) => {
               console.log(item);
               return (
-                <Link
-                  to={"/result"}
-                  state={{ name: item[`${sellType}_name`], sellType: sellType }}
-                  key={index}
-                  className="flex justify-center items-center w-auto h-[250px]"
-                >
-                  <img
-                    src={item.photo_file_url}
-                    className="duration-200 hover:opacity-80 object-contain w-full"
-                  ></img>
-                </Link>
+                <div className="flex justify-center items-center min-w-[250px] min-h-[250px] w-[250px] h-[250px]">
+                  <Link
+                    to={"/result"}
+                    state={{
+                      name: item[`${sellType}_name`],
+                      sellType: sellType,
+                    }}
+                    key={index}
+                    className="flex items-center justify-center object-fill"
+                  >
+                    <img
+                      src={item.photo_file_url}
+                      className="duration-200 hover:opacity-80  w-full object-fill"
+                    ></img>
+                  </Link>
+                </div>
               );
             })
           ) : (
