@@ -3,6 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import dummy from "../../public/sampleProduct.jpeg";
 
 const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -105,7 +106,6 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
         <div style={getSlidesStyle()}>
           {data.length > 0 ? (
             data.map((item, index) => {
-              console.log(item);
               return (
                 <div className="flex justify-center items-center min-w-[250px] min-h-[250px] w-[250px] h-[250px]">
                   <Link
@@ -117,10 +117,12 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
                     key={index}
                     className="flex items-center justify-center object-fill"
                   >
-                    <img
-                      src={item.photo_file_url}
-                      className="duration-200 hover:opacity-80  w-full object-fill"
-                    ></img>
+                    {item.photo_file_url && 
+                      <img
+                        src={item.photo_file_url}
+                        className="duration-200 hover:opacity-80  w-full object-fill"
+                      ></img>
+                    }
                   </Link>
                 </div>
               );

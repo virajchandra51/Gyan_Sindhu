@@ -18,7 +18,7 @@ const Counter = () => {
           style={{ width: "100%" }}
           onEnter={() => setCounterOn(true)}
         >
-          <div className="flex items-center h-[150px] justify-around">
+          <div className="flex md:flex-row flex-col items-center gap-8 py-12 px-8 justify-around">
             <div className="text-2xl">
               <p className="font-xs text-center">
                 <span className="font-extrabold text-4xl">
