@@ -5,7 +5,7 @@ import Wrapper from "./Wrapper";
 
 const Footer = () => {
   return (
-    <footer className="bg-[var(--primary-c)] pt-14 pb-3 ">
+    <footer className="bg-white pt-14 pb-10">
       <Wrapper className="flex justify-between flex-col md:flex-row gap-[50px] md:gap-0">
         {/* LEFT START */}
         <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
@@ -14,16 +14,16 @@ const Footer = () => {
             <div className="font-bold uppercase text-lg cursor-pointer">
               Member
             </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-black text-white duration-200">
+            <div className="font-medium text-md cursor-pointer  hover:text-black text-[var(--primary-c)] duration-200">
               Register Now
             </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-black text-white duration-200">
+            <div className="font-medium text-md cursor-pointer  hover:text-black text-[var(--primary-c)] duration-200">
               My Profile
             </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-black text-white duration-200">
+            <div className="font-medium text-md cursor-pointer  hover:text-black text-[var(--primary-c)] duration-200">
               Login
             </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-black text-white duration-200">
+            <div className="font-medium text-md cursor-pointer  hover:text-black text-[var(--primary-c)] duration-200">
               Feedback
             </div>
           </div>
@@ -36,25 +36,25 @@ const Footer = () => {
               <div className="font-bold uppercase text-lg">Pages</div>
               <Link
                 to={"/about"}
-                className="text-md hover:text-black text-white duration-200 cursor-pointer"
+                className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer"
               >
                 About Us
               </Link>
-              <div className="text-md hover:text-black text-white duration-200 cursor-pointer">
+              <div className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer">
                 Order Policy
               </div>
-              <div className="text-md hover:text-black text-white duration-200 cursor-pointer">
+              <div className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer">
                 Return Policy
               </div>
-              <div className="text-md hover:text-black text-white duration-200 cursor-pointer">
+              <div className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer">
                 Payment Options
               </div>
-              <div className="text-md hover:text-black text-white duration-200 cursor-pointer">
+              <div className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer">
                 Privacy Policy
               </div>
               <Link
                 to={"/contactus"}
-                className="text-md hover:text-black text-white duration-200 cursor-pointer"
+                className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer"
               >
                 Contact Us
               </Link>
@@ -68,20 +68,20 @@ const Footer = () => {
               </div>
               {/* <a
                 href="tel:+91-8874211000"
-                className="text-md hover:text-black text-white duration-200 cursor-pointer"
+                className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer"
               >
                 Phone : +91-8874211000
               </a> */}
               <a
                 href="mailto:md@gyansindhu.com"
-                className="text-md hover:text-black text-white duration-200 cursor-pointer"
+                className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer"
               >
                 Email : md@gyansindhu.com
               </a>
               <Link
                 to="https://maps.app.goo.gl/ZxRwgmQ3jracFYpB6"
                 target="_blank"
-                className="text-md hover:text-black text-white duration-200 cursor-pointer"
+                className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer"
               >
                 Address 1 : #44 Chandrika Colony, Sigra <br />
                 Varanasi - 221010
@@ -91,7 +91,7 @@ const Footer = () => {
               <Link
                 to="https://maps.app.goo.gl/DdudH9q9FwfHvBRa6"
                 target="_blank"
-                className="text-md hover:text-black text-white duration-200 cursor-pointer"
+                className="text-md hover:text-black text-[var(--primary-c)] duration-200 cursor-pointer"
               >
                 Address 2 : #137, 2nd Cross, Amarjyothi, Domlur <br />
                 Bengaluru - 560071
@@ -130,7 +130,8 @@ const Footer = () => {
         </div>
         {/* RIGHT END */}
       </Wrapper>
-      <Wrapper className="flex justify-between mt-10 flex-col md:flex-row gap-[10px] md:gap-0">
+      <hr className="my-10"/>
+      <Wrapper className="flex justify-between flex-col md:flex-row gap-[10px] md:gap-0">
         {/* LEFT START */}
         <div className="text-md  font-semibold text-center md:text-left">
           © 2024 Gyan Sindhu. All Rights Reserved.{" "}

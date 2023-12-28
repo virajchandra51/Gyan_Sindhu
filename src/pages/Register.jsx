@@ -150,6 +150,48 @@ const Register = () => {
       });
       return;
     }
+    if(form.mobileno1.length !== 10)
+    {
+      toast.error("Mobile Number 1 should be 10 length and digits only!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    if(!isANumber(form.mobileno1))
+    {
+      toast.error("Mobile Number 1 should be 10 length and digits only!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    if(form.mobileno2.length > 0 && mobileno2.length !== 10)
+    {
+      toast.error("Mobile Number 2 should be 10 length and digits only!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
     if (
       form.regaadhar.length > 0 &&
       form.regaadhar.length !== 16 &&
@@ -277,8 +319,8 @@ const Register = () => {
   const [form, setForm] = useState({
     membername: "",
     nickname: "",
-    salutation: "1",
-    sexcode: "1",
+    salutation: "",
+    sexcode: "",
     age: "",
     desigcode: "",
     spousename: "",
