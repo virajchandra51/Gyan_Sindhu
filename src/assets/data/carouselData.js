@@ -1,34 +1,39 @@
 import slide1 from "../slide-1.jpeg";
-import slide2 from "../slide-2.png";
-import slide3 from "../slide-2.jpg";
+import slide2 from "../slide-2.jpg";
+import slide3 from "../slide2.jpg";
 import slide4 from "../slide-1.webp";
 import slide5 from "../slide-5.png";
-import slide6 from "../slide-6.webp";
+import slide6 from "../slide-6.jpg";
+import slide7 from "../slide-7.jpg";
 
 const CarouselData = [
     {
+        img: slide5,
+        caption: "School Books",
+    },
+    {
         img: slide1,
-        caption: "School Stationary Supply",
+        caption: "Stationery Supplies",
+    },
+    {
+        img: slide6,
+        caption: "NCERT books",
+    },
+    {
+        img: slide7,
+        caption: "Office Stationery Supply",
     },
     {
         img: slide2,
-        caption: "School Badges, Trophies, Mementos ",
-    },
-    {
-        img: slide3,
         caption: "Library Books Supply",
     },
     {
         img: slide4,
-        caption: "Custom Stationary",
+        caption: "Customised School Stationery",
     },
     {
-        img: slide5,
-        caption: "Home Delivery of Book Sets",
-    },
-    {
-        img: slide6,
-        caption: "Custom report cards, certificates",
+        img: slide3,
+        caption: "Mememtos and Trophies",
     },
 ]
 
