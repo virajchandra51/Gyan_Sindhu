@@ -154,7 +154,7 @@ const Login = () => {
             <div className="flex flex-col items-start mt-8">
               <p>Email or Mobile No.</p>
               <input
-                className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                className="px-3 py-1.5 mt-1 rounded-md border w-[100%]"
                 type="text"
                 name="userid"
                 required
@@ -166,7 +166,7 @@ const Login = () => {
               <div className="flex flex-col items-start">
                 <p>Password</p>
                 <input
-                  className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                  className="px-3 py-1.5 mt-1 rounded-md border w-[100%]"
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
@@ -181,7 +181,7 @@ const Login = () => {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  className="absolute cursor-pointer top-[39px] right-2"
+                  className="absolute cursor-pointer top-[35px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
@@ -206,7 +206,7 @@ const Login = () => {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  className="absolute cursor-pointer top-[39px] right-2"
+                  className="absolute cursor-pointer top-[35px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path

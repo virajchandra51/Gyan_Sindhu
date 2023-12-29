@@ -379,7 +379,7 @@ const Register = () => {
             onSubmit={(e) => handleSubmit(e)}
           >
             <div className="flex flex-col items-start mt-8">
-              <p>Member Name</p>
+              <p className="my-1">Member Name</p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -391,7 +391,7 @@ const Register = () => {
               />
             </div>
             {/* <div className="flex flex-col items-start">
-              <p>Nick Name</p>
+              <p className="my-1">Nick Name</p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -401,7 +401,7 @@ const Register = () => {
               />
             </div> */}
             <div className="flex flex-col items-start">
-              <p>Email</p>
+              <p className="my-1">Email</p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -413,7 +413,7 @@ const Register = () => {
             </div>
             {/* <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p>Spouse Name</p>
+                <p className="my-1">Spouse Name</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -423,7 +423,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Children</p>
+                <p className="my-1">Children</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -435,7 +435,7 @@ const Register = () => {
             </div> */}
             <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p>Mobile No 1</p>
+                <p className="my-1">Mobile No 1</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -446,7 +446,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Mobile No 2</p>
+                <p className="my-1">Mobile No 2</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -458,7 +458,7 @@ const Register = () => {
             </div>
             {/* <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p>Age</p>
+                <p className="my-1">Age</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -469,7 +469,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Birth Date</p>
+                <p className="my-1">Birth Date</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -482,7 +482,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Anniversary Date</p>
+                <p className="my-1">Anniversary Date</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -497,7 +497,7 @@ const Register = () => {
             </div> */}
             <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p>GST No.</p>
+                <p className="my-1">GST No.</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -507,7 +507,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Aadhar No.</p>
+                <p className="my-1">Aadhar No.</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -518,7 +518,7 @@ const Register = () => {
               </div>
             </div>
             <div className="flex flex-col items-start">
-              <p>Address 1</p>
+              <p className="my-1">Address 1</p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -529,7 +529,7 @@ const Register = () => {
               />
             </div>
             <div className="flex flex-col items-start">
-              <p>Address 2</p>
+              <p className="my-1">Address 2</p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -540,7 +540,7 @@ const Register = () => {
             </div>
             {/* <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p>Gender</p>
+                <p className="my-1">Gender</p>
                 <Select
                   options={genderList}
                   onChange={handleSelect}
@@ -551,7 +551,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Salutation</p>
+                <p className="my-1">Salutation</p>
                 <Select
                   options={salutationList}
                   onChange={handleSelect}
@@ -562,7 +562,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-[50%]">
-                <p>Designation</p>
+                <p className="my-1">Designation</p>
                 <Select
                   options={designationList.data}
                   onChange={handleSelect}
@@ -575,7 +575,7 @@ const Register = () => {
             </div> */}
             <div className="flex gap-4 md:flex-row flex-col">
               <div className="flex flex-col items-start w-full">
-                <p>City</p>
+                <p className="my-1">City</p>
                 <Select
                   options={cityList.data}
                   onChange={handleSelect}
@@ -586,7 +586,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-full">
-                <p>State</p>
+                <p className="my-1">State</p>
                 <Select
                   options={stateList.data}
                   onChange={handleSelect}
@@ -599,7 +599,7 @@ const Register = () => {
             </div>
             <div className="flex gap-4 md:flex-row flex-col">
               <div className="flex flex-col items-start w-full">
-                <p>Country</p>
+                <p className="my-1">Country</p>
                 <Select
                   options={countryList.data}
                   onChange={handleSelect}
@@ -611,7 +611,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-full">
-                <p>Pin Code</p>
+                <p className="my-1">Pin Code</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-full"
                   type="text"
@@ -623,7 +623,7 @@ const Register = () => {
               </div>
             </div>
             {/* <div className="flex flex-col items-start">
-              <p>Languages Known</p>
+              <p className="my-1">Languages Known</p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -634,7 +634,7 @@ const Register = () => {
             </div> */}
             <div className="relative">
               <div className="flex flex-col items-start">
-                <p>Password</p>
+                <p className="my-1">Password</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type={showPassword ? "text" : "password"}
@@ -650,7 +650,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[31px] right-2"
+                  className="absolute cursor-pointer top-[38px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
@@ -675,7 +675,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[31px] right-2"
+                  className="absolute cursor-pointer top-[38px] right-2"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
                   <path
@@ -690,7 +690,7 @@ const Register = () => {
             </div>
             <div className="relative">
               <div className="flex flex-col items-start">
-                <p>Confirm Password</p>
+                <p className="my-1">Confirm Password</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type={showConfirmPassword ? "text" : "password"}
@@ -706,7 +706,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[31px] right-2"
+                  className="absolute cursor-pointer top-[38px] right-2"
                   onClick={() => setShowConfirmPassword((prev) => !prev)}
                 >
                   <path
@@ -731,7 +731,7 @@ const Register = () => {
                   width="24"
                   height="24"
                   viewbox="0 0 24 24"
-                  className="absolute cursor-pointer top-[31px] right-2"
+                  className="absolute cursor-pointer top-[38px] right-2"
                   onClick={() => setShowConfirmPassword((prev) => !prev)}
                 >
                   <path
