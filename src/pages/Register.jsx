@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../public/logo.png";
+import logo from "../assets/logo.png";
 import { fetchDataFromApi } from "../utils/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -3,7 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import dummy from "../../public/sampleProduct.jpeg";
+import dummy from "../assets/sampleProduct.jpeg";
 
 const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

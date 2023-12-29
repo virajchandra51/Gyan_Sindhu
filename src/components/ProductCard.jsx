@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import sampleProduct from "../../public/sampleProduct.jpeg";
+import sampleProduct from "../assets/sampleProduct.jpeg";
 
 const ProductCard = ({ product }) => {
   return (

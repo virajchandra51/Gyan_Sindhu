@@ -3,7 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { updateCart, removeFromCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import dummy from "../../public/sampleProduct.jpeg";
+import dummy from "../assets/sampleProduct.jpeg";
 import { SimpleDialogContainer, simpleConfirm } from "react-simple-dialogs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

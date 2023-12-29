@@ -12,7 +12,7 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { MdVerified } from "react-icons/md";
 import { useSelector } from "react-redux";
-import logo from "../../public/logo.png";
+import logo from "../assets/logo.png";
 
 const SellTypeData = [
   { id: 1, name: "School", url: "/school" },

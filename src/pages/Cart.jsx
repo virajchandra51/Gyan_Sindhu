@@ -8,7 +8,7 @@ import Layout from "../Layout";
 import emptyCartPic from "../assets/empty-cart.jpg";
 import CartItem from "../components/CartItem";
 import { RAZORPAY_KEY_ID } from "../utils/constants";
-import logo from "../../public/logo3.png";
+import logo from "../assets/logo3.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { emptyCart } from "../store/cartSlice";

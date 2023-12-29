@@ -11,7 +11,7 @@ import { addToCart } from "../store/cartSlice";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import sampleProduct from "../../public/sampleProduct.jpeg";
+import sampleProduct from "../assets/sampleProduct.jpeg";
 import { fetchDataFromApi } from "../utils/api";
 
 const Item = () => {
