@@ -107,24 +107,33 @@ const CategoryCarousal = ({ data, sellType, sellTypeTitle }) => {
           {data.length > 0 ? (
             data.map((item, index) => {
               return (
-                <div className="flex justify-center items-center min-w-[250px] min-h-[250px] w-[250px] h-[250px]">
-                  <Link
-                    to={"/result"}
-                    state={{
-                      name: item[`${sellType}_name`],
-                      sellType: sellType,
-                    }}
-                    key={index}
-                    className="flex items-center justify-center object-fill"
-                  >
-                    {item.photo_file_url && 
+                <Link
+                  to={"/result"}
+                  state={{
+                    name: item[`${sellType}_name`],
+                    sellType: sellType,
+                  }}
+                  key={index}
+                  className="flex flex-col items-center p-2 m-2 border hover:scale-[1.02] duration-200 shadow rounded-md"
+                >
+                  <div className="flex items-center justify-center h-[250px] w-[250px]">
+                    {item.photo_file_url ? (
                       <img
                         src={item.photo_file_url}
-                        className="duration-200 hover:opacity-80  w-full object-fill"
+                        className="object-cover max-h-[220px]"
                       ></img>
-                    }
-                  </Link>
-                </div>
+                    ) : (
+                      <img
+                        src={dummy}
+                        className="object-cover max-h-[220px]"
+                      ></img>
+                    )}
+                  </div>
+                  <hr className="h-2 w-full" />
+                  <div className="text-[var(--primary-c)] my-2 text-xl font-bold text-center">
+                    {item[`${sellType}_name`]}
+                  </div>
+                </Link>
               );
             })
           ) : (

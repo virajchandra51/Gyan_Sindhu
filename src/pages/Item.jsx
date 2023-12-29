@@ -161,7 +161,7 @@ const Item = () => {
               <div className="text-md mb-5">
                 {location.state.product.publisher_name && (
                   <p>
-                    <b>Publisher :</b> {location.state.product.publisher_name}
+                    <b>Publication :</b> {location.state.product.publisher_name}
                   </p>
                 )}
                 {location.state.product.subject_name && (
@@ -171,7 +171,7 @@ const Item = () => {
                 )}
                 {location.state.product.writer_name && (
                   <p>
-                    <b>Writer :</b> {location.state.product.writer_name}
+                    <b>Author :</b> {location.state.product.writer_name}
                   </p>
                 )}
                 {location.state.product.edition_no && (

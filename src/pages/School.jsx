@@ -123,7 +123,7 @@ const School = () => {
                   }}
                   className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
                 >
-                  <div className="max-w-sm m-4 bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+                  <div className="max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
                     <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
                       {item.photo_file_url === null ? (
                         <img className="rounded-t-lg" src={dummy} alt="" />
@@ -135,7 +135,8 @@ const School = () => {
                         />
                       )}
                     </div>
-                    <div className="border-t-2 flex justify-center items-start mb-4 px-4 flex-col">
+                    <hr className="mx-2"/>
+                    <div className="flex justify-center items-start mb-4 px-4 flex-col">
                       <h5 className="my-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
                         {item.school_name}, {item.city_name}
                       </h5>
