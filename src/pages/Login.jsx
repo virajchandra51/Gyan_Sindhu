@@ -1,5 +1,4 @@
-import React, { useState, Alert } from "react";
-import logo from "../../public/logo.png";
+import React, { useState } from "react";
 import { fetchDataFromApi } from "../utils/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -140,10 +139,10 @@ const Login = () => {
           >
             Home
           </Link>
-          <h2 className="font-bold text-4xl mt-8 text-[var(--primary-c)]">
+          <h2 className="font-bold text-4xl mt-8 text-black">
             Login
           </h2>
-          <p className="text-xl mt-4 text-[var(--primary-c)]">
+          <p className="text-xl mt-4 text-black">
             Welcome back, you have been missed!
           </p>
 
@@ -258,7 +257,7 @@ const Login = () => {
             Login with Google
           </button> */}
 
-          <div className="mt-5 text-xs gap-4 flex justify-between items-center text-[var(--primary-c)]">
+          <div className="mt-5 text-xs gap-4 flex justify-between items-center text-black">
             <p
               onClick={handleForgotPassword}
               className="cursor-pointer underline"
@@ -276,13 +275,13 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center relative justify-center bg-[var(--primary-c)] w-[70%] text-center">
+        <div className="hidden md:flex items-center relative justify-center bg-gray-800 w-[70%] text-center">
           <img
             src={bgImage}
             className="absolute object-cover top-0 right-0 z-0 h-full opacity-50"
           />
           <div className="text-white px-8 text-3xl font-extrabold z-10">
-            One Stop Solution Gyan Sindhu
+            One Stop Solution
           </div>
         </div>
       </div>

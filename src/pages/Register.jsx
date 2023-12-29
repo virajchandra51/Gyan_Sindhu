@@ -368,10 +368,10 @@ const Register = () => {
           >
             Home
           </Link>
-          <h2 className="font-bold text-4xl my-4 text-[var(--primary-c)]">
+          <h2 className="font-bold text-4xl my-4 text-black">
             Register
           </h2>
-          <p className="text-xl text-[var(--primary-c)]">Welcome to Skoolio!</p>
+          <p className="text-xl text-black">Welcome to Skoolio!</p>
 
           <form
             action=""
@@ -749,7 +749,7 @@ const Register = () => {
             </button>
           </form>
 
-          <div className="mt-3 text-xs gap-4 flex justify-between items-center text-[var(--primary-c)]">
+          <div className="mt-3 text-xs gap-4 flex justify-between items-center text-black">
             <p>Already have an account? </p>
             <Link
               to="/login"
@@ -760,7 +760,7 @@ const Register = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex relative items-center justify-center bg-[var(--primary-c)] w-[50%] text-center">
+        <div className="hidden md:flex relative items-center justify-center bg-gray-800 w-[50%] text-center">
           <img
             src={bgImage}
             className="absolute object-cover top-0 right-0 z-0 h-full opacity-50"
