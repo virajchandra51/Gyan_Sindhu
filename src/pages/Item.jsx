@@ -35,7 +35,8 @@ const Item = () => {
       "barcode",
       "type=isbn&text=" +
         `${location.state.product.isbn_code}` +
-        "&ipaddress=0.0.0.0"
+        "&ipaddress=" +
+        `${global.ip_address}`
     );
     setISBN({ data: data[0], loading: false });
   };
@@ -54,7 +55,8 @@ const Item = () => {
         progress: undefined,
         theme: "dark",
       });
-    }e
+    }
+    e;
   }
   function handleDec() {
     if (qty > 1) {
@@ -154,7 +156,12 @@ const Item = () => {
               {`(Also includes all applicable duties)`}
             </div>
 
-            {!ISBN.loading && ISBN.data?.image_file_url && <img src={ISBN.data?.image_file_url} className="w-[300px] mb-12"/>}
+            {!ISBN.loading && ISBN.data?.image_file_url && (
+              <img
+                src={ISBN.data?.image_file_url}
+                className="w-[300px] mb-12"
+              />
+            )}
 
             <div>
               <div className="text-2xl font-bold mb-5">Product Details</div>

@@ -46,7 +46,6 @@ const genderList = [
 ];
 
 const Profile = () => {
-
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -102,14 +101,18 @@ const Profile = () => {
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "memberprofile",
-      "memberid=" + `${location.state.member_id}` + "&ipaddress=0.0.0.0"
+      "memberid=" +
+        `${location.state.member_id}` +
+        "&ipaddress=" +
+        `${global.ip_address}`
     );
     setProfileData({ data: data[0], loading: false });
     data = await fetchDataFromApi(
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=designation&ipaddress=0.0.0.0"
+        "&seltype=designation&ipaddress=" +
+        `${global.ip_address}`
     );
     var copyData = [];
     data.forEach((item) => {
@@ -125,7 +128,8 @@ const Profile = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=state&ipaddress=0.0.0.0"
+        "&seltype=state&ipaddress=" +
+        `${global.ip_address}`
     );
     data.forEach((item) => {
       var obj = {
@@ -140,7 +144,8 @@ const Profile = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=country&ipaddress=0.0.0.0"
+        "&seltype=country&ipaddress=" +
+        `${global.ip_address}`
     );
     data.forEach((item) => {
       var obj = {
@@ -155,7 +160,8 @@ const Profile = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=city&ipaddress=0.0.0.0"
+        "&seltype=city&ipaddress=" +
+        `${global.ip_address}`
     );
     data.forEach((item) => {
       var obj = {

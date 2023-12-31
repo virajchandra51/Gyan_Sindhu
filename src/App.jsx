@@ -18,8 +18,26 @@ import ContactUs from "./pages/ContactUs";
 import Item from "./pages/Item";
 import Result from "./pages/Result";
 import ReturnPolicy from "./pages/ReturnPolicy";
+import { useEffect } from "react";
+import { updateIPAddress } from "./store/globalSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(
+          updateIPAddress({
+            ip_address: data.ip,
+          })
+        );
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       <BrowserRouter>

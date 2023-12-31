@@ -41,7 +41,9 @@ const School = () => {
         `${cityCode}` +
         "&schoolname=" +
         `${schoolName}` +
-        "&ipaddress=0.0.0.0&pageno=1&pagelimit=1000"
+        "&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=1&pagelimit=1000"
     );
     // console.log(data)
     setData({ data: data, loading: false });
@@ -49,7 +51,8 @@ const School = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=city&ipaddress=0.0.0.0"
+        "&seltype=city&ipaddress=" +
+        `${global.ip_address}`
     );
     var options = [];
     data.forEach((item) => {
@@ -96,15 +99,15 @@ const School = () => {
                 placeholder="Search by City ..."
               />
             </div>
-              <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
-                <BsSearch className="mx-3 fill-slate-500" />
-                <input
-                  className="w-full bg-transparent outline-none"
-                  placeholder="Search by School Name ..."
-                  type="text"
-                  onChange={handleChangeSchool}
-                />
-              </div>
+            <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+              <BsSearch className="mx-3 fill-slate-500" />
+              <input
+                className="w-full bg-transparent outline-none"
+                placeholder="Search by School Name ..."
+                type="text"
+                onChange={handleChangeSchool}
+              />
+            </div>
           </div>
         </div>
         {/* heading and paragaph end */}
@@ -135,7 +138,7 @@ const School = () => {
                         />
                       )}
                     </div>
-                    <hr className="mx-2"/>
+                    <hr className="mx-2" />
                     <div className="flex justify-center items-start mb-4 px-4 flex-col">
                       <h5 className="my-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
                         {item.school_name}, {item.city_name}

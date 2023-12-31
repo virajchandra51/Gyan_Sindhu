@@ -133,7 +133,7 @@ const Footer = () => {
         </div>
         {/* RIGHT END */}
       </Wrapper>
-      <hr className="my-10"/>
+      <hr className="my-10" />
       <Wrapper className="flex justify-between flex-col md:flex-row gap-[10px] md:gap-0">
         {/* LEFT START */}
         <div className="text-md  font-semibold text-center md:text-left">

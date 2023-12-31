@@ -23,7 +23,9 @@ const Menu = ({ showCatMenu, setShowCatMenu, setGroup }) => {
       "itemgrouplist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&groupcode=1&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
+        "&groupcode=1&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=1&pagelimit=10"
     );
     setCategoryList(data);
   };

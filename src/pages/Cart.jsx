@@ -111,7 +111,8 @@ const School = () => {
         `${subTotal}` +
         "&grandamount=" +
         `${subTotal}` +
-        "&gateway=razorpay&ipaddress=0.0.0.0"
+        "&gateway=razorpay&ipaddress=" +
+        `${global.ip_address}`
     );
 
     setData({ data: data, loading: false });
@@ -157,12 +158,12 @@ const School = () => {
             `${data[0].vno}` +
             "&paymentid=" +
             `${response.razorpay_payment_id}` +
-            "&ipaddress=0.0.0.0"
+            "&ipaddress=" +
+            `${global.ip_address}`
         );
 
         // console.log(orderData);
         if (orderData[0].success_status === "1") {
-
           const date = new Date();
           let day = date.getDate();
           let month = date.getMonth() + 1;
@@ -178,7 +179,7 @@ const School = () => {
               email_id: userData?.email_id,
               order_date: currentDate,
               order_id: response.razorpay_order_id,
-              order_amount: "₹ "+`${subTotal}`,
+              order_amount: "₹ " + `${subTotal}`,
             },
           };
 

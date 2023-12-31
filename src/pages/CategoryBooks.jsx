@@ -43,7 +43,9 @@ const CategoryBooks = () => {
         `${global.branch_id}` +
         "&groupcode=" +
         `${location.state.category.item_gr_code}` +
-        "&ipaddress=0.0.0.0&pageno=" +
+        "&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=" +
         `${pageno}` +
         "&pagelimit=" +
         `${paginationValue}`

@@ -73,7 +73,8 @@ const Register = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=designation&ipaddress=0.0.0.0"
+        "&seltype=designation&ipaddress=" +
+        `${global.ip_address}`
     );
     var copyData = [];
     data.forEach((item) => {
@@ -89,7 +90,8 @@ const Register = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=state&ipaddress=0.0.0.0"
+        "&seltype=state&ipaddress=" +
+        `${global.ip_address}`
     );
     data.forEach((item) => {
       var obj = {
@@ -104,7 +106,8 @@ const Register = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=country&ipaddress=0.0.0.0"
+        "&seltype=country&ipaddress=" +
+        `${global.ip_address}`
     );
     data.forEach((item) => {
       var obj = {
@@ -119,7 +122,8 @@ const Register = () => {
       "selectionlist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&seltype=city&ipaddress=0.0.0.0"
+        "&seltype=city&ipaddress=" +
+        `${global.ip_address}`
     );
     data.forEach((item) => {
       var obj = {
@@ -150,8 +154,7 @@ const Register = () => {
       });
       return;
     }
-    if(form.mobileno1.length !== 10)
-    {
+    if (form.mobileno1.length !== 10) {
       toast.error("Mobile Number 1 should be 10 length and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -164,8 +167,7 @@ const Register = () => {
       });
       return;
     }
-    if(!isANumber(form.mobileno1))
-    {
+    if (!isANumber(form.mobileno1)) {
       toast.error("Mobile Number 1 should be 10 length and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -178,8 +180,7 @@ const Register = () => {
       });
       return;
     }
-    if(form.mobileno2.length > 0 && mobileno2.length !== 10)
-    {
+    if (form.mobileno2.length > 0 && mobileno2.length !== 10) {
       toast.error("Mobile Number 2 should be 10 length and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -368,9 +369,7 @@ const Register = () => {
           >
             Home
           </Link>
-          <h2 className="font-bold text-4xl my-4 text-black">
-            Register
-          </h2>
+          <h2 className="font-bold text-4xl my-4 text-black">Register</h2>
           <p className="text-xl text-black">Welcome to Skoolio!</p>
 
           <form

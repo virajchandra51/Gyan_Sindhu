@@ -91,7 +91,9 @@ const ClassSchoolBooks = () => {
         `${location.state.school_code}` +
         "&classcode=" +
         `${location.state.class_code}` +
-        "&ipaddress=0.0.0.0&pageno=1&pagelimit=100"
+        "&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=1&pagelimit=100"
     );
     var price = 0.0;
     // console.log(data);
@@ -132,9 +134,7 @@ const ClassSchoolBooks = () => {
             productList.map((productListItem, index) => {
               return (
                 <div key={index}>
-                  <div
-                    className="text-4xl font-bold my-8 text-[var(--primary-c)]"
-                  >
+                  <div className="text-4xl font-bold my-8 text-[var(--primary-c)]">
                     {productListItem.item_type}
                   </div>
                   {productListItem.data.map((product, index) => {

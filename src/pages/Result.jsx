@@ -58,7 +58,9 @@ const Result = () => {
         url +=
           "&publishername=" +
           `${location.state?.name}` +
-          "&ipaddress=0.0.0.0&pageno=" +
+          "&ipaddress=" +
+          `${global.ip_address}` +
+          "&pageno=" +
           `${pageno}` +
           "&pagelimit=" +
           `${paginationValue}`;
@@ -66,7 +68,9 @@ const Result = () => {
         url +=
           "&subjectname=" +
           `${location.state?.name}` +
-          "&ipaddress=0.0.0.0&pageno=" +
+          "&ipaddress=" +
+          `${global.ip_address}` +
+          "&pageno=" +
           `${pageno}` +
           "&pagelimit=" +
           `${paginationValue}`;
@@ -74,7 +78,9 @@ const Result = () => {
         url +=
           "&writername=" +
           `${location.state?.name}` +
-          "&ipaddress=0.0.0.0&pageno=" +
+          "&ipaddress=" +
+          `${global.ip_address}` +
+          "&pageno=" +
           `${pageno}` +
           "&pagelimit=" +
           `${paginationValue}`;
@@ -82,7 +88,9 @@ const Result = () => {
       url +=
         "&itemname=" +
         `${location.state?.search}` +
-        "&ipaddress=0.0.0.0&pageno=" +
+        "&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=" +
         `${pageno}` +
         "&pagelimit=" +
         `${paginationValue}`;

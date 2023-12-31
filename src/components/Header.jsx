@@ -62,7 +62,6 @@ const Header = () => {
     setSearch(event.target.value);
   };
 
-
   useEffect(() => {
     if (localStorage.getItem("UserData") === null) {
       var data = {
@@ -193,7 +192,10 @@ const Header = () => {
             return (
               <Link
                 key={index}
-                state={{ sellType: item.url.toLowerCase().substring(1), sellTypeTitle: item.name }}
+                state={{
+                  sellType: item.url.toLowerCase().substring(1),
+                  sellTypeTitle: item.name,
+                }}
                 to={`${item.url}`}
                 className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] hover:text-white duration-200 font-semibold"
               >

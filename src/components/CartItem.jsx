@@ -15,7 +15,7 @@ const CartItem = ({ data }) => {
       await simpleConfirm(
         "Are you sure you wish to remove this product from your cart?"
       )
-      ) {
+    ) {
       dispatch(
         removeFromCart({
           school_code: data.school_code,

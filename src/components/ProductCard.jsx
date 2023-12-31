@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
           />
         )}
       </div>
-      <hr className="h-2 w-full mt-4"/>
+      <hr className="h-2 w-full mt-4" />
       <div className="m-2 text-black/[0.9]">
         <h2 className="text-lg font-bold">{product.item_name}</h2>
         <div className="flex items-center text-black/[0.5]">

@@ -37,7 +37,8 @@ const SellType = () => {
         `${global.branch_id}` +
         "&seltype=" +
         `${location.state.sellType}` +
-        "&ipaddress=0.0.0.0"
+        "&ipaddress=" +
+        `${global.ip_address}`
     );
     setData({ data: data, loading: false });
   };

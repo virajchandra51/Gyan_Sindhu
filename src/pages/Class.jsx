@@ -30,7 +30,7 @@ const Class = () => {
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +
-        "&ipaddress=0.0.0.0"
+        "&ipaddress="+`${global.ip_address}`
     );
     setData({ data: data, loading: false });
   };

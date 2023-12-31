@@ -3,8 +3,8 @@ import { cartSlice } from "./cartSlice";
 import { globalSlice } from "./globalSlice";
 
 export default configureStore({
-    reducer: {
-        global: globalSlice.reducer,
-        cart: cartSlice.reducer,
-    },
+  reducer: {
+    global: globalSlice.reducer,
+    cart: cartSlice.reducer,
+  },
 });

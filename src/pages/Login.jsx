@@ -22,7 +22,8 @@ const Login = () => {
         `${form.userid}` +
         "&password=" +
         `${form.password}` +
-        "&ipaddress=0.0.0.0"
+        "&ipaddress=" +
+        `${global.ip_address}`
     );
     console.log(data);
     data = data[0];
@@ -73,7 +74,8 @@ const Login = () => {
         "userid=" +
           `${form.userid}` +
           "&password=ForgotMyPassword" +
-          "&ipaddress=0.0.0.0"
+          "&ipaddress=" +
+          `${global.ip_address}`
       );
       if (data[0]?.success_status == "0") {
         toast.error(data[0]?.success_message, {
@@ -139,9 +141,7 @@ const Login = () => {
           >
             Home
           </Link>
-          <h2 className="font-bold text-4xl mt-8 text-black">
-            Login
-          </h2>
+          <h2 className="font-bold text-4xl mt-8 text-black">Login</h2>
           <p className="text-xl mt-4 text-black">
             Welcome back, you have been missed!
           </p>

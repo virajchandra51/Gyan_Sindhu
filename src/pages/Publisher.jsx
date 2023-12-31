@@ -44,10 +44,12 @@ const Publisher = () => {
     var data = await fetchDataFromApi(
       "selectionlist",
       "&compid=9&branchid=" +
-      `${global.branch_id}` +
+        `${global.branch_id}` +
         "&seltype=publisher&publishername=" +
         `${publisherName}` +
-        "&ipaddress=0.0.0.0&pageno=" +
+        "&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=" +
         `${pageno}` +
         "&pagelimit=" +
         `${paginationValue}`
@@ -94,8 +96,8 @@ const Publisher = () => {
               {data.data?.map((item, index) => (
                 <Link
                   key={index}
-                  to={'/result'}
-                  state={{name: item.publisher_name, sellType: "publisher"}}
+                  to={"/result"}
+                  state={{ name: item.publisher_name, sellType: "publisher" }}
                   className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="md:max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
@@ -110,14 +112,14 @@ const Publisher = () => {
                         />
                       )}
                     </div>
-                    <hr className="mx-2"/>
+                    <hr className="mx-2" />
                     <div className="flex justify-center items-start mb-4 px-4 flex-col">
                       <h5 className="mt-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
                         {item.publisher_name}
                       </h5>
                       {item.any_remark && (
                         <p className="text-lg tracking-tight text-gray-900 dark:text-white">
-                          {item.any_remark.slice(3,item.any_remark.length-4)}
+                          {item.any_remark.slice(3, item.any_remark.length - 4)}
                         </p>
                       )}
                     </div>
@@ -144,12 +146,12 @@ const Publisher = () => {
           <ReactPaginate
             breakLabel="..."
             pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
-            nextLabel={<PaginationRight/>}
+            nextLabel={<PaginationRight />}
             onPageChange={(e) => handlePageClick(e)}
             pageRangeDisplayed={0}
             pageCount={pageCount}
             marginPagesDisplayed={1}
-            previousLabel={<PaginationLeft/>}
+            previousLabel={<PaginationLeft />}
             renderOnZeroPageCount={null}
             initialPage={0}
             activeClassName="bg-[var(--primary-c)] text-white"

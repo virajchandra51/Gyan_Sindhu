@@ -11,7 +11,12 @@ const data = [
   { id: 4, name: "Contact Us", url: "/contactus" },
 ];
 
-const MenuMobile = ({ showCatMenu, setShowCatMenu, setGroup, setMobileMenu }) => {
+const MenuMobile = ({
+  showCatMenu,
+  setShowCatMenu,
+  setGroup,
+  setMobileMenu,
+}) => {
   const global = useSelector((state) => state.global);
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
@@ -19,10 +24,13 @@ const MenuMobile = ({ showCatMenu, setShowCatMenu, setGroup, setMobileMenu }) =>
   }, [global.branch_id]);
 
   const fetchData = async () => {
-    const data = await fetchDataFromApi("itemgrouplist",
+    const data = await fetchDataFromApi(
+      "itemgrouplist",
       "compid=9&branchid=" +
         `${global.branch_id}` +
-        "&groupcode=1&ipaddress=0.0.0.0&pageno=1&pagelimit=10"
+        "&groupcode=1&ipaddress=" +
+        `${global.ip_address}` +
+        "&pageno=1&pagelimit=10"
     );
     setCategoryList(data);
   };
@@ -80,7 +88,9 @@ const MenuMobile = ({ showCatMenu, setShowCatMenu, setGroup, setMobileMenu }) =>
               </li>
             ) : (
               <li className="py-4 px-5 border-b">
-                <Link to={item?.url} onClick={() => setMobileMenu(false)}>{item.name}</Link>
+                <Link to={item?.url} onClick={() => setMobileMenu(false)}>
+                  {item.name}
+                </Link>
               </li>
             )}
           </React.Fragment>

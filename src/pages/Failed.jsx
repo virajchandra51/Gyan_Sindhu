@@ -17,7 +17,9 @@ const Failed = () => {
             <div className="text-base mt-5">
               For any product related query, drop an email to
             </div>
-            <a href="mailto:md@gyansindhu.com" className="underline">md@gyansindhu.com</a>
+            <a href="mailto:md@gyansindhu.com" className="underline">
+              md@gyansindhu.com
+            </a>
             <Link to="/" className="font-bold mt-5">
               Continue Shopping
             </Link>
