@@ -43,7 +43,7 @@ const School = () => {
         `${schoolName}` +
         "&ipaddress=0.0.0.0&pageno=1&pagelimit=1000"
     );
-    console.log(data)
+    // console.log(data)
     setData({ data: data, loading: false });
     data = await fetchDataFromApi(
       "selectionlist",

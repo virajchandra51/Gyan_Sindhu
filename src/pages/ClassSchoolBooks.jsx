@@ -94,7 +94,7 @@ const ClassSchoolBooks = () => {
         "&ipaddress=0.0.0.0&pageno=1&pagelimit=100"
     );
     var price = 0.0;
-    console.log(data);
+    // console.log(data);
     data.forEach((item) => {
       price += parseFloat(item.net_sale_rate);
     });
@@ -131,10 +131,9 @@ const ClassSchoolBooks = () => {
           {productList.length > 0 ? (
             productList.map((productListItem, index) => {
               return (
-                <>
+                <div key={index}>
                   <div
                     className="text-4xl font-bold my-8 text-[var(--primary-c)]"
-                    key={index}
                   >
                     {productListItem.item_type}
                   </div>
@@ -156,7 +155,7 @@ const ClassSchoolBooks = () => {
                       </div>
                     );
                   })}
-                </>
+                </div>
               );
             })
           ) : (

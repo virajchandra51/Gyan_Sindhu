@@ -43,9 +43,12 @@ const Footer = () => {
               <div className="text-md hover:text-gray-500 text-black duration-200 cursor-pointer">
                 Order Policy
               </div>
-              <div className="text-md hover:text-gray-500 text-black duration-200 cursor-pointer">
+              <Link
+                to={"/returnpolicy"}
+                className="text-md hover:text-gray-500 text-black duration-200 cursor-pointer"
+              >
                 Return Policy
-              </div>
+              </Link>
               <div className="text-md hover:text-gray-500 text-black duration-200 cursor-pointer">
                 Payment Options
               </div>

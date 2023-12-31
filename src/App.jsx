@@ -17,6 +17,7 @@ import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Item from "./pages/Item";
 import Result from "./pages/Result";
+import ReturnPolicy from "./pages/ReturnPolicy";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/success" element={<Success />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
+          <Route path="/returnpolicy" element={<ReturnPolicy />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/result" element={<Result />} />
           <Route path="/:selltype" element={<SellType />} />

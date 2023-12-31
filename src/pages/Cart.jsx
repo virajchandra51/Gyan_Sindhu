@@ -128,8 +128,8 @@ const School = () => {
       // redirect: true,
       handler: async (response) => {
         dispatch(emptyCart());
-        console.log("succeeded");
-        console.log(response);
+        // console.log("succeeded");
+        // console.log(response);
 
         const cartItemsPost = { cart_items: [] };
 
@@ -160,7 +160,7 @@ const School = () => {
             "&ipaddress=0.0.0.0"
         );
 
-        console.log(orderData);
+        // console.log(orderData);
         if (orderData[0].success_status === "1") {
 
           const date = new Date();
@@ -188,7 +188,7 @@ const School = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(emailData),
-          }).then((response) => console.log(response));
+          }).then((response) => {});
 
           navigate("/success", {
             state: { order_id: response.razorpay_order_id },

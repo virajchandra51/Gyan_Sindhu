@@ -20,7 +20,7 @@ const SellType = () => {
   });
   const global = useSelector((state) => state.global);
   const location = useLocation();
-  console.log(location.key);
+  // console.log(location.key);
   const [data, setData] = useState({
     data: [],
     loading: true,
@@ -41,7 +41,7 @@ const SellType = () => {
     );
     setData({ data: data, loading: false });
   };
-  console.log(data.data);
+  // console.log(data.data);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -49,16 +49,16 @@ const SellType = () => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + paginationValue;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const pageCount = Math.ceil(data.data.length / paginationValue);
   var currentItems = data.data.slice(itemOffset, endOffset);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * paginationValue) % data.data.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
     setItemOffset(newOffset);
     currentItems = data.data.slice(newOffset, endOffset);
   };

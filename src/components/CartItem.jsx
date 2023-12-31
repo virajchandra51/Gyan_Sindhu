@@ -25,7 +25,7 @@ const CartItem = ({ data }) => {
     } else {
     }
   };
-  console.log(data);
+  // console.log(data);
 
   function handleInc(data) {
     if (data.quantity === 10) {
