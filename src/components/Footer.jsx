@@ -6,12 +6,57 @@ import {
   FaYoutube,
   FaInstagram,
   FaMapPin,
+  FaLock,
+  FaTruck
 } from "react-icons/fa";
+import { MdCall, MdVerified } from "react-icons/md";
 import Wrapper from "./Wrapper";
 
 const Footer = () => {
   return (
-    <footer className="bg-white pt-14">
+    <footer className="bg-white">
+      <div className="flex w-full justify-between mb-14 items-center">
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+          <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
+            <MdCall
+              className="fill-black"
+              size={24}
+            />
+          </div>
+          <h2 className="font-semibold mt-2 text-lg">Customer Service</h2>
+          <p className="text-md">Mail & Telephone</p>
+        </div>
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+          <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
+            <FaLock
+              className="fill-black"
+              size={24}
+            />
+          </div>
+          <h2 className="font-semibold mt-2 text-lg">100% Secured</h2>
+          <p className="text-md">Payment</p>
+        </div>
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+          <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
+            <FaTruck
+              className="fill-black"
+              size={24}
+            />
+          </div>
+          <h2 className="font-semibold mt-2 text-lg">Express</h2>
+          <p className="text-md">Delivery</p>
+        </div>
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+          <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
+            <MdVerified
+              className="fill-black"
+              size={24}
+            />
+          </div>
+          <h2 className="font-semibold mt-2 text-lg">Highest Quality</h2>
+          <p className="text-md">Guarantee</p>
+        </div>
+      </div>
       <Wrapper className="flex justify-between flex-col md:flex-row gap-[50px] md:gap-0">
         {/* LEFT START */}
         <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
@@ -155,7 +200,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-left md:text-right">For More Updates,</div>
-            <div className="text-left md:text-right">Follow us on social media.</div>
+            <div className="text-left md:text-right">
+              Follow us on social media.
+            </div>
           </div>
           <Link
             to="https://maps.app.goo.gl/ZxRwgmQ3jracFYpB6"

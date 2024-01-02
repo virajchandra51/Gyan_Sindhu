@@ -13,7 +13,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const carousalStyle = {
-    borderTop: "2px solid #f1f1f1aa",
+    borderTop: "2px solid #fff",
   };
 
   const slidesOverflow = {
@@ -89,11 +89,11 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
   return (
     <div
       style={carousalStyle}
-      className="h-[100%] w-[100%] relative flex flex-col pt-16 pb-24 px-8 my-2 mx-0"
+      className="h-[100%] w-[100%] relative flex flex-col pt-10 pb-24 px-8 my-2 mx-0"
     >
       <div className="mb-8">
         <div className={`flex justify-between items-center bg-white border-t-2 ${borderColors[index]}`}>
-          <div className={`text-2xl p-3 font-bold capitalize text-white bg-${colors[index]}`}>
+          <div className={`text-xl p-4 font-bold uppercase text-white bg-${colors[index]}`}>
             Shop by {sellTypeTitle} :
           </div>
           <Link
