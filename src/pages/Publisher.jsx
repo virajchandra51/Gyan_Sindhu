@@ -75,7 +75,7 @@ const Publisher = () => {
           </div>
           <div className="flex justify-around gap-2">
             <div className="flex justify-center w-full items-center text-start gap-4">
-              <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+              <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc] bg-white">
                 <BsSearch className="mx-3 fill-slate-500" />
                 <input
                   className="w-full bg-transparent outline-none"

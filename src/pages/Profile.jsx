@@ -357,12 +357,12 @@ const Profile = () => {
                   onSubmit={(e) => handleSubmit(e)}
                 >
                   <div className="flex flex-col items-start mt-8">
-                    <p>Member Name</p>
+                    <p>Member Name / Your Name</p>
                     <input
                       className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
                       name="member_name"
-                      placeholder="Member Name"
+                      placeholder="Member Name / Your Name"
                       required
                       value={profileData.data?.member_name}
                       onChange={(e) => handle(e)}
@@ -385,7 +385,7 @@ const Profile = () => {
                     <p>Email</p>
                     <input
                       className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
-                      type="text"
+                      type="email"
                       name="email_id"
                       placeholder="Email"
                       required
@@ -495,12 +495,12 @@ const Profile = () => {
                   </div>
                   <div className="flex gap-4">
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>GST No.</p>
+                      <p>GSTIN No.</p>
                       <input
                         className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                         type="text"
                         name="reg_gstin"
-                        placeholder="GST No."
+                        placeholder="GSTIN No."
                         value={profileData.data?.reg_gstin}
                         onChange={(e) => handle(e)}
                         disabled={disabledForm}

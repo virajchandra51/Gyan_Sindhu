@@ -99,7 +99,7 @@ const School = () => {
                 placeholder="Search by City ..."
               />
             </div>
-            <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc]">
+            <div className="w-full rounded min-h-[38px] flex justify-start items-center border-[1px] border-[#ccc] bg-white">
               <BsSearch className="mx-3 fill-slate-500" />
               <input
                 className="w-full bg-transparent outline-none"
@@ -124,7 +124,7 @@ const School = () => {
                     school_code: item.school_code,
                     school_name: item.school_name,
                   }}
-                  className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+                  className="transform overflow-hidden  duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
                     <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">

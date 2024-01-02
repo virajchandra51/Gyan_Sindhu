@@ -141,6 +141,20 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.emailid))
+    {
+      toast.error("Oops... Invalid Email!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
     if (form.password != form.confirm_password) {
       toast.error("Passwords Don't Match!", {
         position: "bottom-right",
@@ -155,7 +169,7 @@ const Register = () => {
       return;
     }
     if (form.mobileno1.length !== 10) {
-      toast.error("Mobile Number 1 should be 10 length and digits only!", {
+      toast.error("Mobile Number 1 should be 10 characters and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -168,7 +182,7 @@ const Register = () => {
       return;
     }
     if (!isANumber(form.mobileno1)) {
-      toast.error("Mobile Number 1 should be 10 length and digits only!", {
+      toast.error("Mobile Number 1 should be 10 characters and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -181,7 +195,7 @@ const Register = () => {
       return;
     }
     if (form.mobileno2.length > 0 && mobileno2.length !== 10) {
-      toast.error("Mobile Number 2 should be 10 length and digits only!", {
+      toast.error("Mobile Number 2 should be 10 characters and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -198,7 +212,7 @@ const Register = () => {
       form.regaadhar.length !== 16 &&
       !isANumber(form.regaadhar)
     ) {
-      toast.error("Aadhar Number should be 16 length and digits only!", {
+      toast.error("Aadhar Number should be 16 characters and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -378,12 +392,15 @@ const Register = () => {
             onSubmit={(e) => handleSubmit(e)}
           >
             <div className="flex flex-col items-start mt-8">
-              <p className="my-1">Member Name</p>
+              <p className="my-1">
+                Member Name / Your Name <span className="text-red-600">*</span>
+              </p>
               <input
+                autoFocus
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
                 name="membername"
-                placeholder="Member Name"
+                placeholder="Member Name / Your Name"
                 required
                 onChange={(e) => handle(e)}
                 autoCapitalize="sentences"
@@ -400,10 +417,12 @@ const Register = () => {
               />
             </div> */}
             <div className="flex flex-col items-start">
-              <p className="my-1">Email</p>
+              <p className="my-1">
+                Email <span className="text-red-600">*</span>
+              </p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
-                type="text"
+                type="email"
                 name="emailid"
                 placeholder="Email"
                 required
@@ -434,7 +453,9 @@ const Register = () => {
             </div> */}
             <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p className="my-1">Mobile No 1</p>
+                <p className="my-1">
+                  Mobile No 1 <span className="text-red-600">*</span>
+                </p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
@@ -496,12 +517,12 @@ const Register = () => {
             </div> */}
             <div className="flex gap-4">
               <div className="flex flex-col items-start w-[50%]">
-                <p className="my-1">GST No.</p>
+                <p className="my-1">GSTIN No.</p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type="text"
                   name="reggstin"
-                  placeholder="GST No."
+                  placeholder="GSTIN No."
                   onChange={(e) => handle(e)}
                 />
               </div>
@@ -517,7 +538,9 @@ const Register = () => {
               </div>
             </div>
             <div className="flex flex-col items-start">
-              <p className="my-1">Address 1</p>
+              <p className="my-1">
+                Address 1 <span className="text-red-600">*</span>
+              </p>
               <input
                 className="px-3 py-1.5 rounded-md border w-[100%]"
                 type="text"
@@ -574,7 +597,9 @@ const Register = () => {
             </div> */}
             <div className="flex gap-4 md:flex-row flex-col">
               <div className="flex flex-col items-start w-full">
-                <p className="my-1">City</p>
+                <p className="my-1">
+                  City <span className="text-red-600">*</span>
+                </p>
                 <Select
                   options={cityList.data}
                   onChange={handleSelect}
@@ -585,7 +610,9 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-full">
-                <p className="my-1">State</p>
+                <p className="my-1">
+                  State <span className="text-red-600">*</span>
+                </p>
                 <Select
                   options={stateList.data}
                   onChange={handleSelect}
@@ -598,7 +625,9 @@ const Register = () => {
             </div>
             <div className="flex gap-4 md:flex-row flex-col">
               <div className="flex flex-col items-start w-full">
-                <p className="my-1">Country</p>
+                <p className="my-1">
+                  Country <span className="text-red-600">*</span>
+                </p>
                 <Select
                   options={countryList.data}
                   onChange={handleSelect}
@@ -610,7 +639,9 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-full">
-                <p className="my-1">Pin Code</p>
+                <p className="my-1">
+                  Pin Code <span className="text-red-600">*</span>
+                </p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-full"
                   type="text"
@@ -633,12 +664,15 @@ const Register = () => {
             </div> */}
             <div className="relative">
               <div className="flex flex-col items-start">
-                <p className="my-1">Password</p>
+                <p className="my-1">
+                  Password <span className="text-red-600">*</span>
+                </p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
+                  required
                   onChange={(e) => handle(e)}
                 />
               </div>
@@ -689,12 +723,15 @@ const Register = () => {
             </div>
             <div className="relative">
               <div className="flex flex-col items-start">
-                <p className="my-1">Confirm Password</p>
+                <p className="my-1">
+                  Confirm Password <span className="text-red-600">*</span>
+                </p>
                 <input
                   className="px-3 py-1.5 rounded-md border w-[100%]"
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirm_password"
                   placeholder="Confirm Password"
+                  required
                   onChange={(e) => handle(e)}
                 />
               </div>

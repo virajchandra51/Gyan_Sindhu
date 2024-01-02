@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/bgImage.jpg";
 import { useLayoutEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   useLayoutEffect(() => {
@@ -13,9 +14,33 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const global = useSelector((state) => state.global);
+  const [form, setForm] = useState({
+    userid: "",
+    password: "",
+  });
+
+  function isANumber(str) {
+    return !/\D/.test(str);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isANumber(form.userid)) {
+      if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.userid)) {
+        toast.error("Oops... Invalid Email!", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        return;
+      }
+    }
     var data = await fetchDataFromApi(
       "memberlogin",
       "userid=" +
@@ -56,79 +81,13 @@ const Login = () => {
     }
   };
 
-  const [form, setForm] = useState({
-    userid: "",
-    password: "",
-  });
+  
 
   function handle(e) {
     const n = { ...form };
     n[e.target.name] = e.target.value;
     setForm(n);
   }
-
-  const handleForgotPassword = async (e) => {
-    if (form.userid) {
-      const data = await fetchDataFromApi(
-        "memberlogin",
-        "userid=" +
-          `${form.userid}` +
-          "&password=ForgotMyPassword" +
-          "&ipaddress=" +
-          `${global.ip_address}`
-      );
-      if (data[0]?.success_status == "0") {
-        toast.error(data[0]?.success_message, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      } else {
-        var url =
-          "https://www.kit19.com/ComposeSMS.aspx?username=olclko637189&password=olclko&sender=FASOFT&to=" +
-          `${data[0].mobile_no1}` +
-          "&message=Dear FA,%0D%0AYour Password is: " +
-          `${data[0].mem_password}` +
-          "%0D%0AC/o FA Software Team.%0D%0ABy FA Software.&priority=1&dnd=1&unicode=0&dlttemplateid=1007162322505627553";
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {});
-        var emailData = {
-          service_id: "GmailSMTPService",
-          template_id: "ForgotPasswordMail",
-          user_id: "2luFHblbDCponNdj8",
-          template_params: {
-            member_name: data[0].member_name,
-            email_id: data[0].email_id,
-            mobile_no1: data[0].mobile_no1,
-            mem_password: data[0].mem_password,
-          },
-        };
-        fetch("https://api.emailjs.com/api/v1.0/email/send", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(emailData),
-        }).then((response) => console.log(response));
-        toast.success("Password Sent Via Email and SMS Successfully!", {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      }
-    }
-  };
 
   return (
     <div className="h-screen w-screen">
@@ -152,8 +111,11 @@ const Login = () => {
             onSubmit={(e) => handleSubmit(e)}
           >
             <div className="flex flex-col items-start mt-8">
-              <p>Email or Mobile No.</p>
+              <p>
+                Email or Mobile No. <span className="text-red-600">*</span>
+              </p>
               <input
+                autoFocus
                 className="px-3 py-1.5 mt-1 rounded-md border w-[100%]"
                 type="text"
                 name="userid"
@@ -164,7 +126,9 @@ const Login = () => {
             </div>
             <div className="relative">
               <div className="flex flex-col items-start">
-                <p>Password</p>
+                <p>
+                  Password <span className="text-red-600">*</span>
+                </p>
                 <input
                   className="px-3 py-1.5 mt-1 rounded-md border w-[100%]"
                   type={showPassword ? "text" : "password"}
@@ -258,12 +222,9 @@ const Login = () => {
           </button> */}
 
           <div className="mt-5 text-xs gap-4 flex justify-between items-center text-black">
-            <p
-              onClick={handleForgotPassword}
-              className="cursor-pointer underline"
-            >
+            <Link to="/forgotpassword" className="cursor-pointer underline">
               Forgot Password
-            </p>
+            </Link>
             <div className="flex flex-row items-center gap-2">
               <p className="text-right">Don't have an account?</p>
               <Link to="/register">

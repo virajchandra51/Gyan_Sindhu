@@ -18,6 +18,7 @@ const Item = () => {
   const [qty, setQty] = useState(1);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const global = useSelector((state) => state.global);
 
   const [ISBN, setISBN] = useState({ data: [], loading: true });
 
@@ -38,6 +39,7 @@ const Item = () => {
         "&ipaddress=" +
         `${global.ip_address}`
     );
+    console.log(data)
     setISBN({ data: data[0], loading: false });
   };
 

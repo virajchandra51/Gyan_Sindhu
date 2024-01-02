@@ -24,7 +24,7 @@ const Success = () => {
               For any product related query, drop an email to
             </div>
             <a href="mailto:md@gyansindhu.com" className="underline">
-              md@gyansindhu.com
+              sales@gyansindhu.com
             </a>
             <Link to="/" className="font-bold mt-5">
               Continue Shopping

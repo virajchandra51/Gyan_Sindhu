@@ -7,51 +7,53 @@ import {
   FaInstagram,
   FaMapPin,
   FaLock,
-  FaTruck
+  FaTruck,
 } from "react-icons/fa";
 import { MdCall, MdVerified } from "react-icons/md";
 import Wrapper from "./Wrapper";
+import { useState, useEffect } from "react";
 
 const Footer = () => {
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    if (localStorage.getItem("UserData") === null) {
+      var data = {
+        member_id: "-1",
+        person_name: "",
+        salutation: "",
+      };
+      setUserData(data);
+    } else {
+      setUserData(JSON.parse(localStorage.getItem("UserData")));
+    }
+  }, []);
   return (
     <footer className="bg-white">
       <div className="flex w-full justify-between mb-14 items-center">
         <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
-            <MdCall
-              className="fill-black"
-              size={24}
-            />
+            <MdCall className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">Customer Service</h2>
           <p className="text-md">Mail & Telephone</p>
         </div>
         <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
-            <FaLock
-              className="fill-black"
-              size={24}
-            />
+            <FaLock className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">100% Secured</h2>
           <p className="text-md">Payment</p>
         </div>
         <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
-            <FaTruck
-              className="fill-black"
-              size={24}
-            />
+            <FaTruck className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">Express</h2>
           <p className="text-md">Delivery</p>
         </div>
         <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
-            <MdVerified
-              className="fill-black"
-              size={24}
-            />
+            <MdVerified className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">Highest Quality</h2>
           <p className="text-md">Guarantee</p>
@@ -65,18 +67,18 @@ const Footer = () => {
             <div className="font-bold uppercase text-lg cursor-pointer">
               Member
             </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            <Link to='/register' className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
               Register Now
-            </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            </Link>
+            <Link to='/profile' state={{ member_id: userData.member_id }} className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
               My Profile
-            </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            </Link>
+            <Link to='/login' className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
               Login
-            </div>
-            <div className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            </Link>
+            <Link to='/contactus' className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
               Feedback
-            </div>
+            </Link>
           </div>
           {/* MENU END */}
 
@@ -103,9 +105,12 @@ const Footer = () => {
               <div className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer">
                 Payment Options
               </div>
-              <div className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer">
+              <Link
+                to={"/privacypolicy"}
+                className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
+              >
                 Privacy Policy
-              </div>
+              </Link>
               <Link
                 to={"/contactus"}
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
@@ -130,7 +135,7 @@ const Footer = () => {
                 href="mailto:md@gyansindhu.com"
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
               >
-                Email : md@gyansindhu.com
+                Email : sales@gyansindhu.com
               </a>
               <Link
                 to="https://maps.app.goo.gl/ZxRwgmQ3jracFYpB6"
@@ -140,7 +145,6 @@ const Footer = () => {
                 Address 1 : #44 Chandrika Colony, Sigra <br />
                 Varanasi - 221010
                 <br />
-                gyansindhu_vns@yahoo.co.in
               </Link>
               <Link
                 to="https://maps.app.goo.gl/DdudH9q9FwfHvBRa6"
@@ -150,7 +154,6 @@ const Footer = () => {
                 Address 2 : #137, 2nd Cross, Amarjyothi, Domlur <br />
                 Bengaluru - 560071
                 <br />
-                admin@gyansindhu.com
               </Link>
             </div>
             {/* MENU END */}

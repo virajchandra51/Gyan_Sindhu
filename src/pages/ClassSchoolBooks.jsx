@@ -15,9 +15,6 @@ import { useLayoutEffect } from "react";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const ClassSchoolBooks = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
   const global = useSelector((state) => state.global);
   const location = useLocation();
 
@@ -96,9 +93,9 @@ const ClassSchoolBooks = () => {
         "&pageno=1&pagelimit=100"
     );
     var price = 0.0;
-    // console.log(data);
+    console.log(data);
     data.forEach((item) => {
-      price += parseFloat(item.net_sale_rate);
+      price += parseFloat(item.net_sale_rate) * parseFloat(item.quantity);
     });
     data = Object.values(
       data.reduce((a, { item_type, ...props }) => {
@@ -141,8 +138,14 @@ const ClassSchoolBooks = () => {
                     return (
                       <div key={index} className="w-[97%] ml-auto">
                         <div className="flex items-center justify-between text-black/[0.5]">
-                          <div className="text-md md:text-lg w-[60%] md:w-[80%] font-bold text-black">
-                            {index + 1}. {product.item_name}
+                          <div className="text-black mx-2 flex w-[2%] justify-end">
+                            <p className="text-right">{index + 1}.</p>
+                          </div>
+                          <div className="text-md md:text-lg w-[60%] md:w-[80%] font-semibold text-black">
+                            {product.item_name}
+                          </div>
+                          <div className="md:w-[20%] text-left text-md hidden md:block">
+                          &#123; Code: {product.item_code} &#125;
                           </div>
                           <div className="md:w-[10%] text-left text-md">
                             {product.quantity} {product.unit_name}

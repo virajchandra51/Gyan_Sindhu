@@ -21,6 +21,8 @@ import ReturnPolicy from "./pages/ReturnPolicy";
 import { useEffect } from "react";
 import { updateIPAddress } from "./store/globalSlice";
 import { useDispatch } from "react-redux";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,7 +58,9 @@ function App() {
           <Route path="/success" element={<Success />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/returnpolicy" element={<ReturnPolicy />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/result" element={<Result />} />
           <Route path="/:selltype" element={<SellType />} />
