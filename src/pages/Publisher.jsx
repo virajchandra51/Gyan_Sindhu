@@ -98,7 +98,7 @@ const Publisher = () => {
                   key={index}
                   to={"/result"}
                   state={{ name: item.publisher_name, sellType: "publisher" }}
-                  className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+                  className="transform overflow-hidden duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="md:max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
                     <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">

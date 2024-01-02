@@ -76,6 +76,7 @@ const Home = () => {
       <Counter />
       {
         <CategoryCarousal
+          index={0}
           data={data1.data}
           sellType={sellTypes[0]}
           sellTypeTitle={sellTypesTitle[0]}
@@ -83,6 +84,7 @@ const Home = () => {
       }
       {
         <CategoryCarousal
+          index={1}
           data={data2.data}
           sellType={sellTypes[1]}
           sellTypeTitle={sellTypesTitle[1]}
@@ -90,6 +92,7 @@ const Home = () => {
       }
       {
         <CategoryCarousal
+          index={2}
           data={data3.data}
           sellType={sellTypes[2]}
           sellTypeTitle={sellTypesTitle[2]}
