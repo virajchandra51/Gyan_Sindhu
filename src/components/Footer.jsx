@@ -29,29 +29,29 @@ const Footer = () => {
   }, []);
   return (
     <footer className="bg-white">
-      <div className="flex w-full justify-between mb-14 items-center">
-        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+      <div className="flex w-full md:flex-row flex-col justify-between mb-14 items-center">
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-full md:w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
             <MdCall className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">Customer Service</h2>
           <p className="text-md">Mail & Telephone</p>
         </div>
-        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-full md:w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
             <FaLock className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">100% Secured</h2>
           <p className="text-md">Payment</p>
         </div>
-        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-full md:w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
             <FaTruck className="fill-black" size={24} />
           </div>
           <h2 className="font-semibold mt-2 text-lg">Express</h2>
           <p className="text-md">Delivery</p>
         </div>
-        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-1/4">
+        <div className="flex py-12 flex-col items-center border-y-2 border-l-2 w-full md:w-1/4">
           <div className="bg-gray-300 flex items-center justify-center rounded-full p-4">
             <MdVerified className="fill-black" size={24} />
           </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import dummy from "../assets/sampleProduct.jpeg";
+import StarRating from "./StarRating";
 
 const bgColors = ["bg-yellow-500", "bg-red-600", "bg-green-600"];
 const borderColors = [
@@ -195,6 +196,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                     >
                       {item[`${sellType}_name`]}
                     </div>
+                    <StarRating starAverage = {item.star_rating}/>
                   </Link>
                 );
               })

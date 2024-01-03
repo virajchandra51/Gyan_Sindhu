@@ -17,17 +17,20 @@ import "react-loading-skeleton/dist/skeleton.css";
 const ClassSchoolBooks = () => {
   const global = useSelector((state) => state.global);
   const location = useLocation();
-
+  console.log(location);
+  console.log(global);
   const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
   const [price, setPrice] = useState(0);
+  const [itemCount, setItemCount] = useState(0);
+  const [qtyItemCount, setQtyItemCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [global.branch_id]);
 
   const notify = () => {
     toast.success("Success. Check your cart!", {
@@ -93,9 +96,13 @@ const ClassSchoolBooks = () => {
         "&pageno=1&pagelimit=100"
     );
     var price = 0.0;
+    var itemCount = 0;
+    var qtyItemCount = 0;
     console.log(data);
     data.forEach((item) => {
       price += parseFloat(item.net_sale_rate) * parseFloat(item.quantity);
+      itemCount ++;
+      qtyItemCount += parseFloat(item.quantity)
     });
     data = Object.values(
       data.reduce((a, { item_type, ...props }) => {
@@ -105,9 +112,12 @@ const ClassSchoolBooks = () => {
         return a;
       }, {})
     );
+    console.log(data)
     setProductList(data);
     setPrice(price.toFixed(2));
-    setTotalPrice(qty * price.toFixed(2));
+    setItemCount(itemCount.toFixed(2));
+    setQtyItemCount(qtyItemCount.toFixed(2))
+    setTotalPrice((qty * price.toFixed(2)).toFixed(2));
   };
 
   return (
@@ -145,12 +155,12 @@ const ClassSchoolBooks = () => {
                             {product.item_name}
                           </div>
                           <div className="md:w-[20%] text-left text-md hidden md:block">
-                          &#123; Code: {product.item_code} &#125;
+                            &#123; Code: {product.item_code} &#125;
                           </div>
                           <div className="md:w-[10%] text-left text-md">
                             {product.quantity} {product.unit_name}
                           </div>
-                          <div className="text-md md:text-xl font-medium text-right text-green-500 md:w-[10%]">
+                          <div className="text-md md:text-xl font-medium text-right text-green-500 md:w-[20%]">
                             &#8377;{product.net_sale_rate}
                           </div>
                         </div>
@@ -168,8 +178,21 @@ const ClassSchoolBooks = () => {
               height={20}
             />
           )}
+          <div className="w-[97%] ml-auto mt-8">
+            <div className="flex items-center justify-between text-black/[0.5]">
+
+              <div className="text-md md:text-lg w-[60%] md:w-[80%] font-semibold text-black">
+                Item Count : {itemCount}
+              </div>
+              <div className="md:w-[10%] w-[12%] text-left text-md">Qty : {qtyItemCount} </div>
+              <div className="text-sm md:text-xl font-medium text-right text-green-500 w-[20%] md:w-[20%]">
+                Set Price : &#8377;{price}
+              </div>
+            </div>
+            <div className="h-[1px] bg-gray-200 my-3"></div>
+          </div>
           <div className="text-right my-10 flex flex-col items-end">
-            <h2 className="text-xl font-bold">Price x Quantity = Total</h2>
+            <h2 className="text-md md:text-xl font-bold">Set Price x Order Quantity = Total Price</h2>
             <h3 className="text-2xl md:text-4xl">
               &#8377; {price} x {qty} = &#8377; {totalPrice}
             </h3>

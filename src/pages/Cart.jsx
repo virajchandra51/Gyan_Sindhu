@@ -148,6 +148,7 @@ const School = () => {
             });
           });
         });
+        console.log(global.branch_id)
 
         const orderData = await fetchDataFromApiWithResponse(
           cartItemsPost,

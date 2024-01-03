@@ -52,7 +52,7 @@ const ForgotPassword = () => {
         var url =
           "https://www.kit19.com/ComposeSMS.aspx?username=olclko637189&password=olclko&sender=FASOFT&to=" +
           `${data[0].mobile_no1}` +
-          "&message=Dear FA,%0D%0AYour Password is: " +
+          "&message=Dear "+`${data[0].member_name}`+",%0D%0AYour Password is: " +
           `${data[0].mem_password}` +
           "%0D%0AC/o FA Software Team.%0D%0ABy FA Software.&priority=1&dnd=1&unicode=0&dlttemplateid=1007162322505627553";
         fetch(url)

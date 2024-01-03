@@ -23,7 +23,7 @@ const Class = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [global.branch_id]);
   const fetchData = async () => {
     var data = await fetchDataFromApi("classlist",
       "compid=9&branchid=" +

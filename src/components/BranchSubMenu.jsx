@@ -21,12 +21,6 @@ const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
       "compid=0&branchid=0&ipaddress=" + `${global.ip_address}`
     );
     setBranchList(data);
-    dispatch(
-      updateBranch({
-        branch_id: data[0].branch_id,
-        branch_name: data[0].branch_description,
-      })
-    );
   };
   const handleBranchClick = (id, name) => {
     setShowBranchMenu(false);
