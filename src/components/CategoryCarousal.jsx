@@ -152,6 +152,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                     >
                       {item[`${sellType}_name`]}
                     </div>
+                    <StarRating stars = {item.star_rating}/>
                   </Link>
                 );
               })
@@ -196,7 +197,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                     >
                       {item[`${sellType}_name`]}
                     </div>
-                    <StarRating starAverage = {item.star_rating}/>
+                    <StarRating stars = {item.star_rating}/>
                   </Link>
                 );
               })

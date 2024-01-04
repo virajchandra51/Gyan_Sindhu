@@ -149,7 +149,7 @@ const School = () => {
           });
         });
         console.log(global.branch_id)
-
+        console.log(cartItemsPost)
         const orderData = await fetchDataFromApiWithResponse(
           cartItemsPost,
           "orderfinalise",

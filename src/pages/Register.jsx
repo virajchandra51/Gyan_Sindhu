@@ -237,6 +237,7 @@ const Register = () => {
       });
       return;
     }
+    form.password = URLEncoder.encode(form.password);
     var data = await fetchDataFromApi(
       "memberregister",
       "membername=" +
