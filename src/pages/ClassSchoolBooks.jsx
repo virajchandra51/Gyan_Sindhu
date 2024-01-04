@@ -17,8 +17,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 const ClassSchoolBooks = () => {
   const global = useSelector((state) => state.global);
   const location = useLocation();
-  console.log(location);
-  console.log(global);
   const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
@@ -98,7 +96,6 @@ const ClassSchoolBooks = () => {
     var price = 0.0;
     var itemCount = 0;
     var qtyItemCount = 0;
-    console.log(data);
     data.forEach((item) => {
       price += parseFloat(item.net_sale_rate) * parseFloat(item.quantity);
       itemCount ++;
@@ -112,7 +109,6 @@ const ClassSchoolBooks = () => {
         return a;
       }, {})
     );
-    console.log(data)
     setProductList(data);
     setPrice(price.toFixed(2));
     setItemCount(itemCount.toFixed(2));

@@ -3,7 +3,7 @@ import { cartSlice } from "./cartSlice";
 import { globalSlice } from "./globalSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
-import { thunk } from "redux-thunk";
+import thunk from "../../node_modules/redux-thunk";
 
 const persistConfig = {
   key: "root",

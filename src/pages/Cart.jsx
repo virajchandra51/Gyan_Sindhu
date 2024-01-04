@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
-import emptyCartPic from "../assets/empty-cart.jpg";
+import emptyCartPic from "../assets/empty-cart.png";
 import CartItem from "../components/CartItem";
 import { RAZORPAY_KEY_ID } from "../utils/constants";
 import logo from "../assets/logo3.png";
