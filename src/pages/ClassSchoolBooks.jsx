@@ -30,7 +30,7 @@ const ClassSchoolBooks = () => {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     fetchData();
-  }, [global.branch_id]);
+  }, []);
 
   const notify = () => {
     toast.success("Success. Check your cart!", {
