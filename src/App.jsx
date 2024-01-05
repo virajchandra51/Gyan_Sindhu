@@ -19,10 +19,11 @@ import Item from "./pages/Item";
 import Result from "./pages/Result";
 import ReturnPolicy from "./pages/ReturnPolicy";
 import { useEffect } from "react";
-import { updateIPAddress } from "./store/globalSlice";
+import { updateIPAddress, updateBranch, updateCompany } from "./store/globalSlice";
 import { useDispatch } from "react-redux";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ForgotPassword from "./pages/ForgotPassword";
+import { fetchDataFromApi } from "./utils/api";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,12 +38,34 @@ function App() {
     };
     const data = await fetch("https://api.ipify.org?format=json", options);
     const res = await data.json();
-    console.log(res);
+    // console.log(res);
     dispatch(
       updateIPAddress({
         ip_address: data.ip,
       })
     );
+    const r = await JSON.parse(JSON.parse(localStorage.getItem("persist:root")).global);
+    // console.log(r.branch_id);
+    if(r.branch_id == -1)
+    {
+      const data2 = await fetchDataFromApi(
+        "branchlist",
+        "compid=0&branchid=0&ipaddress=" + `${res.ip}`
+      );
+      // console.log(data2);
+      dispatch(
+        updateBranch({
+          branch_id: data2[0].branch_id,
+          branch_name: data2[0].branch_description,
+        })
+      );
+      dispatch(
+        updateCompany({
+          company_id: data2[0].company_id,
+          company_name: data2[0].company_name,
+        })
+      );
+    }
   };
 
   return (

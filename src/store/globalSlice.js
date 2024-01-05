@@ -13,12 +13,12 @@ export const globalSlice = createSlice({
     updateBranch: (state, action) => {
       state.branch_id = action.payload.branch_id;
       state.branch_name = action.payload.branch_name;
-      console.log(state.branch_id)
+      // console.log(state.branch_id)
     },
     updateCompany: (state, action) => {
       state.company_id = action.payload.company_id;
       state.company_name = action.payload.company_name;
-      console.log(state.company_id)
+      // console.log(state.company_id)
     },
     updateIPAddress: (state, action) => {
       state.ip_address = action.payload.ip_address;
