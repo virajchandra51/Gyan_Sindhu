@@ -35,7 +35,9 @@ const School = () => {
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "schoollist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&citycode=" +
         `${cityCode}` +
@@ -49,7 +51,9 @@ const School = () => {
     setData({ data: data, loading: false });
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=city&ipaddress=" +
         `${global.ip_address}`

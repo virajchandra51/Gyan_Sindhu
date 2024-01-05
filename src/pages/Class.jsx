@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Layout from "../Layout";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useLayoutEffect } from "react";
 
 const Class = () => {
@@ -25,12 +25,16 @@ const Class = () => {
     fetchData();
   }, [global.branch_id]);
   const fetchData = async () => {
-    var data = await fetchDataFromApi("classlist",
-      "compid=9&branchid=" +
+    var data = await fetchDataFromApi(
+      "classlist",
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +
-        "&ipaddress="+`${global.ip_address}`
+        "&ipaddress=" +
+        `${global.ip_address}`
     );
     setData({ data: data, loading: false });
   };
@@ -76,7 +80,11 @@ const Class = () => {
               <div className="text-2xl">Oops ... No School Found!</div>
             )
           ) : (
-            <Skeleton containerClassName="w-screen flex-1 gap-4" count={10} height={20}/>
+            <Skeleton
+              containerClassName="w-screen flex-1 gap-4"
+              count={10}
+              height={20}
+            />
           )}
         </div>
         {/* grid end */}

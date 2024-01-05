@@ -103,7 +103,7 @@ const School = () => {
 
     const data = await fetchDataFromApi(
       "orderinitiate",
-      "compid=9&branchid=" +
+      "compid="+`${global.company_id}`+"&branchid=" +
         `${global.branch_id}` +
         "&membercode=" +
         `${userData.member_id}` +
@@ -153,7 +153,7 @@ const School = () => {
         const orderData = await fetchDataFromApiWithResponse(
           cartItemsPost,
           "orderfinalise",
-          "compid=9&branchid=" +
+          "compid="+`${global.company_id}`+"&branchid=" +
             `${global.branch_id}` +
             "&vno=" +
             `${data[0].vno}` +

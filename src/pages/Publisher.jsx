@@ -43,7 +43,9 @@ const Publisher = () => {
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "selectionlist",
-      "&compid=9&branchid=" +
+      "&compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=publisher&publishername=" +
         `${publisherName}` +

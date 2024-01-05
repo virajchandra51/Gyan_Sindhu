@@ -52,7 +52,7 @@ const Result = () => {
   }, [location.state?.search, pageno]);
 
   const fetchData = async () => {
-    var url = "compid=9&branchid=" + `${global.branch_id}`;
+    var url = "compid="+`${global.company_id}`+"&branchid=" + `${global.branch_id}`;
     if (location.state.sellType) {
       if (location.state.sellType === "publisher")
         url +=

@@ -21,7 +21,9 @@ const Menu = ({ showCatMenu, setShowCatMenu, setGroup }) => {
   const fetchData = async () => {
     const data = await fetchDataFromApi(
       "itemgrouplist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&groupcode=1&ipaddress=" +
         `${global.ip_address}` +

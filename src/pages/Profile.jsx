@@ -109,7 +109,9 @@ const Profile = () => {
     setProfileData({ data: data[0], loading: false });
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=designation&ipaddress=" +
         `${global.ip_address}`
@@ -126,7 +128,9 @@ const Profile = () => {
     copyData = [];
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=state&ipaddress=" +
         `${global.ip_address}`
@@ -142,7 +146,9 @@ const Profile = () => {
     copyData = [];
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=country&ipaddress=" +
         `${global.ip_address}`
@@ -158,7 +164,9 @@ const Profile = () => {
     copyData = [];
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=city&ipaddress=" +
         `${global.ip_address}`

@@ -39,7 +39,9 @@ const CategoryBooks = () => {
   const fetchData = async () => {
     const data = await fetchDataFromApi(
       "itemlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&groupcode=" +
         `${location.state.category.item_gr_code}` +

@@ -83,7 +83,7 @@ const ClassSchoolBooks = () => {
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "booklist",
-      "compid=9&branchid=" +
+      "compid="+`${global.company_id}`+"&branchid=" +
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +

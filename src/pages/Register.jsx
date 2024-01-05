@@ -71,7 +71,9 @@ const Register = () => {
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=designation&ipaddress=" +
         `${global.ip_address}`
@@ -88,7 +90,9 @@ const Register = () => {
     copyData = [];
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=state&ipaddress=" +
         `${global.ip_address}`
@@ -104,7 +108,9 @@ const Register = () => {
     copyData = [];
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=country&ipaddress=" +
         `${global.ip_address}`
@@ -120,7 +126,9 @@ const Register = () => {
     copyData = [];
     data = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=city&ipaddress=" +
         `${global.ip_address}`
@@ -141,8 +149,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.emailid))
-    {
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.emailid)) {
       toast.error("Oops... Invalid Email!", {
         position: "bottom-right",
         autoClose: 3000,

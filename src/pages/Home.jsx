@@ -35,7 +35,9 @@ const Home = () => {
   const fetchData = async () => {
     var res = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${sellTypes[0]}` +
@@ -46,7 +48,9 @@ const Home = () => {
     setData1({ data: res, loading: false });
     res = await fetchDataFromApi(
       "schoollist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&citycode=0" +
         "&schoolname=" +
@@ -58,7 +62,9 @@ const Home = () => {
     setData2({ data: res, loading: false });
     res = await fetchDataFromApi(
       "selectionlist",
-      "compid=9&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${sellTypes[2]}` +

@@ -39,7 +39,6 @@ const Item = () => {
         "&ipaddress=" +
         `${global.ip_address}`
     );
-    console.log(data)
     setISBN({ data: data[0], loading: false });
   };
 
@@ -77,7 +76,6 @@ const Item = () => {
     }
   }
   const location = useLocation();
-  const dispatch = useDispatch();
   const notify = () => {
     toast.success("Success. Check your cart!", {
       position: "bottom-right",

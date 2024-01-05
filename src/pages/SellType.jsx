@@ -33,7 +33,9 @@ const SellType = () => {
   const fetchData = async () => {
     const data = await fetchDataFromApi(
       "selectionlist",
-      "&compid=9&branchid=" +
+      "&compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&seltype=" +
         `${location.state.sellType}` +
