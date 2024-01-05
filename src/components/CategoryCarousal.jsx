@@ -131,7 +131,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                       school_name: item.school_name,
                     }}
                     key={ind}
-                    className="flex flex-col bg-white items-center p-2 m-2 border hover:scale-[1.02] duration-200 shadow rounded-md"
+                    className="flex flex-col bg-white items-center p-2 m-2 pb-4 border hover:scale-[1.02] duration-200 shadow rounded-md"
                   >
                     <div className="flex items-center justify-center h-[250px] w-[250px]">
                       {item.photo_file_url ? (
@@ -177,7 +177,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                       sellType: sellType,
                     }}
                     key={ind}
-                    className="flex flex-col bg-white items-center p-2 m-2 border hover:scale-[1.02] duration-200 shadow rounded-md"
+                    className="flex flex-col bg-white items-center p-2 m-2 pb-4 border hover:scale-[1.02] duration-200 shadow rounded-md"
                   >
                     <div className="flex items-center justify-center h-[250px] w-[250px]">
                       {item.photo_file_url ? (

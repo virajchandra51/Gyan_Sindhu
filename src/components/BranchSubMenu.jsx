@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateBranch } from "../store/globalSlice";
 import { fetchDataFromApi } from "../utils/api";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const BranchSubMenu = ({ showBranchMenu, setShowBranchMenu }) => {
