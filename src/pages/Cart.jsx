@@ -58,6 +58,7 @@ const School = () => {
   });
 
   const { cartItems } = useSelector((state) => state.cart);
+  console.log(cartItems);
   const [subTotal, setSubTotal] = useState(0);
   useEffect(() => {
     var v = 0.0;

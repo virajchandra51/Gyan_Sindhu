@@ -168,7 +168,6 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
           <div style={getSlidesStyle()}>
             {data.length > 0 ? (
               data.map((item, ind) => {
-                console.log(item)
                 return (
                   <Link
                     to={"/result"}

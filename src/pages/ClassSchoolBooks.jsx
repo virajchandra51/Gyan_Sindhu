@@ -18,6 +18,7 @@ const ClassSchoolBooks = () => {
   const global = useSelector((state) => state.global);
   const location = useLocation();
   const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
 
   const [qty, setQty] = useState(1);
   const [price, setPrice] = useState(0);
@@ -30,7 +31,37 @@ const ClassSchoolBooks = () => {
     fetchData();
   }, []);
 
-  const notify = () => {
+  function addToCartHandler (productList, qty, price, totalPrice) {
+    if(cartItems.length > 0)
+    {
+      if(cartItems[0].school_code !== location.state.school_code || cartItems[0].class_code !== location.state.class_code)
+      {
+        toast.info("You can select one class of one school per order!", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        return;
+      }
+    }
+    // cartItems.forEach((item, index) => {});
+    dispatch(
+      addToCart({
+        data: productList,
+        selectedQuantity: qty,
+        oneQuantityPrice: price,
+        totalPrice: totalPrice,
+        school_code: location.state.school_code,
+        school_name: location.state.school_name,
+        class_code: location.state.class_code,
+        class_name: location.state.class_name,
+      })
+    );
     toast.success("Success. Check your cart!", {
       position: "bottom-right",
       autoClose: 5000,
@@ -83,7 +114,9 @@ const ClassSchoolBooks = () => {
   const fetchData = async () => {
     var data = await fetchDataFromApi(
       "booklist",
-      "compid="+`${global.company_id}`+"&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&schoolcode=" +
         `${location.state.school_code}` +
@@ -98,8 +131,8 @@ const ClassSchoolBooks = () => {
     var qtyItemCount = 0;
     data.forEach((item) => {
       price += parseFloat(item.net_sale_rate) * parseFloat(item.quantity);
-      itemCount ++;
-      qtyItemCount += parseFloat(item.quantity)
+      itemCount++;
+      qtyItemCount += parseFloat(item.quantity);
     });
     data = Object.values(
       data.reduce((a, { item_type, ...props }) => {
@@ -112,7 +145,7 @@ const ClassSchoolBooks = () => {
     setProductList(data);
     setPrice(price.toFixed(2));
     setItemCount(itemCount.toFixed(2));
-    setQtyItemCount(qtyItemCount.toFixed(2))
+    setQtyItemCount(qtyItemCount.toFixed(2));
     setTotalPrice((qty * price.toFixed(2)).toFixed(2));
   };
 
@@ -176,11 +209,12 @@ const ClassSchoolBooks = () => {
           )}
           <div className="w-[97%] ml-auto mt-8">
             <div className="flex items-center justify-between text-black/[0.5]">
-
               <div className="text-md md:text-lg w-[60%] md:w-[80%] font-semibold text-black">
                 Item Count : {itemCount}
               </div>
-              <div className="md:w-[10%] w-[12%] text-left text-md">Qty : {qtyItemCount} </div>
+              <div className="md:w-[10%] w-[12%] text-left text-md">
+                Qty : {qtyItemCount}{" "}
+              </div>
               <div className="text-sm md:text-xl font-medium text-right text-green-500 w-[20%] md:w-[20%]">
                 Set Price : &#8377;{price}
               </div>
@@ -188,7 +222,9 @@ const ClassSchoolBooks = () => {
             <div className="h-[1px] bg-gray-200 my-3"></div>
           </div>
           <div className="text-right my-10 flex flex-col items-end">
-            <h2 className="text-md md:text-xl font-bold">Set Price x Order Quantity = Total Price</h2>
+            <h2 className="text-md md:text-xl font-bold">
+              Set Price x Order Quantity = Total Price
+            </h2>
             <h3 className="text-2xl md:text-4xl">
               &#8377; {price} x {qty} = &#8377; {totalPrice}
             </h3>
@@ -219,21 +255,14 @@ const ClassSchoolBooks = () => {
               </div>
               <div
                 className="w-1/2 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg text-center cursor-pointer font-medium transition-transform active:scale-95 hover:bg-[var(--secondary-c)]"
-                onClick={() => {
-                  notify();
-                  dispatch(
-                    addToCart({
-                      data: productList,
-                      selectedQuantity: qty,
-                      oneQuantityPrice: price,
-                      totalPrice: totalPrice,
-                      school_code: location.state.school_code,
-                      school_name: location.state.school_name,
-                      class_code: location.state.class_code,
-                      class_name: location.state.class_name,
-                    })
-                  );
-                }}
+                onClick={() =>
+                  addToCartHandler(
+                    productList,
+                    qty,
+                    price,
+                    totalPrice,
+                  )
+                }
               >
                 Add to Cart
               </div>
