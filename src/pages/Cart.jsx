@@ -104,11 +104,17 @@ const School = () => {
 
     const data = await fetchDataFromApi(
       "orderinitiate",
-      "compid="+`${global.company_id}`+"&branchid=" +
+      "compid=" +
+        `${global.company_id}` +
+        "&branchid=" +
         `${global.branch_id}` +
         "&membercode=" +
         `${userData.member_id}` +
-        "&schoolcode=1&amount=" +
+        "&schoolcode=" +
+        `${cartItems[0].school_code}` +
+        "&classcode=" +
+        `${cartItems[0].class_code}` +
+        "&amount=" +
         `${subTotal}` +
         "&grandamount=" +
         `${subTotal}` +
@@ -149,12 +155,14 @@ const School = () => {
             });
           });
         });
-        console.log(global.branch_id)
-        console.log(cartItemsPost)
+        console.log(global.branch_id);
+        console.log(cartItemsPost);
         const orderData = await fetchDataFromApiWithResponse(
           cartItemsPost,
           "orderfinalise",
-          "compid="+`${global.company_id}`+"&branchid=" +
+          "compid=" +
+            `${global.company_id}` +
+            "&branchid=" +
             `${global.branch_id}` +
             "&vno=" +
             `${data[0].vno}` +

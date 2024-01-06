@@ -144,8 +144,8 @@ const ClassSchoolBooks = () => {
     );
     setProductList(data);
     setPrice(price.toFixed(2));
-    setItemCount(itemCount.toFixed(2));
-    setQtyItemCount(qtyItemCount.toFixed(2));
+    setItemCount(itemCount);
+    setQtyItemCount(qtyItemCount);
     setTotalPrice((qty * price.toFixed(2)).toFixed(2));
   };
 
