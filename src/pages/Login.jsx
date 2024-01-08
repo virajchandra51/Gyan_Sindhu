@@ -41,7 +41,7 @@ const Login = () => {
         return;
       }
     }
-    form.password = URLEncoder.encode(form.password);
+    form.password = encodeURIComponent(form.password);
     var data = await fetchDataFromApi(
       "memberlogin",
       "userid=" +

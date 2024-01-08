@@ -50,15 +50,17 @@ const ForgotPassword = () => {
         });
       } else {
         var url =
-          "https://www.kit19.com/ComposeSMS.aspx?username=olclko637189&password=olclko&sender=FASOFT&to=" +
-          `${data[0].mobile_no1}` +
-          "&message=Dear "+`${data[0].member_name}`+",%0D%0AYour Password is: " +
+          "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+          `${data[0].member_name}` +
+          ", %0D%0A%0D%0AYour login password is " +
           `${data[0].mem_password}` +
-          "%0D%0AC/o FA Software Team.%0D%0ABy FA Software.&priority=1&dnd=1&unicode=0&dlttemplateid=1007162322505627553";
+          " %0D%0A%0D%0ASincerely, %0D%0ASkoolio Team. %0D%0A%0D%0Awww.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
+          `${data[0].mobile_no1}` +
+          "&route_id=3&entity_id=1701170435850383099&template_id=1707170452736615702";
         fetch(url)
           .then((response) => response.json())
           .then((data) => {
-            console.log(response);
+            // console.log(response);
           });
         var emailData = {
           service_id: "GmailSMTPService",
@@ -132,13 +134,12 @@ const ForgotPassword = () => {
           </form>
 
           <div className="mt-5 text-xs gap-4 flex justify-end items-center text-black">
-              <Link to="/login">
-                <div className="py-2 px-5 bg-white border rounded-full hover:opacity-[0.7] duration-300">
-                  Login
-                </div>
-              </Link>
+            <Link to="/login">
+              <div className="py-2 px-5 bg-white border rounded-full hover:opacity-[0.7] duration-300">
+                Login
+              </div>
+            </Link>
           </div>
-
         </div>
 
         <div className="hidden md:flex items-center relative justify-center bg-gray-800 w-[70%] text-center">

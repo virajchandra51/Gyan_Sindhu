@@ -137,13 +137,18 @@ const Item = () => {
             {/* PRODUCT PRICE */}
             <div className="flex mt-8 items-center">
               <p className="mr-2 mb-4 text-xl font-extrabold text-[var(--primary-c)]">
-                MRP : &#8377; {location.state.product.net_sale_rate}
+                Set Price : &#8377; {location.state.product.net_sale_rate}
               </p>
-              {true && (
+              {parseFloat(location.state.product.net_sale_rate) !==
+                parseFloat(location.state.product.mrp) && (
                 <>
                   <p className="ml-auto mb-4 text-base font-medium text-green-500">
-                    {/* {getDiscountedPricePercentage(p.original_price, p.price)}% */}
-                    {location.state.product.disc_percent}% off
+                    {(
+                      ((location.state.product.mrp - location.state.product.net_sale_rate) /
+                        location.state.product.mrp) *
+                      100
+                    ).toFixed(2)}
+                    % off
                   </p>
                 </>
               )}
@@ -151,9 +156,6 @@ const Item = () => {
 
             <div className="text-md font-medium text-black/[0.5]">
               incl. of taxes
-            </div>
-            <div className="text-md font-medium text-black/[0.5] mb-8">
-              {`(Also includes all applicable duties)`}
             </div>
 
             {!ISBN.loading && ISBN.data?.image_file_url && (

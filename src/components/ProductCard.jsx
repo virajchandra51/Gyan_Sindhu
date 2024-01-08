@@ -27,13 +27,16 @@ const ProductCard = ({ product }) => {
         <h2 className="text-lg font-bold">{product.item_name}</h2>
         <div className="flex items-center text-black/[0.5]">
           <p className="mr-2 text-md font-semibold">
-            MRP : &#8377; {product.net_sale_rate}
+            Set Price : &#8377; {product.net_sale_rate}
           </p>
+        {
+          parseFloat((product.net_sale_rate)) !== parseFloat((product.mrp)) && 
           <>
             <p className="ml-auto text-base font-medium text-green-500">
-              {product.disc_percent}% off
+              {(((product.mrp - product.net_sale_rate)/product.mrp)*100).toFixed(2)}% off
             </p>
           </>
+        }
         </div>
         <p className="text-sm font-medium">Item Code - {product.item_code}</p>
         <p className="text-sm font-medium">

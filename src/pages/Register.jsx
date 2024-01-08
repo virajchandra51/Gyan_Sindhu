@@ -244,7 +244,7 @@ const Register = () => {
       });
       return;
     }
-    form.password = URLEncoder.encode(form.password);
+    form.password = encodeURIComponent(form.password);
     var data = await fetchDataFromApi(
       "memberregister",
       "membername=" +
@@ -295,7 +295,6 @@ const Register = () => {
         `${form.password}` +
         "&ipaddress=0.0.0.0"
     );
-    console.log(data);
     data = data[0];
     if (data.success_status === "1") {
       toast.success(data.success_message, {
@@ -308,6 +307,17 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
       });
+      var url =
+        "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+        `${form.membername}` +
+        ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
+        `${form.mobileno1}` +
+        "&route_id=3&entity_id=1701170435850383099&template_id=1707170447514837772";
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(response);
+        });
       localStorage.setItem("UserData", JSON.stringify(data));
       setTimeout(() => {
         navigate("/");
@@ -335,9 +345,7 @@ const Register = () => {
         theme: "dark",
       });
     }
-    // console.log(data[0].member_id);
   };
-  // https://publisher.faonline.in/FAWebEComm/api/memberregister/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&&membername=Rupesh%20Chandra&nickname=Rupesh%20Kumar&salutation=Mr.&sexcode=1&age=55&desigcode=1&spousename=Archana&children=Viraj&mobileno1=9129916977&mobileno2=9889355229&emailid=fasystems@gmail.com&address=C-1186,%20Indira%20Nagar&city=Lucknow&statecode=1&pincode=226016&countrycode=IND&birthdate=1968-06-04&annidate=1999-12-01&reggstin=09ABCD&regaadhar=1111222233334444&languagesknown=Hindi,English&newpassword=123&ipaddress=0.0.0.0
 
   const [form, setForm] = useState({
     membername: "",
@@ -378,7 +386,7 @@ const Register = () => {
     setForm(n);
   }
 
-  console.log(form);
+  // console.log(form);
 
   return (
     <div className="">

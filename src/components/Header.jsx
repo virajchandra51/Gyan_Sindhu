@@ -190,7 +190,7 @@ const Header = () => {
         <ul className="flex items-center justify-center text-white px-0 md:px-4">
           {SellTypeData?.map((item, index) => {
             return (
-              <li>
+              <li className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] hover:text-white duration-200 font-semibold">
                 <Link
                   key={index}
                   state={{
@@ -198,7 +198,6 @@ const Header = () => {
                     sellTypeTitle: item.name,
                   }}
                   to={`${item.url}`}
-                  className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] hover:text-white duration-200 font-semibold"
                 >
                   {item.name}
                 </Link>
