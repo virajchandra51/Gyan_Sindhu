@@ -102,12 +102,12 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
           className={`flex justify-between items-center bg-white border-t-2 ${borderColors[index]}`}
         >
           <div
-            className={`text-xl p-4 font-bold uppercase text-white ${bgColors[index]}`}
+            className={`text-md md:text-xl p-4 font-bold uppercase text-white ${bgColors[index]}`}
           >
             Shop by {sellTypeTitle} :
           </div>
           <Link
-            className={`${textColors[index]} font-semibold hover:scale-105 duration-200 z-10 pr-3 flex items-center justify-center cursor-pointer hover:opacity-90`}
+            className={`${textColors[index]} md:text-lg text-sm font-semibold hover:scale-105 duration-200 z-10 pr-2 flex items-center justify-center cursor-pointer hover:opacity-90`}
             to={`/${sellType}`}
             state={{ sellType: sellType }}
           >
