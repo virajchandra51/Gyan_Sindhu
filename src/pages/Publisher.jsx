@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
-import dummy from "../assets/sampleProduct.jpeg";
+import dummy from "../assets/sampleProduct.webp";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";

@@ -12,7 +12,7 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { MdVerified } from "react-icons/md";
 import { useSelector } from "react-redux";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const SellTypeData = [
   { id: 1, name: "School", url: "/school" },
@@ -190,17 +190,19 @@ const Header = () => {
         <ul className="flex items-center justify-center text-white px-0 md:px-4">
           {SellTypeData?.map((item, index) => {
             return (
-              <Link
-                key={index}
-                state={{
-                  sellType: item.url.toLowerCase().substring(1),
-                  sellTypeTitle: item.name,
-                }}
-                to={`${item.url}`}
-                className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] hover:text-white duration-200 font-semibold"
-              >
-                <li>{item.name}</li>
-              </Link>
+              <li>
+                <Link
+                  key={index}
+                  state={{
+                    sellType: item.url.toLowerCase().substring(1),
+                    sellTypeTitle: item.name,
+                  }}
+                  to={`${item.url}`}
+                  className="h-full flex items-center px-4 hover:bg-[var(--secondary-c)] hover:text-white duration-200 font-semibold"
+                >
+                  {item.name}
+                </Link>
+              </li>
             );
           })}
         </ul>

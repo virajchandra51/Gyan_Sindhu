@@ -3,7 +3,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import dummy from "../assets/sampleProduct.jpeg";
+import dummy from "../assets/sampleProduct.webp";
 import StarRating from "./StarRating";
 
 const bgColors = ["bg-yellow-500", "bg-red-600", "bg-green-600"];

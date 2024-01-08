@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import sampleProduct from "../assets/sampleProduct.jpeg";
+import sampleProduct from "../assets/sampleProduct.webp";
 
 const ProductCard = ({ product }) => {
   return (
