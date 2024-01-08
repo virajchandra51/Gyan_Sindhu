@@ -194,22 +194,20 @@ const School = () => {
           };
 
           var url =
-            "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
-            `${userData.member_name}` +
-            ", %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
+            "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
             `${response.razorpay_order_id}` +
             " , %0D%0AAmount: " +
             `${subTotal}` +
             " , %0D%0Awill be delivered soon. %0D%0A%0D%0ABest wishes, %0D%0ASkoolio Team. %0D%0A%0D%0Awww.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
             `${userData.mobile_no1}` +
             "&route_id=3&entity_id=1701170435850383099&template_id=1707170453801307016";
-          await fetch(url)
+          fetch(url)
             .then((response) => response.json())
             .then((data) => {
               console.log(response);
             });
 
-          await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          fetch("https://api.emailjs.com/api/v1.0/email/send", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
         <h2 className="text-lg font-bold">{product.item_name}</h2>
         <div className="flex items-center text-black/[0.5]">
           <p className="mr-2 text-md font-semibold">
-            Set Price : &#8377; {product.net_sale_rate}
+            Sale Rate : &#8377; {product.net_sale_rate}
           </p>
         {
           parseFloat((product.net_sale_rate)) !== parseFloat((product.mrp)) && 

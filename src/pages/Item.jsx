@@ -135,27 +135,37 @@ const Item = () => {
             </div> */}
 
             {/* PRODUCT PRICE */}
-            <div className="flex mt-8 items-center">
-              <p className="mr-2 mb-4 text-xl font-extrabold text-[var(--primary-c)]">
-                Set Price : &#8377; {location.state.product.net_sale_rate}
-              </p>
-              {parseFloat(location.state.product.net_sale_rate) !==
-                parseFloat(location.state.product.mrp) && (
-                <>
-                  <p className="ml-auto mb-4 text-base font-medium text-green-500">
+            {parseFloat(location.state.product.net_sale_rate) !==
+            parseFloat(location.state.product.mrp) ? (
+              <div className="flex mt-8 items-start flex-col">
+                <div className="flex justify-between w-full">
+                  <p className="mr-2 mb-2 text-xl font-extrabold text-[var(--primary-c)]">
+                    MRP : &#8377; {location.state.product.mrp}
+                  </p>
+                  <p className="text-base font-medium text-green-500">
                     {(
-                      ((location.state.product.mrp - location.state.product.net_sale_rate) /
+                      ((location.state.product.mrp -
+                        location.state.product.net_sale_rate) /
                         location.state.product.mrp) *
                       100
                     ).toFixed(2)}
                     % off
                   </p>
-                </>
-              )}
-            </div>
+                </div>
+                <p className="mr-2 mb-2 text-xl font-extrabold text-[var(--primary-c)]">
+                  Sale Rate : &#8377; {location.state.product.net_sale_rate}
+                </p>
+              </div>
+            ) : (
+              <div className="flex mt-8 items-start flex-col">
+                <p className="mr-2 mb-2 text-xl font-extrabold text-[var(--primary-c)]">
+                  Sale Rate : &#8377; {location.state.product.net_sale_rate}
+                </p>
+              </div>
+            )}
 
-            <div className="text-md font-medium text-black/[0.5]">
-              incl. of taxes
+            <div className="text-md font-medium text-black/[0.5] mb-8">
+              (Inclusive of All Taxes)
             </div>
 
             {!ISBN.loading && ISBN.data?.image_file_url && (
