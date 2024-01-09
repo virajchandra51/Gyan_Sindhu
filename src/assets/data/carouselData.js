@@ -1,5 +1,5 @@
 import slide1 from "../slide-1.webp";
-import slide2 from "../slide-2.webp";
+import slide2 from "../bgImage.webp";
 import slide3 from "../slide2.webp";
 import slide4 from "../slide-4.webp";
 import slide5 from "../slide-5.webp";

@@ -12,6 +12,7 @@ import {
 import { MdCall, MdVerified } from "react-icons/md";
 import Wrapper from "./Wrapper";
 import { useState, useEffect } from "react";
+import payment from "../assets/payment.webp";
 
 const Footer = () => {
   const [userData, setUserData] = useState({});
@@ -67,17 +68,30 @@ const Footer = () => {
             <div className="font-bold uppercase text-lg cursor-pointer">
               Member
             </div>
-            <Link to='/register' className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            <Link
+              to="/register"
+              className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200"
+            >
               Register Now
             </Link>
-            <Link to='/profile' state={{ member_id: userData.member_id }} className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            <Link
+              to="/profile"
+              state={{ member_id: userData.member_id }}
+              className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200"
+            >
               My Profile
             </Link>
-            <Link to='/login' className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
+            <Link
+              to="/login"
+              className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200"
+            >
               Login
             </Link>
-            <Link to='/contactus' className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200">
-              Feedback
+            <Link
+              to="/contactus"
+              className="font-medium text-md cursor-pointer  hover:text-[var(--primary-c)] text-black duration-200"
+            >
+              Contact Us
             </Link>
           </div>
           {/* MENU END */}
@@ -102,20 +116,11 @@ const Footer = () => {
               >
                 Return Policy
               </Link>
-              <div className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer">
-                Payment Options
-              </div>
               <Link
                 to={"/privacypolicy"}
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
               >
                 Privacy Policy
-              </Link>
-              <Link
-                to={"/contactus"}
-                className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
-              >
-                Contact Us
               </Link>
             </div>
             {/* MENU END */}
@@ -215,6 +220,7 @@ const Footer = () => {
             View Map Location
             <FaMapPin size={18} fill="#a00" className="ml-1" />
           </Link>
+          <img src={payment} alt="payment" className="mt-4 w-[280px]"></img>
         </div>
         {/* RIGHT END */}
       </Wrapper>

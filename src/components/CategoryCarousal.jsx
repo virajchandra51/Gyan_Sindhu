@@ -23,7 +23,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
   };
 
   const slidesOverflow = {
-    overflow: "hidden",
+    overflow: "auto",
     height: "100%",
   };
 
@@ -118,7 +118,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
           </Link>
         </div>
       </div>
-      <div style={slidesOverflow}>
+      <div style={slidesOverflow} className="no-scrollbar">
         {sellType === "school" ? (
           <div style={getSlidesStyle()}>
             {data.length > 0 ? (

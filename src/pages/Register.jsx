@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/logo.webp";
 import { fetchDataFromApi } from "../utils/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
