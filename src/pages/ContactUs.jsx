@@ -109,7 +109,7 @@ const ContactUs = () => {
       .then((data) => {
         // console.log(response);
       });
-      setContactText("Sent!")
+    setContactText("Sent!");
     // if (data.success_status === "1") {
     //   toast.success(data.success_message, {
     //     position: "bottom-right",
@@ -197,6 +197,19 @@ const ContactUs = () => {
               </div>
               <div className="flex flex-col items-start ">
                 <p>
+                  Mobile No <span className="text-red-600">*</span>
+                </p>
+                <input
+                  className="px-3 py-1.5 mt-1 rounded-md border w-[100%]"
+                  type="text"
+                  name="mobileno"
+                  required
+                  placeholder="Mobile No"
+                  onChange={(e) => handle(e)}
+                />
+              </div>
+              <div className="flex flex-col items-start ">
+                <p>
                   Email <span className="text-red-600">*</span>
                 </p>
                 <input
@@ -215,19 +228,6 @@ const ContactUs = () => {
                   type="text"
                   name="schoolname"
                   placeholder="School Name"
-                  onChange={(e) => handle(e)}
-                />
-              </div>
-              <div className="flex flex-col items-start ">
-                <p>
-                  Mobile No <span className="text-red-600">*</span>
-                </p>
-                <input
-                  className="px-3 py-1.5 mt-1 rounded-md border w-[100%]"
-                  type="text"
-                  name="mobileno"
-                  required
-                  placeholder="Mobile No"
                   onChange={(e) => handle(e)}
                 />
               </div>
