@@ -109,6 +109,27 @@ const ContactUs = () => {
       .then((data) => {
         // console.log(response);
       });
+    var emailData = {
+      service_id: "SkoolioSMTPserver",
+      template_id: "ContactUsMail",
+      user_id: "2luFHblbDCponNdj8",
+      template_params: {
+        member_name: form.name,
+        email_id: form.email,
+        mobile_no: form.mobileno,
+        school: form.schoolname,
+        purpose: form.purpose,
+        message: form.message,
+      },
+    };
+
+    fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+    }).then((response) => {console.log(response);});
     setContactText("Sent!");
     // if (data.success_status === "1") {
     //   toast.success(data.success_message, {
@@ -265,7 +286,7 @@ const ContactUs = () => {
           <div className="w-[55%] flex items-start justify-center">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.816533900871!2d82.98427457938783!3d25.310367419980036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e320816f58b37%3A0x5b32cbee9fa630ae!2sGyan%20Sindhu!5e0!3m2!1sen!2sin!4v1702452222971!5m2!1sen!2sin"
-              referrerpolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer-when-downgrade"
               className="px-4 w-full h-[620px]"
             ></iframe>
           </div>

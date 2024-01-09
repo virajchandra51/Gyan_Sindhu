@@ -181,7 +181,7 @@ const School = () => {
           let currentDate = `${day}-${month}-${year}`;
 
           var emailData = {
-            service_id: "GmailSMTPService",
+            service_id: "SkoolioSMTPserver",
             template_id: "OrderConfirmationMail",
             user_id: "2luFHblbDCponNdj8",
             template_params: {
@@ -193,6 +193,15 @@ const School = () => {
             },
           };
 
+          
+          fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailData),
+          }).then((response) => {});
+          
           var url =
             "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
             `${response.razorpay_order_id}` +
@@ -206,14 +215,6 @@ const School = () => {
             .then((data) => {
               console.log(response);
             });
-
-          fetch("https://api.emailjs.com/api/v1.0/email/send", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(emailData),
-          }).then((response) => {});
 
           navigate("/success", {
             state: { order_id: response.razorpay_order_id },

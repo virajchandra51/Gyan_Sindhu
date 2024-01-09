@@ -63,7 +63,7 @@ const ForgotPassword = () => {
             // console.log(response);
           });
         var emailData = {
-          service_id: "GmailSMTPService",
+          service_id: "SkoolioSMTPserver",
           template_id: "ForgotPasswordMail",
           user_id: "2luFHblbDCponNdj8",
           template_params: {

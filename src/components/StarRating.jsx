@@ -8,7 +8,7 @@ const StarRating = ({stars}) => {
   return (
     <div className="flex">
       {starArr?.map((val, i) => {
-        return <FaStar className={`${val}`}/>;
+        return <FaStar className={`${val}`} key={i}/>;
       })}
     </div>
   );
