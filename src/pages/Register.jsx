@@ -200,7 +200,7 @@ const Register = () => {
       });
       return;
     }
-    if (form.mobileno2.length > 0 && mobileno2.length !== 10) {
+    if (form.mobileno2.length > 0 && form.mobileno2.length !== 10) {
       toast.error("Mobile Number 2 should be 10 characters and digits only!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -307,7 +307,11 @@ const Register = () => {
         theme: "dark",
       });
       var emailData;
-      if (form.mobileno2 != undefined && form.mobileno2.length > 0)
+      if (
+        form.mobileno2 == undefined ||
+        form.mobileno2.length == 0 ||
+        form.mobileno2 == null
+      )
         emailData =
           "<p>Dear <strong>" +
           `${form.membername}` +
@@ -332,7 +336,7 @@ const Register = () => {
           `${form.address1}` +
           '</li></ul><p>Please log in and continue happy shopping..</p><p>Have a nice day!,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
       fetch(
-        "https://publisher.faonline.in/FAWebEComm/api/sendemail/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&servername=smtpout.secureserver.net&port=465&username=sales@skoolio.co.in&password=skoolio@5921&subject=Your Order At Skoolio&sendername=SKOOLIO&mailto=" +
+        "https://publisher.faonline.in/FAWebEComm/api/sendemail/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&servername=smtpout.secureserver.net&port=465&username=sales@skoolio.co.in&password=skoolio@5921&subject=Your Registration at Skoolio&sendername=SKOOLIO&mailto=" +
           `${form.emailid}` +
           "&ipaddress=" +
           `${global.ip_address}`,
@@ -343,12 +347,28 @@ const Register = () => {
       ).then((response) => {
         console.log(response);
       });
-      var url =
-        "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
-        `${form.membername}` +
-        ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
-        `${form.mobileno1}` +
-        "&route_id=3&entity_id=1701170435850383099&template_id=1707170447514837772";
+      var url;
+      if (
+        form.mobileno2 == undefined ||
+        form.mobileno2.length == 0 ||
+        form.mobileno2 == null
+      ) {
+        url =
+          "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+          `${form.membername}` +
+          ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
+          `${form.mobileno1}` +
+          "&route_id=3&entity_id=1701170435850383099&template_id=1707170447514837772";
+      } else {
+        url =
+          "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+          `${form.membername}` +
+          ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
+          `${form.mobileno1}` +
+          "," +
+          `${form.mobileno2}` +
+          "&route_id=3&entity_id=1701170435850383099&template_id=1707170447514837772";
+      }
       fetch(url)
         .then((response) => response.json())
         .then((data) => {

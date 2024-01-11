@@ -154,8 +154,6 @@ const School = () => {
             });
           });
         });
-        console.log(global.branch_id);
-        console.log(cartItemsPost);
         const orderData = await fetchDataFromApiWithResponse(
           cartItemsPost,
           "orderfinalise",
@@ -193,11 +191,11 @@ const School = () => {
             " - " +
             `${cartItems[0].class_name}` +
             '</li></ul><p>Your order will be delivered soon.</p><p>Best wishes,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
-          console.log(emailData);
           fetch(
             "https://publisher.faonline.in/FAWebEComm/api/sendemail/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&servername=smtpout.secureserver.net&port=465&username=sales@skoolio.co.in&password=skoolio@5921&subject=Your Order At Skoolio&sendername=SKOOLIO&mailto=" +
               `${userData.email_id}` +
-              "&ipaddress="+`${global.ip_address}`,
+              "&ipaddress=" +
+              `${global.ip_address}`,
             {
               method: "POST",
               body: emailData,
@@ -206,14 +204,32 @@ const School = () => {
             console.log(response);
           });
 
-          var url =
-            "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
-            `${response.razorpay_order_id}` +
-            " , %0D%0AAmount: " +
-            `${subTotal}` +
-            " , %0D%0Awill be delivered soon. %0D%0A%0D%0ABest wishes, %0D%0ASkoolio Team. %0D%0A%0D%0Awww.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
-            `${userData.mobile_no1}` +
-            "&route_id=3&entity_id=1701170435850383099&template_id=1707170453801307016";
+          var url;
+          if (
+            userData.mobile_no2 == undefined ||
+            userData.mobile_no2.length == 0 ||
+            userData.mobile_no2 == null
+          ) {
+            url =
+              "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
+              `${response.razorpay_order_id}` +
+              " , %0D%0AAmount: " +
+              `${subTotal}` +
+              " , %0D%0Awill be delivered soon. %0D%0A%0D%0ABest wishes, %0D%0ASkoolio Team. %0D%0A%0D%0Awww.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
+              `${userData.mobile_no1}` +
+              "&route_id=3&entity_id=1701170435850383099&template_id=1707170453801307016";
+          } else {
+            url =
+              "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
+              `${response.razorpay_order_id}` +
+              " , %0D%0AAmount: " +
+              `${subTotal}` +
+              " , %0D%0Awill be delivered soon. %0D%0A%0D%0ABest wishes, %0D%0ASkoolio Team. %0D%0A%0D%0Awww.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
+              `${userData.mobile_no1}` +
+              "," +
+              `${userData.mobile_no2}` +
+              "&route_id=3&entity_id=1701170435850383099&template_id=1707170453801307016";
+          }
           fetch(url)
             .then((response) => response.json())
             .then((data) => {

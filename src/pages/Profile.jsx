@@ -439,7 +439,7 @@ const Profile = () => {
                         value={profileData.data?.mobile_no1}
                         required
                         onChange={(e) => handle(e)}
-                        disabled={disabledForm}
+                        disabled={true}
                       />
                     </div>
                     <div className="flex flex-col items-start w-[50%]">
