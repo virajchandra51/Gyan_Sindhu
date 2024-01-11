@@ -31,11 +31,12 @@ const ClassSchoolBooks = () => {
     fetchData();
   }, []);
 
-  function addToCartHandler (productList, qty, price, totalPrice) {
-    if(cartItems.length > 0)
-    {
-      if(cartItems[0].school_code !== location.state.school_code || cartItems[0].class_code !== location.state.class_code)
-      {
+  function addToCartHandler(productList, qty, price, totalPrice) {
+    if (cartItems.length > 0) {
+      if (
+        cartItems[0].school_code !== location.state.school_code ||
+        cartItems[0].class_code !== location.state.class_code
+      ) {
         toast.info("You can select one class of one school per order!", {
           position: "bottom-right",
           autoClose: 3000,
@@ -72,7 +73,7 @@ const ClassSchoolBooks = () => {
       progress: undefined,
       theme: "dark",
     });
-  };
+  }
 
   useEffect(() => {
     setTotalPrice((qty * price).toFixed(2));
@@ -190,7 +191,8 @@ const ClassSchoolBooks = () => {
                             {product.quantity} {product.unit_name}
                           </div>
                           <div className="text-md md:text-xl font-medium text-right text-green-500 md:w-[20%]">
-                            &#8377;{product.net_sale_rate}
+                            <span>₹</span>
+                            {product.net_sale_rate}
                           </div>
                         </div>
                         <div className="h-[1px] bg-gray-200 my-3"></div>
@@ -256,12 +258,7 @@ const ClassSchoolBooks = () => {
               <div
                 className="w-1/2 py-4 rounded-full bg-[var(--primary-c)] text-white text-lg text-center cursor-pointer font-medium transition-transform active:scale-95 hover:bg-[var(--secondary-c)]"
                 onClick={() =>
-                  addToCartHandler(
-                    productList,
-                    qty,
-                    price,
-                    totalPrice,
-                  )
+                  addToCartHandler(productList, qty, price, totalPrice)
                 }
               >
                 Add to Cart

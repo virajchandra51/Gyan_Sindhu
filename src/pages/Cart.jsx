@@ -58,7 +58,6 @@ const School = () => {
   });
 
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
   const [subTotal, setSubTotal] = useState(0);
   useEffect(() => {
     var v = 0.0;
@@ -180,28 +179,33 @@ const School = () => {
           let year = date.getFullYear();
           let currentDate = `${day}-${month}-${year}`;
 
-          var emailData = {
-            service_id: "SkoolioSMTPserver",
-            template_id: "OrderConfirmationMail",
-            user_id: "2luFHblbDCponNdj8",
-            template_params: {
-              member_name: userData?.member_name,
-              email_id: userData?.email_id,
-              order_date: currentDate,
-              order_id: response.razorpay_order_id,
-              order_amount: "₹ " + `${subTotal}`,
-            },
-          };
+          var emailData =
+            "<p>Dear <strong>" +
+            `${userData.member_name}` +
+            "</strong>,</p><p>Thank you for placing your valuable order with us as per the following details -</p><ul><li><strong>Date</strong>: " +
+            `${currentDate}` +
+            "</li><li><strong>Order Id</strong>: " +
+            `${response.razorpay_order_id}` +
+            "</li><li><strong>Amount</strong>: " +
+            `${subTotal}` +
+            "</li><li><strong>Product</strong>: " +
+            `${cartItems[0].school_name}` +
+            " - " +
+            `${cartItems[0].class_name}` +
+            '</li></ul><p>Your order will be delivered soon.</p><p>Best wishes,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
+          console.log(emailData);
+          fetch(
+            "https://publisher.faonline.in/FAWebEComm/api/sendemail/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&servername=smtpout.secureserver.net&port=465&username=sales@skoolio.co.in&password=skoolio@5921&subject=Your Order At Skoolio&sendername=SKOOLIO&mailto=" +
+              `${userData.email_id}` +
+              "&ipaddress="+`${global.ip_address}`,
+            {
+              method: "POST",
+              body: emailData,
+            }
+          ).then((response) => {
+            console.log(response);
+          });
 
-          
-          fetch("https://api.emailjs.com/api/v1.0/email/send", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(emailData),
-          }).then((response) => {});
-          
           var url =
             "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
             `${response.razorpay_order_id}` +

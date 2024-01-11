@@ -51,7 +51,6 @@ const Login = () => {
         "&ipaddress=" +
         `${global.ip_address}`
     );
-    console.log(data);
     data = data[0];
     if (data.member_id === null || data.member_id === undefined) {
       toast.error("Sign In Unsuccessful. Check your Email or Password.", {
