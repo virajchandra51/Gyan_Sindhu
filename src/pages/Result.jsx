@@ -1,6 +1,5 @@
 import React from "react";
 import Wrapper from "../components/Wrapper";
-import { Link } from "react-router-dom";
 import Layout from "../Layout";
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -44,8 +43,6 @@ const Result = () => {
 
   //pagination logic ends
 
-  console.log(pageno);
-  console.log(searchResult.data[0]);
 
   useEffect(() => {
     fetchData();
@@ -95,7 +92,6 @@ const Result = () => {
         "&pagelimit=" +
         `${paginationValue}`;
     }
-    console.log(url);
     const data = await fetchDataFromApi("itemlist", url);
     setPageCount(Math.ceil(data[0]?.record_count / paginationValue));
     setSearchResult({ data: data, loading: false });
@@ -119,8 +115,8 @@ const Result = () => {
         {searchResult.data.length > 0 &&
         searchResult.data[0]?.success_status != 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
-            {searchResult.data.map((product) => (
-              <ProductCard key={product?.id} product={product} />
+            {searchResult.data.map((product, index) => (
+              <ProductCard key={index} product={product} />
             ))}
           </div>
         ) : searchResult.data[0]?.success_status == 0 ? (
