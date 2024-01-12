@@ -94,7 +94,7 @@ const Publisher = () => {
         {/* grid start */}
         {!data.loading ? (
           data.data[0].publisher_name !== undefined ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-14 px-5 md:px-0">
               {data.data?.map((item, index) => (
                 <Link
                   key={index}
@@ -103,12 +103,12 @@ const Publisher = () => {
                   className="transform overflow-hidden duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="md:max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
-                    <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
+                    <div className="flex justify-center items-center min-h-[250px] max-h-[250px]">
                       {item.photo_file_url === null ? (
-                        <img className="rounded-t-lg" src={dummy} alt="" />
+                        <img className="rounded-t-lg object-contain h-[230px]" src={dummy} alt="" />
                       ) : (
                         <img
-                          className="rounded-t-lg"
+                          className="rounded-t-lg object-contain h-[230px]"
                           src={item.photo_file_url}
                           alt=""
                         />
@@ -116,11 +116,11 @@ const Publisher = () => {
                     </div>
                     <hr className="mx-2" />
                     <div className="flex justify-center items-start mb-4 px-4 flex-col">
-                      <h5 className="mt-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
+                      <h5 className="mt-4 font-bold text-xl tracking-tight text-gray-900">
                         {item.publisher_name}
                       </h5>
                       {item.any_remark && (
-                        <p className="text-lg tracking-tight text-gray-900 dark:text-white">
+                        <p className="text-lg tracking-tight text-gray-900">
                           {item.any_remark.slice(3, item.any_remark.length - 4)}
                         </p>
                       )}

@@ -180,7 +180,7 @@ const School = () => {
           var emailData =
             "<p>Dear <strong>" +
             `${userData.member_name}` +
-            "</strong>,</p><p>Thank you for placing your valuable order with us as per the following details -</p><ul><li><strong>Date</strong>: " +
+            "</strong>,<br/></p><p>Thank you for placing your valuable order with us as per the following details -</p><ul><li><strong>Date</strong>: " +
             `${currentDate}` +
             "</li><li><strong>Order Id</strong>: " +
             `${response.razorpay_order_id}` +
@@ -190,7 +190,7 @@ const School = () => {
             `${cartItems[0].school_name}` +
             " - " +
             `${cartItems[0].class_name}` +
-            '</li></ul><p>Your order will be delivered soon.</p><p>Best wishes,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
+            '</li></ul><p>Your order will be delivered soon.<br/></p><p>Best wishes,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
           fetch(
             "https://publisher.faonline.in/FAWebEComm/api/sendemail/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&servername=smtpout.secureserver.net&port=465&username=sales@skoolio.co.in&password=skoolio@5921&subject=Your Order At Skoolio&sendername=SKOOLIO&mailto=" +
               `${userData.email_id}` +

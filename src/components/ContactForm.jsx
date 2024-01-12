@@ -121,55 +121,16 @@ const ContactForm = () => {
       console.log(response);
     });
     setContactText("Sent!");
-    // if (data.success_status === "1") {
-    //   toast.success(data.success_message, {
-    //     position: "bottom-right",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "dark",
-    //   });
-    //   var url =
-    //     "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
-    //     `${form.membername}` +
-    //     ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
-    //     `${form.mobileno1}` +
-    //     "&route_id=3&entity_id=1701170435850383099&template_id=1707170447514837772";
-    //   fetch(url)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       // console.log(response);
-    //     });
-    //   localStorage.setItem("UserData", JSON.stringify(data));
-    //   setTimeout(() => {
-    //     navigate("/");
-    //   }, 3000);
-    // } else if (data.success_status === "0") {
-    //   toast.error(data.success_message, {
-    //     position: "bottom-right",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "dark",
-    //   });
-    // } else {
-    //   toast.info(data.success_message, {
-    //     position: "bottom-right",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "dark",
-    //   });
-    // }
+    toast.success("Thankyou for your contacting us! We'll respond soon.", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
   return (
     <div className="flex w-[45%] justify-center items-center">

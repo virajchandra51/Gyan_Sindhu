@@ -213,13 +213,13 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
       </div>
 
       <div
-        className="absolute right-[4rem] md:right-[5.2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
+        className="absolute md:flex hidden right-[4rem] md:right-[5.2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 items-center justify-center cursor-pointer hover:opacity-90"
         onClick={() => goToPrevious()}
       >
         <BiArrowBack className="text-sm md:text-lg fill-white" />
       </div>
       <div
-        className="absolute right-[2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 flex items-center justify-center cursor-pointer hover:opacity-90"
+        className="absolute md:flex hidden right-[2rem] bottom-8 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black z-10 items-center justify-center cursor-pointer hover:opacity-90"
         onClick={() => goToNext()}
       >
         <BiArrowBack className="rotate-180 text-sm md:text-lg fill-white" />

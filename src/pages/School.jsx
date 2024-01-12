@@ -119,7 +119,7 @@ const School = () => {
         {/* grid start */}
         {!data.loading ? (
           data.data[0].school_name !== undefined ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-14 px-5 md:px-0">
               {data.data?.map((item, index) => (
                 <Link
                   key={index}
@@ -128,15 +128,15 @@ const School = () => {
                     school_code: item.school_code,
                     school_name: item.school_name,
                   }}
-                  className="transform overflow-hidden  duration-200 hover:scale-105 cursor-pointer"
+                  className="transform overflow-hidden duration-200 hover:scale-105 cursor-pointer"
                 >
                   <div className="max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
-                    <div className="flex justify-center items-center min-h-[350px] max-h-[350px]">
+                    <div className="flex justify-center items-center min-h-[250px] max-h-[250px]">
                       {item.photo_file_url === null ? (
-                        <img className="rounded-t-lg" src={dummy} alt="" />
+                        <img className="rounded-t-lg object-contain h-[230px]" src={dummy} alt="" />
                       ) : (
                         <img
-                          className="rounded-t-lg"
+                          className="rounded-t-lg object-contain h-[230px]"
                           src={item.photo_file_url}
                           alt=""
                         />
@@ -144,13 +144,13 @@ const School = () => {
                     </div>
                     <hr className="mx-2" />
                     <div className="flex justify-center items-start mb-4 px-4 flex-col">
-                      <h5 className="my-4 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
+                      <h5 className="my-4 font-bold text-xl tracking-tight text-gray-900">
                         {item.school_name}, {item.city_name}
                       </h5>
-                      <h5 className="mb-2 text-md tracking-tight text-gray-900 dark:text-white">
+                      <h5 className="text-md tracking-tight text-gray-900">
                         Board - {item.board_name}
                       </h5>
-                      <h5 className="mb-2 text-md tracking-tight text-gray-900 dark:text-white">
+                      <h5 className="mb-2 text-md tracking-tight text-gray-900">
                         Medium - {item.medium_name}
                       </h5>
                     </div>
