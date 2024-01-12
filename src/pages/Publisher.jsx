@@ -70,7 +70,7 @@ const Publisher = () => {
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            Publication
+          📰 Publication 📰
           </div>
           <div className="text-md md:text-xl mb-5">
             One Stop Solution for all Kinds of School Books & Supplies
@@ -105,10 +105,14 @@ const Publisher = () => {
                   <div className="md:max-w-sm m-4 bg-white border border-gray-200 shadow rounded-md">
                     <div className="flex justify-center items-center min-h-[250px] max-h-[250px]">
                       {item.photo_file_url === null ? (
-                        <img className="rounded-t-lg object-contain h-[230px]" src={dummy} alt="" />
+                        <img
+                          className="rounded-t-lg object-contain aspect-square"
+                          src={dummy}
+                          alt=""
+                        />
                       ) : (
                         <img
-                          className="rounded-t-lg object-contain h-[230px]"
+                          className="rounded-t-lg object-contain aspect-square"
                           src={item.photo_file_url}
                           alt=""
                         />

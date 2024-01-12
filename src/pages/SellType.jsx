@@ -71,8 +71,8 @@ const SellType = () => {
       <Wrapper>
         {/* heading and paragaph start */}
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
-          <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            {location.state.sellTypeTitle}
+          <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight capitalize">
+            {location.state.sellTypeIcon} {location.state.sellTypeTitle} {location.state.sellTypeIcon}
           </div>
           <div className="text-md md:text-xl">
             One Stop Solution for all Kinds of School Books & Supplies

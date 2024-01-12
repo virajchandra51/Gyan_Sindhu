@@ -15,7 +15,7 @@ const borderColors = [
 const textColors = ["text-yellow-500", "text-red-600", "text-green-600"];
 const fillColors = ["fill-yellow-500", "fill-red-600", "fill-green-600"];
 
-const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
+const CategoryCarousal = ({ index, data, sellType, sellTypeTitle, sellTypeIcon }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const carousalStyle = {
@@ -109,7 +109,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
           <Link
             className={`${textColors[index]} md:text-lg text-sm font-semibold hover:scale-105 duration-200 z-10 pr-2 flex items-center justify-center cursor-pointer hover:opacity-90`}
             to={`/${sellType}`}
-            state={{ sellType: sellType }}
+            state={{ sellType: sellType, sellTypeTitle: sellTypeTitle, sellTypeIcon: sellTypeIcon}}
           >
             See all
             <BiArrowBack
@@ -152,7 +152,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                     >
                       {item[`${sellType}_name`]}
                     </div>
-                    <StarRating stars = {parseInt(item.star_rating)}/>
+                    <StarRating stars={parseInt(item.star_rating)} />
                   </Link>
                 );
               })
@@ -182,12 +182,12 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                       {item.photo_file_url ? (
                         <img
                           src={item.photo_file_url}
-                          className="object-cover max-h-[220px]"
+                          className="object-contain max-h-[220px] aspect-square"
                         ></img>
                       ) : (
                         <img
                           src={dummy}
-                          className="object-cover max-h-[220px]"
+                          className="object-contain max-h-[220px] aspect-square"
                         ></img>
                       )}
                     </div>
@@ -197,7 +197,7 @@ const CategoryCarousal = ({ index, data, sellType, sellTypeTitle }) => {
                     >
                       {item[`${sellType}_name`]}
                     </div>
-                    <StarRating stars = {parseInt(item.star_rating)}/>
+                    <StarRating stars={parseInt(item.star_rating)} />
                   </Link>
                 );
               })

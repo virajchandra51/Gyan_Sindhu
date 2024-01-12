@@ -15,10 +15,10 @@ import { useSelector } from "react-redux";
 import logo from "../assets/logo.webp";
 
 const SellTypeData = [
-  { id: 1, name: "School", url: "/school" },
-  { id: 2, name: "Publication", url: "/publisher" },
-  { id: 3, name: "Subject", url: "/subject" },
-  { id: 4, name: "Author", url: "/writer" },
+  { id: 1, name: "School", url: "/school", icon: "✍🏼" },
+  { id: 2, name: "Publication", url: "/publisher", icon: "✍🏼" },
+  { id: 3, name: "Subject", url: "/subject", icon: "📘" },
+  { id: 4, name: "Author", url: "/writer", icon: "✍🏼" },
 ];
 
 const Header = () => {
@@ -198,6 +198,7 @@ const Header = () => {
                   state={{
                     sellType: item.url.toLowerCase().substring(1),
                     sellTypeTitle: item.name,
+                    sellTypeIcon: item.icon,
                   }}
                   to={`${item.url}`}
                 >

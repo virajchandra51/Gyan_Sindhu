@@ -3,7 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { updateCart, removeFromCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import dummy from "../assets/sampleProduct.webp";
+import dummy from "../assets/dummyCart.png";
 import { SimpleDialogContainer, simpleConfirm } from "react-simple-dialogs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -77,7 +77,7 @@ const CartItem = ({ data }) => {
     <div className="flex py-5 gap-3 md:gap-5 border-b">
       {/* IMAGE START */}
       <div className="shrink-0 aspect-square w-[50px] md:w-[120px]">
-        <img src={dummy} alt="" width={120} height={120} />
+        <img src={dummy} alt="" width={120} height={120} className="object-contain aspect-square" />
       </div>
       {/* IMAGE END */}
 

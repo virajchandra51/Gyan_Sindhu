@@ -9,6 +9,7 @@ import { useLayoutEffect } from "react";
 
 const sellTypes = ["publisher", "school", "writer"];
 const sellTypesTitle = ["publication", "school", "author"];
+const sellTypesIcon = ["✍🏼","📘","✍🏼"]
 
 const Home = () => {
   useLayoutEffect(() => {
@@ -86,6 +87,7 @@ const Home = () => {
           data={data1.data}
           sellType={sellTypes[0]}
           sellTypeTitle={sellTypesTitle[0]}
+          sellTypeIcon={sellTypesIcon[0]}
         />
       }
       {
@@ -94,6 +96,7 @@ const Home = () => {
           data={data2.data}
           sellType={sellTypes[1]}
           sellTypeTitle={sellTypesTitle[1]}
+          sellTypeIcon={sellTypesIcon[1]}
         />
       }
       {
@@ -102,6 +105,7 @@ const Home = () => {
           data={data3.data}
           sellType={sellTypes[2]}
           sellTypeTitle={sellTypesTitle[2]}
+          sellTypeIcon={sellTypesIcon[2]}
         />
       }
     </Layout>

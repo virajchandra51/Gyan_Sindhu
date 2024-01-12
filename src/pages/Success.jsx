@@ -19,15 +19,15 @@ const Success = () => {
               Your order has been placed successfully.
             </div>
             <div className="text-lg font-bold mt-2">
-              Your order id is 
+              Your order id is
               <BsFillPatchCheckFill />
             </div>
             <div className="text-base mt-5">
-              For any product related query, drop an email to
+              For any query regarding your order, {" "}
+              <Link to={"/contactus"} className="underline">
+                contact us.
+              </Link>
             </div>
-            <a href="mailto:md@gyansindhu.com" className="underline">
-              sales@gyansindhu.com
-            </a>
             <Link to="/" className="font-bold mt-5">
               Continue Shopping
             </Link>
