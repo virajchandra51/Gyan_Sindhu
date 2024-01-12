@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Layout from "../Layout";
 import { useLocation } from "react-router-dom";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 
 const Success = () => {
   const location = useLocation();
@@ -18,7 +19,8 @@ const Success = () => {
               Your order has been placed successfully.
             </div>
             <div className="text-lg font-bold mt-2">
-              Your order id is {location.state.order_id}
+              Your order id is 
+              <BsFillPatchCheckFill />
             </div>
             <div className="text-base mt-5">
               For any product related query, drop an email to
