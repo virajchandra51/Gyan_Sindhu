@@ -365,7 +365,10 @@ const Profile = () => {
                   onSubmit={(e) => handleSubmit(e)}
                 >
                   <div className="flex flex-col items-start mt-8">
-                    <p>Member Name / Your Name</p>
+                    <p className="my-1">
+                      Member Name / Your Name{" "}
+                      <span className="text-red-600">*</span>
+                    </p>
                     <input
                       className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
@@ -390,7 +393,9 @@ const Profile = () => {
                     />
                   </div>
                   <div className="flex flex-col items-start">
-                    <p>Email</p>
+                    <p className="my-1">
+                      Email <span className="text-red-600">*</span>
+                    </p>
                     <input
                       className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="email"
@@ -430,7 +435,9 @@ const Profile = () => {
                   </div>
                   <div className="flex gap-4">
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>Mobile No 1</p>
+                      <p className="my-1">
+                        Mobile No 1 <span className="text-red-600">*</span>
+                      </p>
                       <input
                         className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                         type="text"
@@ -528,7 +535,9 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-start">
-                    <p>Address 1</p>
+                    <p className="my-1">
+                      Address 1 <span className="text-red-600">*</span>
+                    </p>
                     <input
                       className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                       type="text"
@@ -609,7 +618,9 @@ const Profile = () => {
                   </div>
                   <div className="flex gap-4 md:flex-row flex-col">
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>City</p>
+                      <p className="my-1">
+                        City <span className="text-red-600">*</span>
+                      </p>
                       <Select
                         options={cityList.data}
                         onChange={handleSelect}
@@ -627,7 +638,9 @@ const Profile = () => {
                       />
                     </div>
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>State</p>
+                      <p className="my-1">
+                        State <span className="text-red-600">*</span>
+                      </p>
                       <Select
                         options={stateList.data}
                         onChange={handleSelect}
@@ -649,7 +662,9 @@ const Profile = () => {
                   </div>
                   <div className="flex gap-4 md:flex-row flex-col">
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>Country</p>
+                      <p className="my-1">
+                        Country <span className="text-red-600">*</span>
+                      </p>
                       <Select
                         options={countryList.data}
                         onChange={handleSelect}
@@ -669,7 +684,9 @@ const Profile = () => {
                       />
                     </div>
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>Pin Code</p>
+                      <p className="my-1">
+                        Pin Code <span className="text-red-600">*</span>
+                      </p>
                       <input
                         className="px-3 py-1.5 rounded-md border w-full"
                         type="text"
@@ -697,7 +714,9 @@ const Profile = () => {
 
                   <div className="relative">
                     <div className="flex flex-col items-start">
-                      <p>Password</p>
+                      <p className="my-1">
+                        Password <span className="text-red-600">*</span>
+                      </p>
                       <input
                         className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                         type={showPassword ? "text" : "password"}
@@ -715,7 +734,7 @@ const Profile = () => {
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
-                        className="absolute cursor-pointer top-[38px] right-2"
+                        className="absolute cursor-pointer top-[46px] right-2"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
                         <path
@@ -740,7 +759,7 @@ const Profile = () => {
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
-                        className="absolute cursor-pointer top-[38px] right-2"
+                        className="absolute cursor-pointer top-[46px] right-2"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
                         <path

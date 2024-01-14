@@ -87,7 +87,7 @@ const ContactForm = () => {
       return;
     }
     var url =
-      "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+      "https://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
       `${form.name}` +
       ", %0D%0A%0D%0AThank you for contacting us. %0D%0AWe will get in touch with you soon.%0D%0A%0D%0ASincerely, %0D%0ASkoolio Team. %0D%0A%0D%0Awww.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
       `${form.mobileno}` +

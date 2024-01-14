@@ -53,7 +53,7 @@ const Login = () => {
     );
     data = data[0];
     if (data.member_id === null || data.member_id === undefined) {
-      toast.error("Sign In Unsuccessful. Check your Email or Password.", {
+      toast.error("Sign In Unsuccessful. Check your Email / Mobile or Password.", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,

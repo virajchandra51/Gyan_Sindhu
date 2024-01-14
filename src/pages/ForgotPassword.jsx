@@ -50,7 +50,7 @@ const ForgotPassword = () => {
         });
       } else {
         var url =
-          "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+          "https://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
           `${data[0].member_name}` +
           ", %0D%0A%0D%0AYour login password is " +
           `${data[0].mem_password}` +

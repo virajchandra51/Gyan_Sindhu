@@ -34,9 +34,22 @@ const School = () => {
       };
       setUserData(data);
     } else {
-      setUserData(JSON.parse(localStorage.getItem("UserData")));
+      fetchData();
     }
   }, []);
+
+  const fetchData = async () => {
+    var data = await fetchDataFromApi(
+      "memberprofile",
+      "memberid=" +
+        `${JSON.parse(localStorage.getItem("UserData")).member_id}` +
+        "&ipaddress=" +
+        `${global.ip_address}`
+    );
+    setUserData(data);
+  };
+
+  console.log(userData);
 
   function loadScript(src) {
     return new Promise((resolve) => {
@@ -211,7 +224,7 @@ const School = () => {
             userData.mobile_no2 == null
           ) {
             url =
-              "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
+              "https://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
               `${response.razorpay_order_id}` +
               " , %0D%0AAmount: " +
               `${subTotal}` +
@@ -220,7 +233,7 @@ const School = () => {
               "&route_id=3&entity_id=1701170435850383099&template_id=1707170453801307016";
           } else {
             url =
-              "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
+              "https://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear Member, %0D%0A%0D%0AThank you for placing your valuable order with us. %0D%0A%0D%0AOrder Id: " +
               `${response.razorpay_order_id}` +
               " , %0D%0AAmount: " +
               `${subTotal}` +
@@ -237,7 +250,16 @@ const School = () => {
             });
 
           navigate("/success", {
-            state: { order_id: response.razorpay_order_id },
+            state: {
+              order_id: response.razorpay_order_id,
+              email_id: userData.email_id,
+              mobile: userData.mobile_no1,
+              name: userData.member_name,
+              amount: subTotal,
+              date: currentDate,
+              school_name: cartItems[0].school_name,
+              class_name: cartItems[0].class_name,
+            },
           });
         } else {
           navigate("/failed", {

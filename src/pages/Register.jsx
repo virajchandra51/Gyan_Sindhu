@@ -354,14 +354,14 @@ const Register = () => {
         form.mobileno2 == null
       ) {
         url =
-          "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+          "https://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
           `${form.membername}` +
           ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
           `${form.mobileno1}` +
           "&route_id=3&entity_id=1701170435850383099&template_id=1707170447514837772";
       } else {
         url =
-          "http://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
+          "https://secure.onlinesms.in/v7/api/sms_api.php?api_key=03cb220e70982223955eb6ec20da0a59&msg=Dear " +
           `${form.membername}` +
           ", %0D%0A%0D%0AThank you for registering with SKOOLIO. %0D%0A%0D%0APlease log in and continue. %0D%0AHappy shopping. %0D%0AHave a nice day! %0D%0A%0D%0ASkoolio Team. %0D%0AVisit www.skoolio.co.in %0D%0AGyan Sindhu&senderid=GSINDU&mobnum=" +
           `${form.mobileno1}` +
