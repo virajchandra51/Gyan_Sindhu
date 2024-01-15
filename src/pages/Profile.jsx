@@ -193,6 +193,35 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isANumber(profileData.data.mobile_no2)) {
+      toast.error("Mobile Number 2 should be 10 characters and digits only!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    if (
+      profileData.data.mobile_no2.length > 0 &&
+      profileData.data.mobile_no2.length !== 10
+    ) {
+      toast.error("Mobile Number 2 should be 10 characters and digits only!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
     if (
       profileData.data.reg_aadhar != null &&
       profileData.data.reg_aadhar.length > 0 &&
@@ -355,42 +384,65 @@ const Profile = () => {
             </div>
           ) : (
             <div>
-              <div className="text-3xl font-bold text-left my-8">
-                User Profile Details
+              <div className="flex justify-between items-center md:flex-row flex-col mt-8">
+                <div className="text-3xl font-bold text-left">
+                  User Profile Details
+                </div>
+                <div className="flex flex-row justify-center gap-4 md:w-[40%] w-full">
+                  <button
+                    onClick={(e) => handleDisabledForm(e)}
+                    name="notaction"
+                    className="flex justify-center items-center  my-8 w-[50%] bg-white border-[1px] rounded-full text-black py-2 hover:bg-gray-300 hover:text-white duration-300"
+                  >
+                    Edit Profile
+                    <FaPencilAlt className="ml-2" />
+                  </button>
+                  <button
+                    disabled={disabledForm}
+                    name="action"
+                    form="profileForm"
+                    className=" my-8 w-[50%] bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300"
+                  >
+                    Update Profile
+                  </button>
+                </div>
               </div>
               <div className="rounded-lg p-5 mb-24 border border-black mx-auto flex flex-col">
                 <form
                   action=""
                   className="flex flex-col gap-4"
                   onSubmit={(e) => handleSubmit(e)}
+                  id="profileForm"
                 >
-                  <div className="flex flex-col items-start mt-8">
-                    <p className="my-1">
-                      Member Name / Your Name{" "}
-                      <span className="text-red-600">*</span>
-                    </p>
-                    <input
-                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
-                      type="text"
-                      name="member_name"
-                      placeholder="Member Name / Your Name"
-                      required
-                      value={profileData.data?.member_name}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
-                  </div>
-                  <div className="flex flex-col items-start">
-                    <p>Nick Name</p>
-                    <input
-                      className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
-                      type="text"
-                      name="nick_name"
-                      placeholder="Nick Name"
-                      value={profileData.data?.nick_name}
-                      onChange={(e) => handle(e)}
-                      disabled={disabledForm}
-                    />
+                  <div className="flex gap-4 flex-row mt-8">
+                    <div className="flex flex-col items-start w-1/2">
+                      <p className="my-1">
+                        Member Name / Your Name{" "}
+                        <span className="text-red-600">*</span>
+                      </p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="member_name"
+                        placeholder="Member Name / Your Name"
+                        required
+                        value={profileData.data?.member_name}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
+                    <div className="flex flex-col items-start w-1/2">
+                      <p className="my-1">Nick Name</p>
+                      <input
+                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        type="text"
+                        name="nick_name"
+                        placeholder="Nick Name"
+                        value={profileData.data?.nick_name}
+                        onChange={(e) => handle(e)}
+                        disabled={disabledForm}
+                      />
+                    </div>
                   </div>
                   <div className="flex flex-col items-start">
                     <p className="my-1">
@@ -450,7 +502,7 @@ const Profile = () => {
                       />
                     </div>
                     <div className="flex flex-col items-start w-[50%]">
-                      <p>Mobile No 2</p>
+                      <p className="my-1">Mobile No 2</p>
                       <input
                         className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
                         type="text"
@@ -616,7 +668,7 @@ const Profile = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex gap-4 md:flex-row flex-col">
+                  <div className="flex gap-4 flex-row">
                     <div className="flex flex-col items-start w-[50%]">
                       <p className="my-1">
                         City <span className="text-red-600">*</span>
@@ -660,7 +712,7 @@ const Profile = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex gap-4 md:flex-row flex-col">
+                  <div className="flex gap-4 flex-row">
                     <div className="flex flex-col items-start w-[50%]">
                       <p className="my-1">
                         Country <span className="text-red-600">*</span>
@@ -718,7 +770,7 @@ const Profile = () => {
                         Password <span className="text-red-600">*</span>
                       </p>
                       <input
-                        className="px-3 py-1.5 mt-2 rounded-md border w-[100%]"
+                        className="px-3 py-1.5 mt-2 mb-8 rounded-md border w-[100%]"
                         type={showPassword ? "text" : "password"}
                         name="mem_password"
                         placeholder="Password"
@@ -771,23 +823,6 @@ const Profile = () => {
                         />
                       </svg>
                     )}
-                  </div>
-                  <div className="flex flex-row justify-center gap-4">
-                    <button
-                      onClick={(e) => handleDisabledForm(e)}
-                      name="notaction"
-                      className="flex justify-center items-center w-[50%] my-8 bg-white border-[1px] rounded-full text-black py-2 hover:bg-gray-300 hover:text-white duration-300"
-                    >
-                      Edit Profile
-                      <FaPencilAlt className="ml-2" />
-                    </button>
-                    <button
-                      disabled={disabledForm}
-                      name="action"
-                      className="w-[50%] my-8 bg-[var(--primary-c)] rounded-full text-white py-2 hover:bg-[var(--secondary-c)] duration-300"
-                    >
-                      Update Profile
-                    </button>
                   </div>
                 </form>
               </div>

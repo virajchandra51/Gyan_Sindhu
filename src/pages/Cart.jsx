@@ -82,24 +82,6 @@ const School = () => {
   // console.log(cartItems);
 
   async function displayRazorpay() {
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-
-    if (!res) {
-      toast.error("Checkout failed to load. Are you online?", {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      return;
-    }
-
     if (userData.member_id === "-1") {
       toast.error("Please Login to Skoolio in order to checkout!", {
         position: "bottom-right",
@@ -115,35 +97,51 @@ const School = () => {
     }
 
     if (
-      userData.email_id.length === 0 ||
       userData.email_id === null ||
       userData.email_id === undefined ||
-      userData.address1.length === 0 ||
+      userData.email_id.length === 0 ||
       userData.address1 === undefined ||
-      userData.address1 === null || 
-      userData.member_name.length === 0 ||
+      userData.address1 === null ||
+      userData.address1.length === 0 ||
       userData.member_name === undefined ||
-      userData.member_name === null || 
-      userData.mobile_no1.length === 0 ||
+      userData.member_name === null ||
+      userData.member_name.length === 0 ||
       userData.mobile_no1 === undefined ||
-      userData.mobile_no1 === null || 
-      userData.pin_code.length === 0 ||
+      userData.mobile_no1 === null ||
+      userData.mobile_no1.length === 0 ||
       userData.pin_code === undefined ||
-      userData.pin_code === null || 
-      userData.city_code.length === 0 ||
+      userData.pin_code === null ||
+      userData.pin_code.length === 0 ||
       userData.city_code === undefined ||
-      userData.city_code === null || 
-      userData.country_code.length === 0 ||
+      userData.city_code === null ||
+      userData.city_code.length === 0 ||
       userData.country_code === undefined ||
-      userData.country_code === null || 
-      userData.ctry_state_code.length === 0 ||
+      userData.country_code === null ||
+      userData.country_code.length === 0 ||
       userData.ctry_state_code === undefined ||
-      userData.ctry_state_code === null || 
-      userData.mem_password.length === 0 ||
+      userData.ctry_state_code === null ||
+      userData.ctry_state_code.length === 0 ||
       userData.mem_password === undefined ||
-      userData.mem_password === null
+      userData.mem_password === null ||
+      userData.mem_password.length === 0
     ) {
       toast.error("Please complete your profile in order to checkout!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    if (!res) {
+      toast.error("Checkout failed to load. Are you online?", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
