@@ -29,7 +29,7 @@ const Success = () => {
             </div>
             <div className="text-lg font-bold mt-4">Shipping Address</div>
             <div className="text-md font-medium">
-              C-1186, Indira Nagar, Lucknow - 226016
+              {location.state.address} - {location.state.pin_code}
             </div>
             <div className="text-lg font-bold mt-4">Product Details</div>
             <div className="text-md font-medium">

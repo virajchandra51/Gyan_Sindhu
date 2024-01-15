@@ -299,6 +299,8 @@ const School = () => {
               date: currentDate,
               school_name: cartItems[0].school_name,
               class_name: cartItems[0].class_name,
+              address: userData.address1,
+              pin_code: userData.pin_code,
             },
           });
         } else {
