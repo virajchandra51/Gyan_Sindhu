@@ -102,14 +102,11 @@ const Footer = () => {
             <div className="flex flex-col gap-3">
               <div className="font-bold uppercase text-lg">Pages</div>
               <Link
-                to={"/about"}
+                to={"/orderpolicy"}
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
               >
-                About Us
-              </Link>
-              <div className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer">
                 Order Policy
-              </div>
+              </Link>
               <Link
                 to={"/returnpolicy"}
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
@@ -121,6 +118,18 @@ const Footer = () => {
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
               >
                 Privacy Policy
+              </Link>
+              <Link
+                to={"/shippingpolicy"}
+                className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
+              >
+                Shipping Policy
+              </Link>
+              <Link
+                to={"/termsandconditions"}
+                className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
+              >
+                Terms & Conditions
               </Link>
             </div>
             {/* MENU END */}

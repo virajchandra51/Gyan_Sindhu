@@ -321,7 +321,7 @@ const Register = () => {
           `${form.emailid}` +
           "</li><li><strong>Address</strong>: " +
           `${form.address1}` +
-          '</li></ul><p>Please log in and continue happy shopping..</p><p>Have a nice day!,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
+          '</li></ul><p>Please log in and continue happy shopping</p><p>Have a nice day!<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
       else
         emailData =
           "<p>Dear <strong>" +
@@ -334,7 +334,7 @@ const Register = () => {
           `${form.emailid}` +
           "</li><li><strong>Address</strong>: " +
           `${form.address1}` +
-          '</li></ul><p>Please log in and continue happy shopping..</p><p>Have a nice day!,<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
+          '</li></ul><p>Please log in and continue happy shopping</p><p>Have a nice day!<br>Skoolio Team.</p><p>Website: <a href="https://skoolio.co.in" target="_blank">www.skoolio.co.in</a></p>';
       fetch(
         "https://publisher.faonline.in/FAWebEComm/api/sendemail/?apikey=FaPubWebsitegVDIo5uyTK&orgid=4&servername=smtpout.secureserver.net&port=465&username=sales@skoolio.co.in&password=skoolio@5921&subject=Your Registration at Skoolio&sendername=SKOOLIO&mailto=" +
           `${form.emailid}` +

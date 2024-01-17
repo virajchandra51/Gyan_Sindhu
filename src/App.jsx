@@ -24,6 +24,9 @@ import { useDispatch } from "react-redux";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ForgotPassword from "./pages/ForgotPassword";
 import { fetchDataFromApi } from "./utils/api";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import ShippingPolicy from "./pages/ShippingPolicy";
+import OrderPolicy from "./pages/OrderPolicy";
 
 function App() {
   const dispatch = useDispatch();
@@ -89,6 +92,9 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/returnpolicy" element={<ReturnPolicy />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/termsandconditions" element={<TermsAndConditions />} />
+          <Route path="/shippingpolicy" element={<ShippingPolicy />} />
+          <Route path="/orderpolicy" element={<OrderPolicy />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/result" element={<Result />} />
           <Route path="/:selltype" element={<SellType />} />
