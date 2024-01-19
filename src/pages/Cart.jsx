@@ -390,6 +390,22 @@ const School = () => {
                 {/* SUMMARY END */}
               </div>
               {/* CART CONTENT END */}
+              <div className="mt-8 text-sm">
+                <b>Note: </b>Orders are shipped and delivered through registered courier
+                companies and/or speed post/self only. Orders are delivered
+                within 10 Working days of order date or as per the delivery date
+                agreed at the time of order confirmation. The delivery of the
+                shipment is subject to Courier Company / post office norms.
+                “Skoolio A Unit of Gyan Sindhu” is not liable for any delay in
+                delivery by the Courier Company / postal authorities. Delivery
+                of all orders will be to registered address of the buyer as per
+                the credit/debit card only at all times (Unless specified at the
+                time of Order). Once the product is shipped, the shipment or
+                courier tracking number will be emailed or communicated to the
+                customer as early as possible. We require a signature for any
+                goods delivered, at which point responsibility for your
+                purchased goods passes to you.
+              </div>
             </>
           )}
 

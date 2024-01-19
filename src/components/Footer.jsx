@@ -146,10 +146,10 @@ const Footer = () => {
                 Phone : +91-8874211000
               </a> */}
               <a
-                href="mailto:md@gyansindhu.com"
+                href="mailto:sales@skoolio.co.in"
                 className="text-md hover:text-[var(--primary-c)] text-black duration-200 cursor-pointer"
               >
-                Email : sales@gyansindhu.com
+                Email : sales@skoolio.co.in
               </a>
               <Link
                 to="https://maps.app.goo.gl/ZxRwgmQ3jracFYpB6"
