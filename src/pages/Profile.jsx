@@ -193,7 +193,7 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isANumber(profileData.data.mobile_no2)) {
+    if (profileData.data.mobile_no2.length > 0 && !isANumber(profileData.data.mobile_no2)) {
       toast.error("Mobile Number 2 should be 10 characters and digits only!", {
         position: "bottom-right",
         autoClose: 3000,

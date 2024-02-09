@@ -56,6 +56,8 @@ const CategoryBooks = () => {
     setProductList(data);
   };
 
+  console.log(productList);
+
   return (
     <Layout>
       <Wrapper>
@@ -71,11 +73,15 @@ const CategoryBooks = () => {
         {/* heading and paragaph end */}
 
         {/* products grid start */}
-        {productList.length > 0 ? (
+        {productList.length > 0 && productList[0]?.success_status != 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
             {productList.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
+          </div>
+        ) : productList[0]?.success_status == 0 ? (
+          <div className="text-2xl text-center mb-14">
+            Oops ... No Products Found!
           </div>
         ) : (
           <div className="mb-14">
@@ -87,20 +93,22 @@ const CategoryBooks = () => {
           </div>
         )}
         {/* products grid end */}
-        <ReactPaginate
-          breakLabel="..."
-          pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
-          nextLabel={<PaginationRight />}
-          onPageChange={(e) => handlePageClick(e)}
-          pageRangeDisplayed={0}
-          pageCount={pageCount}
-          marginPagesDisplayed={1}
-          previousLabel={<PaginationLeft />}
-          renderOnZeroPageCount={null}
-          initialPage={0}
-          activeClassName="bg-[var(--primary-c)] text-white"
-          className="flex flex-row gap-4 my-4 justify-center md:justify-end px-4 text-xl items-center mb-12"
-        />
+        {productList.length > 0 && productList[0]?.success_status != 0 && (
+          <ReactPaginate
+            breakLabel="..."
+            pageClassName="border-2 w-10 h-10 rounded-md justify-center flex items-center"
+            nextLabel={<PaginationRight />}
+            onPageChange={(e) => handlePageClick(e)}
+            pageRangeDisplayed={0}
+            pageCount={pageCount}
+            marginPagesDisplayed={1}
+            previousLabel={<PaginationLeft />}
+            renderOnZeroPageCount={null}
+            initialPage={0}
+            activeClassName="bg-[var(--primary-c)] text-white"
+            className="flex flex-row gap-4 my-4 justify-center md:justify-end px-4 text-xl items-center mb-12"
+          />
+        )}
       </Wrapper>
     </Layout>
   );
